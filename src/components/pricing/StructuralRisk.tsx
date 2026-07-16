@@ -1,6 +1,18 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { LuTrendingDown, LuLayers, LuSparkles, LuBookmark } from "react-icons/lu";
+import { getStructuralRisks } from "@/app/pricing-agent/actions";
 
 export default function StructuralRisk() {
+  const [risks, setRisks] = useState<any[]>([]);
+
+  useEffect(() => {
+    getStructuralRisks().then((data) => {
+      setRisks(data);
+    });
+  }, []);
+
   return (
     <div id="long-term-risks" className="app-card border border-border-subtle bg-white p-6 shadow-sm space-y-6">
       <div className="flex items-center justify-between pb-4 border-b border-slate-100">
@@ -22,35 +34,39 @@ export default function StructuralRisk() {
         </span>
       </div>
 
-      <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-4">
-        <div className="flex justify-between items-center text-xs font-black uppercase text-slate-400">
-          <span>Obsolescence Trend: ICE Part Production</span>
-          <span className="text-red-500 font-bold flex items-center gap-1">
-            <LuTrendingDown size={14} /> Softening Demand
-          </span>
-        </div>
+      <div className="space-y-6">
+        {risks.map((risk: any, idx: number) => (
+          <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-4">
+            <div className="flex justify-between items-center text-xs font-black uppercase text-slate-400">
+              <span>Obsolescence Trend: {risk.trend}</span>
+              <span className="text-red-500 font-bold flex items-center gap-1">
+                <LuTrendingDown size={14} /> {risk.status}
+              </span>
+            </div>
 
-        <div className="space-y-3">
-          <h4 className="font-display font-bold text-slate-800 text-sm">
-            Transition Risk: Traditional Engine Cylinder casting
-          </h4>
-          <p className="text-xs text-slate-600 leading-relaxed font-semibold">
-            Based on market forecast models, traditional ICE parts orders from Tier-1 auto-component distributors are projected to soften by 30% over the next 18 months due to accelerating EV adoption in Bengaluru's local clusters.
-          </p>
-        </div>
+            <div className="space-y-3">
+              <h4 className="font-display font-bold text-slate-800 text-sm">
+                {risk.title}
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-semibold">
+                {risk.description}
+              </p>
+            </div>
 
-        {/* Gemma narrative suggestion */}
-        <div className="p-4 rounded-xl bg-white border border-slate-100 flex items-start gap-3">
-          <div className="h-6 w-6 rounded bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
-            <LuSparkles size={12} />
+            {/* Gemma narrative suggestion */}
+            <div className="p-4 rounded-xl bg-white border border-slate-100 flex items-start gap-3">
+              <div className="h-6 w-6 rounded bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                <LuSparkles size={12} />
+              </div>
+              <div className="space-y-1">
+                <p className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Gemma Diversification Advisory</p>
+                <p className="text-xs text-slate-700 leading-relaxed font-semibold">
+                  "{risk.gemmaAdvisory}"
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="space-y-1">
-            <p className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Gemma Diversification Advisory</p>
-            <p className="text-xs text-slate-700 leading-relaxed font-semibold">
-              "We recommend diversifying CNC production towards EV structural casings and heat sinks. 45% of your current milling tooling setup can be reprofiled without requiring major capital investments."
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

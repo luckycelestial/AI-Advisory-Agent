@@ -1,50 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LuSparkles, LuCheck, LuX, LuMessageSquare, LuChevronDown, LuChevronUp, LuInfo } from "react-icons/lu";
+import { getRecommendations, updateRecommendationStatus } from "@/app/pricing-agent/actions";
 
 export default function PricingRecommendations() {
-  const [recommendations, setRecommendations] = useState([
-    {
-      id: "REC-01",
-      trigger: "Mild Steel Cost index +6.3% in Peenya Cluster",
-      action: "Increase Price by +3.4% on Mild Steel products for new batches",
-      confidence: "high", // high | medium | low
-      reasoning: [
-        "Supplier raw steel quotes rose by ₹3,600/ton yesterday.",
-        "Your current net margin on Mild Steel parts is 11.2%, which is close to your critical safety margin (10.0%).",
-        "Client sensitivity analysis indicates a price elasticity of -0.4, allowing a +3.4% pass-through markup without order volume deterioration.",
-      ],
-      accepted: false,
-      rejected: false,
-      expanded: false,
-    },
-    {
-      id: "REC-02",
-      trigger: "BESCOM 4-Hr power maintenance surcharge added",
-      action: "Apply ₹40/batch operational energy buffer surcharge",
-      confidence: "medium",
-      reasoning: [
-        "CNC operational backup diesel generator runs cost ₹150 extra per hour.",
-        "This surcharge directly prevents a 1.2% gross margin bleed on current scheduled batch runs.",
-      ],
-      accepted: false,
-      rejected: false,
-      expanded: false,
-    }
-  ]);
+  const [recommendations, setRecommendations] = useState<any[]>([]);
+
+  useEffect(() => {
+    getRecommendations().then((data) => {
+      setRecommendations(data.map((rec: any) => ({ ...rec, expanded: false })));
+    });
+  }, []);
 
   const toggleExpand = (id: string) => {
     setRecommendations(
-      recommendations.map((rec) =>
+      recommendations.map((rec: any) =>
         rec.id === id ? { ...rec, expanded: !rec.expanded } : rec
       )
     );
   };
 
-  const handleAction = (id: string, type: "accept" | "reject") => {
+  const handleAction = async (id: string, type: "accept" | "reject") => {
+    await updateRecommendationStatus(id, type === "accept" ? "accepted" : "rejected");
     setRecommendations(
-      recommendations.map((rec) =>
+      recommendations.map((rec: any) =>
         rec.id === id
           ? {
               ...rec,
@@ -111,7 +91,7 @@ export default function PricingRecommendations() {
 
                 {rec.expanded && (
                   <ul className="space-y-2 list-disc list-inside text-xs text-slate-600 font-medium pl-2 leading-relaxed animate-in fade-in duration-300">
-                    {rec.reasoning.map((item, idx) => (
+                    {rec.reasoning.map((item: string, idx: number) => (
                       <li key={idx}>{item}</li>
                     ))}
                   </ul>

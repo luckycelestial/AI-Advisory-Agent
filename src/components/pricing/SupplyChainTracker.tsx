@@ -1,40 +1,17 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { LuTruck, LuSparkles, LuCheck } from "react-icons/lu";
+import { getShipments } from "@/app/pricing-agent/actions";
 
 export default function SupplyChainTracker() {
-  const shipments = [
-    {
-      material: "Steel Bars (Mild Grade)",
-      qty: "15 Tons",
-      supplier: "Peenya Steel Distributor",
-      currentNode: "Distributor Node (Bengaluru Outer Ring)",
-      eta: "July 20 (4 Days Delay)",
-      status: "delayed", // delayed | at-risk | on-time
-      steps: [
-        { name: "Mine/Mill", status: "completed" },
-        { name: "Distributor", status: "delayed" },
-        { name: "Regional Supplier", status: "pending" },
-        { name: "Warehouse", status: "pending" },
-        { name: "CNC Facility", status: "pending" },
-      ],
-      gemmaAnnotation: "Steel batch stuck at distributor stage — 4 day delay risk. This creates a liquidity bottleneck for Order #221. Consider executing buffer pricing (+2.5% markup) to hedge against delayed cash collection.",
-    },
-    {
-      material: "Aluminium Alloy billets (6061)",
-      qty: "5 Tons",
-      supplier: "Bommasandra Metal Casting",
-      currentNode: "Warehouse Node (Jigani Industrial)",
-      eta: "July 17 (On Time)",
-      status: "on-time",
-      steps: [
-        { name: "Mine/Mill", status: "completed" },
-        { name: "Distributor", status: "completed" },
-        { name: "Regional Supplier", status: "completed" },
-        { name: "Warehouse", status: "on-time" },
-        { name: "CNC Facility", status: "pending" },
-      ],
-      gemmaAnnotation: "Aluminium alloy supply is secure at standard rate. Standard margins are valid for this batch.",
-    }
-  ];
+  const [shipments, setShipments] = useState<any[]>([]);
+
+  useEffect(() => {
+    getShipments().then((data) => {
+      setShipments(data);
+    });
+  }, []);
 
   return (
     <div id="supply-chain" className="app-card border border-border-subtle bg-white p-6 shadow-sm space-y-6">
@@ -56,7 +33,7 @@ export default function SupplyChainTracker() {
       </div>
 
       <div className="space-y-8">
-        {shipments.map((ship, idx) => (
+        {shipments.map((ship: any, idx: number) => (
           <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-5">
             {/* Shipment Header Info */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -86,7 +63,7 @@ export default function SupplyChainTracker() {
               <div className="absolute top-[28px] left-4 right-4 h-0.5 bg-slate-200 -z-0" />
               
               <div className="grid grid-cols-5 text-center relative z-10">
-                {ship.steps.map((step, sIdx) => {
+                {ship.steps.map((step: any, sIdx: number) => {
                   let stepColor = "bg-slate-200 text-slate-400 border-slate-200";
                   if (step.status === "completed") {
                     stepColor = "bg-primary text-white border-primary";
