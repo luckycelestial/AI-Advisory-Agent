@@ -137,7 +137,7 @@ exports.Prisma.OrderScalarFieldEnum = {
 
 exports.Prisma.ShipmentScalarFieldEnum = {
   id: 'id',
-  material: 'material',
+  materialId: 'materialId',
   qty: 'qty',
   supplier: 'supplier',
   currentNode: 'currentNode',
@@ -161,7 +161,8 @@ exports.Prisma.MarketSignalScalarFieldEnum = {
   date: 'date',
   relevance: 'relevance',
   tag: 'tag',
-  desc: 'desc'
+  desc: 'desc',
+  materialId: 'materialId'
 };
 
 exports.Prisma.PricingRecommendationScalarFieldEnum = {
@@ -172,7 +173,8 @@ exports.Prisma.PricingRecommendationScalarFieldEnum = {
   reasoning: 'reasoning',
   accepted: 'accepted',
   rejected: 'rejected',
-  expanded: 'expanded'
+  expanded: 'expanded',
+  orderId: 'orderId'
 };
 
 exports.Prisma.StructuralRiskScalarFieldEnum = {
@@ -181,7 +183,8 @@ exports.Prisma.StructuralRiskScalarFieldEnum = {
   status: 'status',
   title: 'title',
   description: 'description',
-  gemmaAdvisory: 'gemmaAdvisory'
+  gemmaAdvisory: 'gemmaAdvisory',
+  materialId: 'materialId'
 };
 
 exports.Prisma.IndustryNewsScalarFieldEnum = {
@@ -206,6 +209,35 @@ exports.Prisma.InventoryItemScalarFieldEnum = {
   minThreshold: 'minThreshold',
   status: 'status',
   image: 'image',
+  lastUpdated: 'lastUpdated',
+  materialId: 'materialId'
+};
+
+exports.Prisma.CncMachineTelemetryScalarFieldEnum = {
+  id: 'id',
+  machineId: 'machineId',
+  airTemp: 'airTemp',
+  processTemp: 'processTemp',
+  rotationalSpeed: 'rotationalSpeed',
+  torque: 'torque',
+  toolWear: 'toolWear',
+  machineFailure: 'machineFailure',
+  twf: 'twf',
+  hdf: 'hdf',
+  pwf: 'pwf',
+  osf: 'osf',
+  rnf: 'rnf',
+  timestamp: 'timestamp'
+};
+
+exports.Prisma.IndianMetalIndexScalarFieldEnum = {
+  id: 'id',
+  source: 'source',
+  material: 'material',
+  region: 'region',
+  price: 'price',
+  unit: 'unit',
+  change: 'change',
   lastUpdated: 'lastUpdated'
 };
 
@@ -221,6 +253,11 @@ exports.Prisma.JsonNullValueInput = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 exports.Prisma.JsonNullValueFilter = {
@@ -239,7 +276,9 @@ exports.Prisma.ModelName = {
   PricingRecommendation: 'PricingRecommendation',
   StructuralRisk: 'StructuralRisk',
   IndustryNews: 'IndustryNews',
-  InventoryItem: 'InventoryItem'
+  InventoryItem: 'InventoryItem',
+  CncMachineTelemetry: 'CncMachineTelemetry',
+  IndianMetalIndex: 'IndianMetalIndex'
 };
 
 /**

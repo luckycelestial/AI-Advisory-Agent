@@ -4,7 +4,12 @@ import { useState, useEffect } from "react";
 import { LuTruck, LuSparkles, LuCheck } from "react-icons/lu";
 import { getShipments } from "@/app/pricing-agent/actions";
 
-export default function SupplyChainTracker() {
+interface SupplyChainTrackerProps {
+  searchTerm?: string;
+  onNavigate?: (tab: string, search: string) => void;
+}
+
+export default function SupplyChainTracker({ searchTerm, onNavigate }: SupplyChainTrackerProps) {
   const [shipments, setShipments] = useState<any[]>([]);
 
   useEffect(() => {
@@ -12,6 +17,10 @@ export default function SupplyChainTracker() {
       setShipments(data);
     });
   }, []);
+
+  const filteredShipments = shipments.filter((ship) =>
+    !searchTerm || ship.material.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div id="supply-chain" className="app-card border border-border-subtle bg-white p-6 shadow-sm space-y-6">
@@ -29,16 +38,18 @@ export default function SupplyChainTracker() {
             </p>
           </div>
         </div>
-        <span className="text-[10px] font-black uppercase text-slate-400">2 Active Shipments</span>
+        <span className="text-[10px] font-black uppercase text-slate-400">
+          {filteredShipments.length} Active Shipments
+        </span>
       </div>
 
       <div className="space-y-8">
-        {shipments.map((ship: any, idx: number) => (
+        {filteredShipments.map((ship: any, idx: number) => (
           <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-5">
             {/* Shipment Header Info */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h4 className="font-display font-bold text-sm text-slate-800">{ship.material}</h4>
+                <h4 className="font-display font-bold text-sm text-slate-800">{ship.material.name}</h4>
                 <p className="text-[10px] font-semibold text-slate-400">
                   Qty: {ship.qty} • Supplier: {ship.supplier}
                 </p>
@@ -99,9 +110,22 @@ export default function SupplyChainTracker() {
                 </p>
               </div>
             </div>
+
+            {/* Related Action Link */}
+            {onNavigate && (
+              <div className="flex justify-end pt-2">
+                <button
+                  onClick={() => onNavigate("control", "")}
+                  className="inline-flex items-center justify-center gap-1.5 border border-slate-200 text-slate-500 hover:bg-slate-50 px-4 py-2 rounded-xl text-[10px] font-bold transition-all cursor-pointer shadow-xs"
+                >
+                  Review Pricing Advisory
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
     </div>
   );
 }
+

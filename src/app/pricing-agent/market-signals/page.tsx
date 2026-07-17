@@ -1,11 +1,6 @@
-"use client";
-
-import MarketSignals from "@/components/pricing/MarketSignals";
+import { redirect } from "next/navigation";
 
 export default function MarketSignalsPage() {
-  return (
-    <div className="animate-in fade-in slide-in-from-bottom-6 duration-500 w-full">
-      <MarketSignals />
-    </div>
-  );
+  redirect("/pricing-agent?tab=intelligence");
 }
+

@@ -10,9 +10,10 @@ import {
   LuFolder, 
   LuTag, 
   LuRefreshCw,
-  LuShieldAlert
+  LuShieldAlert,
+  LuSparkles
 } from "react-icons/lu";
-import { getInventory, updateInventoryQty, addInventoryItem } from "@/app/pricing-agent/actions";
+import { getInventory, updateInventoryQty, addInventoryItem, getCncTelemetry, analyzeTelemetryWithGemma } from "@/app/pricing-agent/actions";
 
 interface InventoryItem {
   id: number;
@@ -28,11 +29,34 @@ interface InventoryItem {
   lastUpdated: string | Date;
 }
 
-export default function CncInventory() {
+interface CncInventoryProps {
+  searchTerm?: string;
+  onNavigate?: (tab: string, search: string) => void;
+}
+
+export default function CncInventory({ searchTerm, onNavigate }: CncInventoryProps) {
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+
+  // Telemetry sensor dataset states
+  const [telemetry, setTelemetry] = useState<any[]>([]);
+  const [advisoryText, setAdvisoryText] = useState("");
+  const [advisoryLoading, setAdvisoryLoading] = useState(false);
+
+  useEffect(() => {
+    getCncTelemetry().then((data) => {
+      setTelemetry(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (searchTerm) {
+      setSearch(searchTerm);
+    }
+  }, [searchTerm]);
+
   const [showAddForm, setShowAddForm] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
 
@@ -436,15 +460,112 @@ export default function CncInventory() {
                       </button>
                     </div>
 
-                    <span className="text-[9px] text-slate-400 font-semibold italic">
-                      Limit Alert: {item.minThreshold} {item.unit}
-                    </span>
+                    <div className="flex flex-col items-end gap-1.5">
+                      <span className="text-[9px] text-slate-400 font-semibold italic">
+                        Limit Alert: {item.minThreshold} {item.unit}
+                      </span>
+                      {onNavigate && (item.status === "Low Stock" || item.status === "Out of Stock") && (
+                        <button
+                          onClick={() => {
+                            const keyword = item.name.toLowerCase().includes("aluminum") || item.name.toLowerCase().includes("aluminium") ? "Aluminium" : "Steel";
+                            onNavigate("supply-chain", keyword);
+                          }}
+                          className="inline-flex items-center gap-1 border border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary px-2 py-0.5 rounded text-[9px] font-bold transition-all cursor-pointer whitespace-nowrap"
+                        >
+                          Check Shipments
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         )}
+
+        {/* CNC Telemetry & Predictive Failure Risk (Kaggle/UCI AI4I 2020 Dataset) */}
+        <div className="mt-12 pt-8 border-t border-slate-100 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 className="font-display font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2">
+                <LuRefreshCw className="text-primary animate-spin duration-[4000ms]" size={18} />
+                CNC Machine Telemetry & Tool Wear Analytics
+              </h3>
+              <p className="text-xs font-semibold text-slate-400">
+                Live sensor stream sourced from Kaggle AI4I 2020 Predictive Maintenance Dataset
+              </p>
+            </div>
+            
+            <button
+              onClick={async () => {
+                setAdvisoryLoading(true);
+                try {
+                  const advice = await analyzeTelemetryWithGemma();
+                  setAdvisoryText(advice);
+                } catch (err) {
+                  alert("Failed to analyze telemetry.");
+                } finally {
+                  setAdvisoryLoading(false);
+                }
+              }}
+              disabled={advisoryLoading}
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary px-4 py-2 text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
+            >
+              <LuSparkles size={14} />
+              {advisoryLoading ? "Analyzing..." : "Ask Gemma Telemetry Advisory"}
+            </button>
+          </div>
+
+          {/* Gemma Telemetry Advisory Result Banner */}
+          {advisoryText && (
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-violet-50/70 to-white border border-violet-100/80 text-violet-950 font-semibold text-xs leading-relaxed animate-in slide-in-from-top-4 duration-300">
+              <div className="flex items-center gap-2 text-primary font-black uppercase text-[10px] tracking-wider mb-2">
+                <LuSparkles size={13} />
+                Gemma Operational Risk Advisory
+              </div>
+              <div className="whitespace-pre-line">{advisoryText}</div>
+            </div>
+          )}
+
+          {/* Telemetry Stream Grid Table */}
+          <div className="overflow-x-auto border border-slate-100 rounded-2xl max-h-[300px] overflow-y-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-100 text-[10px] font-black uppercase tracking-wider text-slate-400">
+                  <th className="py-2.5 px-4">Machine ID</th>
+                  <th className="py-2.5 px-4 text-right">Air Temp (K)</th>
+                  <th className="py-2.5 px-4 text-right">Process Temp (K)</th>
+                  <th className="py-2.5 px-4 text-right">Rotational Speed (RPM)</th>
+                  <th className="py-2.5 px-4 text-right">Torque (Nm)</th>
+                  <th className="py-2.5 px-4 text-right">Tool Wear (Min)</th>
+                  <th className="py-2.5 px-4 text-center">Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-50">
+                {telemetry.slice(0, 15).map((row, idx) => (
+                  <tr key={idx} className="text-[11px] font-semibold text-slate-700 hover:bg-slate-50/50 transition-colors">
+                    <td className="py-3 px-4 font-mono font-bold text-slate-800">{row.machineId}</td>
+                    <td className="py-3 px-4 text-right font-mono text-slate-500">{row.airTemp.toFixed(1)}K</td>
+                    <td className="py-3 px-4 text-right font-mono text-slate-500">{row.processTemp.toFixed(1)}K</td>
+                    <td className="py-3 px-4 text-right font-mono text-slate-500">{row.rotationalSpeed} rpm</td>
+                    <td className="py-3 px-4 text-right font-mono text-slate-500">{row.torque.toFixed(1)} Nm</td>
+                    <td className="py-3 px-4 text-right font-mono text-slate-500">{row.toolWear} mins</td>
+                    <td className="py-3 px-4 text-center">
+                      <span className={`inline-block text-[9px] font-black uppercase px-2 py-0.5 rounded border ${
+                        row.machineFailure
+                          ? "text-red-700 bg-red-50 border-red-200"
+                          : "text-emerald-700 bg-emerald-50 border-emerald-200"
+                      }`}>
+                        {row.machineFailure ? "Failure Risk" : "Optimal"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
   );

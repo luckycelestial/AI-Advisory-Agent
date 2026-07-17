@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LuUpload, LuFileSpreadsheet, LuFileText, LuX, LuLoader, LuCheck } from "react-icons/lu";
+import { importBusinessData } from "@/app/pricing-agent/actions";
 
 interface DataImportPanelProps {
   onDataImported: (data: any) => void;
@@ -24,21 +25,21 @@ export default function DataImportPanel({ onDataImported }: DataImportPanelProps
     }, 2000);
   };
 
-  const confirmImport = () => {
-    setImportStatus("success");
-    setTimeout(() => {
-      onDataImported({
-        materials: [
-          { name: "Aluminium Alloy (6061)", currentCost: 380, marketCost: 427.12, supplier: "Bommasandra Metal Casting" },
-          { name: "Steel Rods (Mild)", currentCost: 58000, marketCost: 61480, supplier: "Peenya Steel Distributor" }
-        ],
-        orders: [
-          { id: "ORD-221", client: "Client X", margin: "14.2%" },
-          { id: "ORD-214", client: "Client Y", margin: "9.5%" }
-        ]
-      });
-      setIsOpen(false); // collapse panel after import succeeds
-    }, 1000);
+  const confirmImport = async () => {
+    if (!fileType) return;
+    setImportStatus("parsing");
+    try {
+      await importBusinessData(fileType);
+      setImportStatus("success");
+      setTimeout(() => {
+        onDataImported({ success: true });
+        setIsOpen(false);
+      }, 1500);
+    } catch (err: any) {
+      console.error(err);
+      alert(`Import Failed: ${err.message || "Gemma could not parse the file data."}`);
+      setImportStatus("preview");
+    }
   };
 
   return (

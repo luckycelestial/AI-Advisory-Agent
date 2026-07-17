@@ -4,7 +4,12 @@ import { useState, useEffect } from "react";
 import { LuTrendingDown, LuLayers, LuSparkles, LuBookmark } from "react-icons/lu";
 import { getStructuralRisks } from "@/app/pricing-agent/actions";
 
-export default function StructuralRisk() {
+interface StructuralRiskProps {
+  searchTerm?: string;
+  onNavigate?: (tab: string, search: string) => void;
+}
+
+export default function StructuralRisk({ searchTerm, onNavigate }: StructuralRiskProps) {
   const [risks, setRisks] = useState<any[]>([]);
 
   useEffect(() => {
@@ -12,6 +17,13 @@ export default function StructuralRisk() {
       setRisks(data);
     });
   }, []);
+
+  const filteredRisks = risks.filter((risk) =>
+    !searchTerm ||
+    risk.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    risk.trend.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (risk.material && risk.material.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   return (
     <div id="long-term-risks" className="app-card border border-border-subtle bg-white p-6 shadow-sm space-y-6">
@@ -35,7 +47,7 @@ export default function StructuralRisk() {
       </div>
 
       <div className="space-y-6">
-        {risks.map((risk: any, idx: number) => (
+        {filteredRisks.map((risk: any, idx: number) => (
           <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-4">
             <div className="flex justify-between items-center text-xs font-black uppercase text-slate-400">
               <span>Obsolescence Trend: {risk.trend}</span>
@@ -65,9 +77,22 @@ export default function StructuralRisk() {
                 </p>
               </div>
             </div>
+
+            {/* Action link */}
+            {risk.material && onNavigate && (
+              <div className="flex justify-end">
+                <button
+                  onClick={() => onNavigate("inventory", risk.material.name.toLowerCase().includes("steel") ? "Steel" : "Aluminium")}
+                  className="inline-flex items-center gap-1.5 border border-slate-200 text-slate-500 hover:bg-slate-50 px-3.5 py-1.5 rounded-xl text-[10px] font-bold transition-all cursor-pointer shadow-xs"
+                >
+                  Reprofile CNC Tooling
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
     </div>
   );
 }
+

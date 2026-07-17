@@ -6,6 +6,7 @@ import Sidebar from "@/components/dashboard/Sidebar";
 import DataImportPanel from "@/components/pricing/DataImportPanel";
 import { BusinessDataProvider, useBusinessData } from "./context";
 import { LuShieldAlert } from "react-icons/lu";
+import { getMaterials } from "@/app/pricing-agent/actions";
 
 export default function PricingAgentLayout({
   children,
@@ -34,21 +35,16 @@ function PricingLayoutContent({ children }: { children: React.ReactNode }) {
   const [isImportOpen, setIsImportOpen] = useState(false);
 
   useEffect(() => {
-    // If user lands directly on a sub-page and businessData is null,
-    // auto-simulate the mock data loading just like the original dashboard did.
-    if (pathname !== "/pricing-agent" && !businessData) {
-      setBusinessData({
-        materials: [
-          { name: "Aluminium Alloy (6061)", currentCost: 380, marketCost: 427.12, supplier: "Bommasandra Metal Casting" },
-          { name: "Steel Rods (Mild)", currentCost: 58000, marketCost: 61480, supplier: "Peenya Steel Distributor" }
-        ],
-        orders: [
-          { id: "ORD-221", client: "Client X", margin: "14.2%" },
-          { id: "ORD-214", client: "Client Y", margin: "9.5%" }
-        ]
-      });
-    }
-  }, [pathname, businessData, setBusinessData]);
+    // Check if we have materials in the database to see if data is connected
+    getMaterials().then((mats: any) => {
+      if (mats && mats.length > 0) {
+        setBusinessData({ success: true });
+      } else {
+        setBusinessData(null);
+      }
+    });
+  }, [setBusinessData]);
+
 
   return (
     <div className="design-timespent min-h-screen bg-background text-foreground flex font-sans antialiased">
@@ -146,6 +142,7 @@ function PricingLayoutContent({ children }: { children: React.ReactNode }) {
               onDataImported={(data) => {
                 setBusinessData(data);
                 setIsImportOpen(false);
+                window.location.reload();
               }} 
             />
           </div>

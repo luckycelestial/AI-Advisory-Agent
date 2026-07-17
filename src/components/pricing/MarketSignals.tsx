@@ -8,21 +8,40 @@ import {
   LuChevronLeft,
   LuChevronRight,
   LuTrendingDown,
-  LuCompass
+  LuCompass,
+  LuCoins
 } from "react-icons/lu";
-import { getMarketSignals, getIndustryNews } from "@/app/pricing-agent/actions";
+import { getMarketSignals, getIndustryNews, getMarketSentiment, getIndianMetalIndices } from "@/app/pricing-agent/actions";
 
-export default function MarketSignals() {
+interface MarketSignalsProps {
+  searchTerm?: string;
+  onNavigate?: (tab: string, search: string) => void;
+}
+
+export default function MarketSignals({ searchTerm, onNavigate }: MarketSignalsProps) {
   const [signals, setSignals] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
+  const [metalIndices, setMetalIndices] = useState<any[]>([]);
   const [sortBy, setSortBy] = useState<"relevance" | "recent">("relevance");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [sentiment, setSentiment] = useState<any>({
+    pressureTrend: "",
+    threatDescription: "",
+    advisoryAction: ""
+  });
 
   useEffect(() => {
-    Promise.all([getMarketSignals(), getIndustryNews()]).then(([signalsData, newsData]) => {
+    Promise.all([
+      getMarketSignals(),
+      getIndustryNews(),
+      getMarketSentiment(),
+      getIndianMetalIndices()
+    ]).then(([signalsData, newsData, sentimentData, indicesData]) => {
       console.log("Client-side loaded news feed:", newsData);
       setSignals(signalsData);
       setNews(newsData);
+      setSentiment(sentimentData);
+      setMetalIndices(indicesData);
     });
   }, []);
 
@@ -50,8 +69,14 @@ export default function MarketSignals() {
   };
 
   const getSortedSignals = () => {
+    const filtered = signals.filter(sig => 
+      !searchTerm || 
+      sig.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      (sig.material && sig.material.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+
     if (sortBy === "relevance") {
-      return [...signals].sort((a, b) => {
+      return [...filtered].sort((a, b) => {
         const order = { high: 2, medium: 1, low: 0 };
         return (
           (order[b.relevance as "high" | "medium" | "low"] ?? 0) -
@@ -59,7 +84,7 @@ export default function MarketSignals() {
         );
       });
     }
-    return signals;
+    return filtered;
   };
 
   const sortedSignals = getSortedSignals();
@@ -296,6 +321,48 @@ export default function MarketSignals() {
         </div>
       </div>
 
+      {/* Indian Metal & Steel Price Index Tracker (Tata nexarc, SteelonCall, BigMint, WPI) */}
+      <div className="app-card border border-border-subtle bg-white p-6 shadow-sm space-y-4">
+        <div>
+          <h3 className="font-display font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2">
+            <LuCoins size={18} className="text-primary" />
+            Indian Metal & Steel B2B Price Index Tracker
+          </h3>
+          <p className="text-xs font-semibold text-slate-400">
+            Regional procurement index feeds aggregated from Tata nexarc, SteelonCall, BigMint, and Ministry WPI
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          {metalIndices.map((idxVal, idxKey) => (
+            <div key={idxKey} className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2 hover:shadow-xs transition-shadow">
+              <div className="flex justify-between items-start">
+                <span className="text-[9px] font-black uppercase text-indigo-600 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded">
+                  {idxVal.source}
+                </span>
+                <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded border ${
+                  idxVal.change > 0
+                    ? "text-rose-700 bg-rose-50 border-rose-100"
+                    : "text-emerald-700 bg-emerald-50 border-emerald-100"
+                }`}>
+                  {idxVal.change > 0 ? "+" : ""}{idxVal.change}%
+                </span>
+              </div>
+              <div>
+                <h4 className="font-display font-bold text-[11px] text-slate-800 leading-snug">{idxVal.material}</h4>
+                <p className="text-[9px] font-semibold text-slate-400">{idxVal.region}</p>
+              </div>
+              <div className="pt-2 border-t border-slate-200/60 flex items-baseline gap-1">
+                <span className="font-mono font-black text-sm text-slate-800">
+                  {idxVal.unit === "per Ton" ? "₹" : ""}{idxVal.price.toLocaleString("en-IN")}
+                </span>
+                <span className="text-[9px] text-slate-400 font-bold">{idxVal.unit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Bottom Section: Gemma Pricing Sentiment Analyzer Widget */}
       <div className="app-card border border-border-subtle bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 text-white shadow-md relative overflow-hidden">
         {/* Glow effect */}
@@ -311,11 +378,11 @@ export default function MarketSignals() {
             </div>
             
             <h3 className="font-display font-bold text-lg sm:text-xl text-white">
-              Aggregated Market Pressure: <span className="text-rose-400">📈 Strong Upward Trend</span>
+              Aggregated Market Pressure: <span className="text-rose-400">{sentiment.pressureTrend}</span>
             </h3>
             
             <p className="text-xs text-slate-300 leading-relaxed font-semibold">
-              Combined calculations from raw metal hikes (+4% domestic steel quotes in Peenya), regional freight logistics delays (+1-2 days), and Karnataka energy maintenance scheduled outages suggest a margin threat of <span className="text-rose-400 font-bold">~3.2% bleed</span> if price pass-through markups are delayed.
+              {sentiment.threatDescription}
             </p>
           </div>
 
@@ -325,7 +392,7 @@ export default function MarketSignals() {
               <span>Gemma Advisory Action</span>
             </div>
             <p className="text-[11px] text-slate-400 leading-normal font-semibold">
-              Initiate a +3.4% markup strategy immediately on all upcoming Mild Steel fabrication batches in Peenya clusters to shield baseline margins.
+              {sentiment.advisoryAction}
             </p>
           </div>
         </div>

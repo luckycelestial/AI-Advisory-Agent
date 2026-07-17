@@ -11,25 +11,31 @@ datasource db {
 }
 
 model Material {
-  id          Int     @id @default(autoincrement())
-  name        String  @unique
-  currentCost Float
-  marketCost  Float
-  supplier    String
-  orders      Order[]
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  currentCost     Float
+  marketCost      Float
+  supplier        String
+  orders          Order[]
+  shipments       Shipment[]
+  inventoryItems  InventoryItem[]
+  marketSignals   MarketSignal[]
+  structuralRisks StructuralRisk[]
 }
 
 model Order {
-  id         String   @id
-  client     String
-  margin     String
-  materialId Int
-  material   Material @relation(fields: [materialId], references: [id])
+  id                     String                  @id
+  client                 String
+  margin                 String
+  materialId             Int
+  material               Material                @relation(fields: [materialId], references: [id])
+  pricingRecommendations PricingRecommendation[]
 }
 
 model Shipment {
   id              Int            @id @default(autoincrement())
-  material        String
+  materialId      Int
+  material        Material       @relation(fields: [materialId], references: [id])
   qty             String
   supplier        String
   currentNode     String
@@ -49,13 +55,15 @@ model ShipmentStep {
 }
 
 model MarketSignal {
-  id        Int    @id @default(autoincrement())
-  title     String
-  source    String
-  date      String
-  relevance String
-  tag       String
-  desc      String
+  id         Int       @id @default(autoincrement())
+  title      String
+  source     String
+  date       String
+  relevance  String
+  tag        String
+  desc       String
+  materialId Int?
+  material   Material? @relation(fields: [materialId], references: [id])
 }
 
 model PricingRecommendation {
@@ -67,15 +75,19 @@ model PricingRecommendation {
   accepted   Boolean @default(false)
   rejected   Boolean @default(false)
   expanded   Boolean @default(false)
+  orderId    String?
+  order      Order?  @relation(fields: [orderId], references: [id])
 }
 
 model StructuralRisk {
-  id            Int    @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   trend         String
   status        String
   title         String
   description   String
   gemmaAdvisory String
+  materialId    Int?
+  material      Material? @relation(fields: [materialId], references: [id])
 }
 
 model IndustryNews {
@@ -90,15 +102,45 @@ model IndustryNews {
 }
 
 model InventoryItem {
-  id           Int      @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   name         String
   category     String // "Raw Material" | "Tooling" | "WIP" | "Finished"
-  sku          String   @unique
+  sku          String    @unique
   quantity     Int
   unit         String // "pcs" | "kg" | "meters"
   location     String // "Rack A-1", "Bin 3", etc.
   minThreshold Int // for reorder alerts
   status       String // "In Stock" | "Low Stock" | "Out of Stock"
   image        String // public path, e.g. "/inventory/aluminum-blocks.png"
-  lastUpdated  DateTime @default(now())
+  lastUpdated  DateTime  @default(now())
+  materialId   Int?
+  material     Material? @relation(fields: [materialId], references: [id])
+}
+
+model CncMachineTelemetry {
+  id              Int      @id @default(autoincrement())
+  machineId       String // e.g. "CNC-Milling-01"
+  airTemp         Float
+  processTemp     Float
+  rotationalSpeed Float
+  torque          Float
+  toolWear        Float // in minutes
+  machineFailure  Boolean
+  twf             Boolean // Tool Wear Failure
+  hdf             Boolean // Heat Dissipation Failure
+  pwf             Boolean // Power Failure
+  osf             Boolean // Overstrain Failure
+  rnf             Boolean // Random Failure
+  timestamp       DateTime @default(now())
+}
+
+model IndianMetalIndex {
+  id          Int      @id @default(autoincrement())
+  source      String // "Tata nexarc" | "SteelonCall" | "BigMint" | "Ministry WPI"
+  material    String // "TMT Rebars" | "Mild Steel Billets" | "Sponge Iron" | "Steel Index (WPI)"
+  region      String // "Bengaluru (Peenya)" | "Chennai (Jigani)" | "Mumbai" | "National Average"
+  price       Float // price in INR (or index base points)
+  unit        String // "per Ton" | "index points"
+  change      Float // percentage change
+  lastUpdated DateTime @default(now())
 }

@@ -58,6 +58,16 @@ export type IndustryNews = $Result.DefaultSelection<Prisma.$IndustryNewsPayload>
  * 
  */
 export type InventoryItem = $Result.DefaultSelection<Prisma.$InventoryItemPayload>
+/**
+ * Model CncMachineTelemetry
+ * 
+ */
+export type CncMachineTelemetry = $Result.DefaultSelection<Prisma.$CncMachineTelemetryPayload>
+/**
+ * Model IndianMetalIndex
+ * 
+ */
+export type IndianMetalIndex = $Result.DefaultSelection<Prisma.$IndianMetalIndexPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -269,6 +279,26 @@ export class PrismaClient<
     * ```
     */
   get inventoryItem(): Prisma.InventoryItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cncMachineTelemetry`: Exposes CRUD operations for the **CncMachineTelemetry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CncMachineTelemetries
+    * const cncMachineTelemetries = await prisma.cncMachineTelemetry.findMany()
+    * ```
+    */
+  get cncMachineTelemetry(): Prisma.CncMachineTelemetryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.indianMetalIndex`: Exposes CRUD operations for the **IndianMetalIndex** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more IndianMetalIndices
+    * const indianMetalIndices = await prisma.indianMetalIndex.findMany()
+    * ```
+    */
+  get indianMetalIndex(): Prisma.IndianMetalIndexDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -711,7 +741,9 @@ export namespace Prisma {
     PricingRecommendation: 'PricingRecommendation',
     StructuralRisk: 'StructuralRisk',
     IndustryNews: 'IndustryNews',
-    InventoryItem: 'InventoryItem'
+    InventoryItem: 'InventoryItem',
+    CncMachineTelemetry: 'CncMachineTelemetry',
+    IndianMetalIndex: 'IndianMetalIndex'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -727,7 +759,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "material" | "order" | "shipment" | "shipmentStep" | "marketSignal" | "pricingRecommendation" | "structuralRisk" | "industryNews" | "inventoryItem"
+      modelProps: "material" | "order" | "shipment" | "shipmentStep" | "marketSignal" | "pricingRecommendation" | "structuralRisk" | "industryNews" | "inventoryItem" | "cncMachineTelemetry" | "indianMetalIndex"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1397,6 +1429,154 @@ export namespace Prisma {
           }
         }
       }
+      CncMachineTelemetry: {
+        payload: Prisma.$CncMachineTelemetryPayload<ExtArgs>
+        fields: Prisma.CncMachineTelemetryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CncMachineTelemetryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CncMachineTelemetryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>
+          }
+          findFirst: {
+            args: Prisma.CncMachineTelemetryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CncMachineTelemetryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>
+          }
+          findMany: {
+            args: Prisma.CncMachineTelemetryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>[]
+          }
+          create: {
+            args: Prisma.CncMachineTelemetryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>
+          }
+          createMany: {
+            args: Prisma.CncMachineTelemetryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CncMachineTelemetryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>[]
+          }
+          delete: {
+            args: Prisma.CncMachineTelemetryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>
+          }
+          update: {
+            args: Prisma.CncMachineTelemetryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CncMachineTelemetryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CncMachineTelemetryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CncMachineTelemetryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CncMachineTelemetryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CncMachineTelemetryPayload>
+          }
+          aggregate: {
+            args: Prisma.CncMachineTelemetryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCncMachineTelemetry>
+          }
+          groupBy: {
+            args: Prisma.CncMachineTelemetryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CncMachineTelemetryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CncMachineTelemetryCountArgs<ExtArgs>
+            result: $Utils.Optional<CncMachineTelemetryCountAggregateOutputType> | number
+          }
+        }
+      }
+      IndianMetalIndex: {
+        payload: Prisma.$IndianMetalIndexPayload<ExtArgs>
+        fields: Prisma.IndianMetalIndexFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.IndianMetalIndexFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.IndianMetalIndexFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>
+          }
+          findFirst: {
+            args: Prisma.IndianMetalIndexFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.IndianMetalIndexFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>
+          }
+          findMany: {
+            args: Prisma.IndianMetalIndexFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>[]
+          }
+          create: {
+            args: Prisma.IndianMetalIndexCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>
+          }
+          createMany: {
+            args: Prisma.IndianMetalIndexCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.IndianMetalIndexCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>[]
+          }
+          delete: {
+            args: Prisma.IndianMetalIndexDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>
+          }
+          update: {
+            args: Prisma.IndianMetalIndexUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>
+          }
+          deleteMany: {
+            args: Prisma.IndianMetalIndexDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.IndianMetalIndexUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.IndianMetalIndexUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>[]
+          }
+          upsert: {
+            args: Prisma.IndianMetalIndexUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$IndianMetalIndexPayload>
+          }
+          aggregate: {
+            args: Prisma.IndianMetalIndexAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateIndianMetalIndex>
+          }
+          groupBy: {
+            args: Prisma.IndianMetalIndexGroupByArgs<ExtArgs>
+            result: $Utils.Optional<IndianMetalIndexGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.IndianMetalIndexCountArgs<ExtArgs>
+            result: $Utils.Optional<IndianMetalIndexCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1514,6 +1694,8 @@ export namespace Prisma {
     structuralRisk?: StructuralRiskOmit
     industryNews?: IndustryNewsOmit
     inventoryItem?: InventoryItemOmit
+    cncMachineTelemetry?: CncMachineTelemetryOmit
+    indianMetalIndex?: IndianMetalIndexOmit
   }
 
   /* Types for Logging */
@@ -1595,10 +1777,18 @@ export namespace Prisma {
 
   export type MaterialCountOutputType = {
     orders: number
+    shipments: number
+    inventoryItems: number
+    marketSignals: number
+    structuralRisks: number
   }
 
   export type MaterialCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | MaterialCountOutputTypeCountOrdersArgs
+    shipments?: boolean | MaterialCountOutputTypeCountShipmentsArgs
+    inventoryItems?: boolean | MaterialCountOutputTypeCountInventoryItemsArgs
+    marketSignals?: boolean | MaterialCountOutputTypeCountMarketSignalsArgs
+    structuralRisks?: boolean | MaterialCountOutputTypeCountStructuralRisksArgs
   }
 
   // Custom InputTypes
@@ -1617,6 +1807,65 @@ export namespace Prisma {
    */
   export type MaterialCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderWhereInput
+  }
+
+  /**
+   * MaterialCountOutputType without action
+   */
+  export type MaterialCountOutputTypeCountShipmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShipmentWhereInput
+  }
+
+  /**
+   * MaterialCountOutputType without action
+   */
+  export type MaterialCountOutputTypeCountInventoryItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InventoryItemWhereInput
+  }
+
+  /**
+   * MaterialCountOutputType without action
+   */
+  export type MaterialCountOutputTypeCountMarketSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MarketSignalWhereInput
+  }
+
+  /**
+   * MaterialCountOutputType without action
+   */
+  export type MaterialCountOutputTypeCountStructuralRisksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StructuralRiskWhereInput
+  }
+
+
+  /**
+   * Count Type OrderCountOutputType
+   */
+
+  export type OrderCountOutputType = {
+    pricingRecommendations: number
+  }
+
+  export type OrderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pricingRecommendations?: boolean | OrderCountOutputTypeCountPricingRecommendationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OrderCountOutputType without action
+   */
+  export type OrderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrderCountOutputType
+     */
+    select?: OrderCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OrderCountOutputType without action
+   */
+  export type OrderCountOutputTypeCountPricingRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PricingRecommendationWhereInput
   }
 
 
@@ -1862,6 +2111,10 @@ export namespace Prisma {
     marketCost?: boolean
     supplier?: boolean
     orders?: boolean | Material$ordersArgs<ExtArgs>
+    shipments?: boolean | Material$shipmentsArgs<ExtArgs>
+    inventoryItems?: boolean | Material$inventoryItemsArgs<ExtArgs>
+    marketSignals?: boolean | Material$marketSignalsArgs<ExtArgs>
+    structuralRisks?: boolean | Material$structuralRisksArgs<ExtArgs>
     _count?: boolean | MaterialCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["material"]>
 
@@ -1892,6 +2145,10 @@ export namespace Prisma {
   export type MaterialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "currentCost" | "marketCost" | "supplier", ExtArgs["result"]["material"]>
   export type MaterialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | Material$ordersArgs<ExtArgs>
+    shipments?: boolean | Material$shipmentsArgs<ExtArgs>
+    inventoryItems?: boolean | Material$inventoryItemsArgs<ExtArgs>
+    marketSignals?: boolean | Material$marketSignalsArgs<ExtArgs>
+    structuralRisks?: boolean | Material$structuralRisksArgs<ExtArgs>
     _count?: boolean | MaterialCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MaterialIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1901,6 +2158,10 @@ export namespace Prisma {
     name: "Material"
     objects: {
       orders: Prisma.$OrderPayload<ExtArgs>[]
+      shipments: Prisma.$ShipmentPayload<ExtArgs>[]
+      inventoryItems: Prisma.$InventoryItemPayload<ExtArgs>[]
+      marketSignals: Prisma.$MarketSignalPayload<ExtArgs>[]
+      structuralRisks: Prisma.$StructuralRiskPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2303,6 +2564,10 @@ export namespace Prisma {
   export interface Prisma__MaterialClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     orders<T extends Material$ordersArgs<ExtArgs> = {}>(args?: Subset<T, Material$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    shipments<T extends Material$shipmentsArgs<ExtArgs> = {}>(args?: Subset<T, Material$shipmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShipmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    inventoryItems<T extends Material$inventoryItemsArgs<ExtArgs> = {}>(args?: Subset<T, Material$inventoryItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventoryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    marketSignals<T extends Material$marketSignalsArgs<ExtArgs> = {}>(args?: Subset<T, Material$marketSignalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MarketSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    structuralRisks<T extends Material$structuralRisksArgs<ExtArgs> = {}>(args?: Subset<T, Material$structuralRisksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StructuralRiskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2754,6 +3019,102 @@ export namespace Prisma {
   }
 
   /**
+   * Material.shipments
+   */
+  export type Material$shipmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Shipment
+     */
+    select?: ShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Shipment
+     */
+    omit?: ShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShipmentInclude<ExtArgs> | null
+    where?: ShipmentWhereInput
+    orderBy?: ShipmentOrderByWithRelationInput | ShipmentOrderByWithRelationInput[]
+    cursor?: ShipmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ShipmentScalarFieldEnum | ShipmentScalarFieldEnum[]
+  }
+
+  /**
+   * Material.inventoryItems
+   */
+  export type Material$inventoryItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InventoryItem
+     */
+    select?: InventoryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InventoryItem
+     */
+    omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
+    where?: InventoryItemWhereInput
+    orderBy?: InventoryItemOrderByWithRelationInput | InventoryItemOrderByWithRelationInput[]
+    cursor?: InventoryItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InventoryItemScalarFieldEnum | InventoryItemScalarFieldEnum[]
+  }
+
+  /**
+   * Material.marketSignals
+   */
+  export type Material$marketSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MarketSignal
+     */
+    select?: MarketSignalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MarketSignal
+     */
+    omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
+    where?: MarketSignalWhereInput
+    orderBy?: MarketSignalOrderByWithRelationInput | MarketSignalOrderByWithRelationInput[]
+    cursor?: MarketSignalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MarketSignalScalarFieldEnum | MarketSignalScalarFieldEnum[]
+  }
+
+  /**
+   * Material.structuralRisks
+   */
+  export type Material$structuralRisksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StructuralRisk
+     */
+    select?: StructuralRiskSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StructuralRisk
+     */
+    omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
+    where?: StructuralRiskWhereInput
+    orderBy?: StructuralRiskOrderByWithRelationInput | StructuralRiskOrderByWithRelationInput[]
+    cursor?: StructuralRiskWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StructuralRiskScalarFieldEnum | StructuralRiskScalarFieldEnum[]
+  }
+
+  /**
    * Material without action
    */
   export type MaterialDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2963,6 +3324,8 @@ export namespace Prisma {
     margin?: boolean
     materialId?: boolean
     material?: boolean | MaterialDefaultArgs<ExtArgs>
+    pricingRecommendations?: boolean | Order$pricingRecommendationsArgs<ExtArgs>
+    _count?: boolean | OrderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2991,6 +3354,8 @@ export namespace Prisma {
   export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "client" | "margin" | "materialId", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     material?: boolean | MaterialDefaultArgs<ExtArgs>
+    pricingRecommendations?: boolean | Order$pricingRecommendationsArgs<ExtArgs>
+    _count?: boolean | OrderCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OrderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     material?: boolean | MaterialDefaultArgs<ExtArgs>
@@ -3003,6 +3368,7 @@ export namespace Prisma {
     name: "Order"
     objects: {
       material: Prisma.$MaterialPayload<ExtArgs>
+      pricingRecommendations: Prisma.$PricingRecommendationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3404,6 +3770,7 @@ export namespace Prisma {
   export interface Prisma__OrderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     material<T extends MaterialDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MaterialDefaultArgs<ExtArgs>>): Prisma__MaterialClient<$Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pricingRecommendations<T extends Order$pricingRecommendationsArgs<ExtArgs> = {}>(args?: Subset<T, Order$pricingRecommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricingRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3838,6 +4205,30 @@ export namespace Prisma {
   }
 
   /**
+   * Order.pricingRecommendations
+   */
+  export type Order$pricingRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PricingRecommendation
+     */
+    select?: PricingRecommendationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PricingRecommendation
+     */
+    omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
+    where?: PricingRecommendationWhereInput
+    orderBy?: PricingRecommendationOrderByWithRelationInput | PricingRecommendationOrderByWithRelationInput[]
+    cursor?: PricingRecommendationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PricingRecommendationScalarFieldEnum | PricingRecommendationScalarFieldEnum[]
+  }
+
+  /**
    * Order without action
    */
   export type OrderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3870,15 +4261,17 @@ export namespace Prisma {
 
   export type ShipmentAvgAggregateOutputType = {
     id: number | null
+    materialId: number | null
   }
 
   export type ShipmentSumAggregateOutputType = {
     id: number | null
+    materialId: number | null
   }
 
   export type ShipmentMinAggregateOutputType = {
     id: number | null
-    material: string | null
+    materialId: number | null
     qty: string | null
     supplier: string | null
     currentNode: string | null
@@ -3889,7 +4282,7 @@ export namespace Prisma {
 
   export type ShipmentMaxAggregateOutputType = {
     id: number | null
-    material: string | null
+    materialId: number | null
     qty: string | null
     supplier: string | null
     currentNode: string | null
@@ -3900,7 +4293,7 @@ export namespace Prisma {
 
   export type ShipmentCountAggregateOutputType = {
     id: number
-    material: number
+    materialId: number
     qty: number
     supplier: number
     currentNode: number
@@ -3913,15 +4306,17 @@ export namespace Prisma {
 
   export type ShipmentAvgAggregateInputType = {
     id?: true
+    materialId?: true
   }
 
   export type ShipmentSumAggregateInputType = {
     id?: true
+    materialId?: true
   }
 
   export type ShipmentMinAggregateInputType = {
     id?: true
-    material?: true
+    materialId?: true
     qty?: true
     supplier?: true
     currentNode?: true
@@ -3932,7 +4327,7 @@ export namespace Prisma {
 
   export type ShipmentMaxAggregateInputType = {
     id?: true
-    material?: true
+    materialId?: true
     qty?: true
     supplier?: true
     currentNode?: true
@@ -3943,7 +4338,7 @@ export namespace Prisma {
 
   export type ShipmentCountAggregateInputType = {
     id?: true
-    material?: true
+    materialId?: true
     qty?: true
     supplier?: true
     currentNode?: true
@@ -4041,7 +4436,7 @@ export namespace Prisma {
 
   export type ShipmentGroupByOutputType = {
     id: number
-    material: string
+    materialId: number
     qty: string
     supplier: string
     currentNode: string
@@ -4071,42 +4466,45 @@ export namespace Prisma {
 
   export type ShipmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    material?: boolean
+    materialId?: boolean
     qty?: boolean
     supplier?: boolean
     currentNode?: boolean
     eta?: boolean
     status?: boolean
     gemmaAnnotation?: boolean
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
     steps?: boolean | Shipment$stepsArgs<ExtArgs>
     _count?: boolean | ShipmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["shipment"]>
 
   export type ShipmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    material?: boolean
+    materialId?: boolean
     qty?: boolean
     supplier?: boolean
     currentNode?: boolean
     eta?: boolean
     status?: boolean
     gemmaAnnotation?: boolean
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["shipment"]>
 
   export type ShipmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    material?: boolean
+    materialId?: boolean
     qty?: boolean
     supplier?: boolean
     currentNode?: boolean
     eta?: boolean
     status?: boolean
     gemmaAnnotation?: boolean
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["shipment"]>
 
   export type ShipmentSelectScalar = {
     id?: boolean
-    material?: boolean
+    materialId?: boolean
     qty?: boolean
     supplier?: boolean
     currentNode?: boolean
@@ -4115,22 +4513,28 @@ export namespace Prisma {
     gemmaAnnotation?: boolean
   }
 
-  export type ShipmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "material" | "qty" | "supplier" | "currentNode" | "eta" | "status" | "gemmaAnnotation", ExtArgs["result"]["shipment"]>
+  export type ShipmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "materialId" | "qty" | "supplier" | "currentNode" | "eta" | "status" | "gemmaAnnotation", ExtArgs["result"]["shipment"]>
   export type ShipmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
     steps?: boolean | Shipment$stepsArgs<ExtArgs>
     _count?: boolean | ShipmentCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type ShipmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ShipmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ShipmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
+  }
+  export type ShipmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
+  }
 
   export type $ShipmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Shipment"
     objects: {
+      material: Prisma.$MaterialPayload<ExtArgs>
       steps: Prisma.$ShipmentStepPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      material: string
+      materialId: number
       qty: string
       supplier: string
       currentNode: string
@@ -4531,6 +4935,7 @@ export namespace Prisma {
    */
   export interface Prisma__ShipmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    material<T extends MaterialDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MaterialDefaultArgs<ExtArgs>>): Prisma__MaterialClient<$Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     steps<T extends Shipment$stepsArgs<ExtArgs> = {}>(args?: Subset<T, Shipment$stepsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShipmentStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4562,7 +4967,7 @@ export namespace Prisma {
    */
   interface ShipmentFieldRefs {
     readonly id: FieldRef<"Shipment", 'Int'>
-    readonly material: FieldRef<"Shipment", 'String'>
+    readonly materialId: FieldRef<"Shipment", 'Int'>
     readonly qty: FieldRef<"Shipment", 'String'>
     readonly supplier: FieldRef<"Shipment", 'String'>
     readonly currentNode: FieldRef<"Shipment", 'String'>
@@ -4823,6 +5228,10 @@ export namespace Prisma {
      */
     data: ShipmentCreateManyInput | ShipmentCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShipmentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4893,6 +5302,10 @@ export namespace Prisma {
      * Limit how many Shipments to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ShipmentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -6123,10 +6536,12 @@ export namespace Prisma {
 
   export type MarketSignalAvgAggregateOutputType = {
     id: number | null
+    materialId: number | null
   }
 
   export type MarketSignalSumAggregateOutputType = {
     id: number | null
+    materialId: number | null
   }
 
   export type MarketSignalMinAggregateOutputType = {
@@ -6137,6 +6552,7 @@ export namespace Prisma {
     relevance: string | null
     tag: string | null
     desc: string | null
+    materialId: number | null
   }
 
   export type MarketSignalMaxAggregateOutputType = {
@@ -6147,6 +6563,7 @@ export namespace Prisma {
     relevance: string | null
     tag: string | null
     desc: string | null
+    materialId: number | null
   }
 
   export type MarketSignalCountAggregateOutputType = {
@@ -6157,16 +6574,19 @@ export namespace Prisma {
     relevance: number
     tag: number
     desc: number
+    materialId: number
     _all: number
   }
 
 
   export type MarketSignalAvgAggregateInputType = {
     id?: true
+    materialId?: true
   }
 
   export type MarketSignalSumAggregateInputType = {
     id?: true
+    materialId?: true
   }
 
   export type MarketSignalMinAggregateInputType = {
@@ -6177,6 +6597,7 @@ export namespace Prisma {
     relevance?: true
     tag?: true
     desc?: true
+    materialId?: true
   }
 
   export type MarketSignalMaxAggregateInputType = {
@@ -6187,6 +6608,7 @@ export namespace Prisma {
     relevance?: true
     tag?: true
     desc?: true
+    materialId?: true
   }
 
   export type MarketSignalCountAggregateInputType = {
@@ -6197,6 +6619,7 @@ export namespace Prisma {
     relevance?: true
     tag?: true
     desc?: true
+    materialId?: true
     _all?: true
   }
 
@@ -6294,6 +6717,7 @@ export namespace Prisma {
     relevance: string
     tag: string
     desc: string
+    materialId: number | null
     _count: MarketSignalCountAggregateOutputType | null
     _avg: MarketSignalAvgAggregateOutputType | null
     _sum: MarketSignalSumAggregateOutputType | null
@@ -6323,6 +6747,8 @@ export namespace Prisma {
     relevance?: boolean
     tag?: boolean
     desc?: boolean
+    materialId?: boolean
+    material?: boolean | MarketSignal$materialArgs<ExtArgs>
   }, ExtArgs["result"]["marketSignal"]>
 
   export type MarketSignalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6333,6 +6759,8 @@ export namespace Prisma {
     relevance?: boolean
     tag?: boolean
     desc?: boolean
+    materialId?: boolean
+    material?: boolean | MarketSignal$materialArgs<ExtArgs>
   }, ExtArgs["result"]["marketSignal"]>
 
   export type MarketSignalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6343,6 +6771,8 @@ export namespace Prisma {
     relevance?: boolean
     tag?: boolean
     desc?: boolean
+    materialId?: boolean
+    material?: boolean | MarketSignal$materialArgs<ExtArgs>
   }, ExtArgs["result"]["marketSignal"]>
 
   export type MarketSignalSelectScalar = {
@@ -6353,13 +6783,25 @@ export namespace Prisma {
     relevance?: boolean
     tag?: boolean
     desc?: boolean
+    materialId?: boolean
   }
 
-  export type MarketSignalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "source" | "date" | "relevance" | "tag" | "desc", ExtArgs["result"]["marketSignal"]>
+  export type MarketSignalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "source" | "date" | "relevance" | "tag" | "desc" | "materialId", ExtArgs["result"]["marketSignal"]>
+  export type MarketSignalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MarketSignal$materialArgs<ExtArgs>
+  }
+  export type MarketSignalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MarketSignal$materialArgs<ExtArgs>
+  }
+  export type MarketSignalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MarketSignal$materialArgs<ExtArgs>
+  }
 
   export type $MarketSignalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "MarketSignal"
-    objects: {}
+    objects: {
+      material: Prisma.$MaterialPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
@@ -6368,6 +6810,7 @@ export namespace Prisma {
       relevance: string
       tag: string
       desc: string
+      materialId: number | null
     }, ExtArgs["result"]["marketSignal"]>
     composites: {}
   }
@@ -6762,6 +7205,7 @@ export namespace Prisma {
    */
   export interface Prisma__MarketSignalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    material<T extends MarketSignal$materialArgs<ExtArgs> = {}>(args?: Subset<T, MarketSignal$materialArgs<ExtArgs>>): Prisma__MaterialClient<$Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6798,6 +7242,7 @@ export namespace Prisma {
     readonly relevance: FieldRef<"MarketSignal", 'String'>
     readonly tag: FieldRef<"MarketSignal", 'String'>
     readonly desc: FieldRef<"MarketSignal", 'String'>
+    readonly materialId: FieldRef<"MarketSignal", 'Int'>
   }
     
 
@@ -6814,6 +7259,10 @@ export namespace Prisma {
      * Omit specific fields from the MarketSignal
      */
     omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
     /**
      * Filter, which MarketSignal to fetch.
      */
@@ -6833,6 +7282,10 @@ export namespace Prisma {
      */
     omit?: MarketSignalOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
+    /**
      * Filter, which MarketSignal to fetch.
      */
     where: MarketSignalWhereUniqueInput
@@ -6850,6 +7303,10 @@ export namespace Prisma {
      * Omit specific fields from the MarketSignal
      */
     omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
     /**
      * Filter, which MarketSignal to fetch.
      */
@@ -6899,6 +7356,10 @@ export namespace Prisma {
      */
     omit?: MarketSignalOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
+    /**
      * Filter, which MarketSignal to fetch.
      */
     where?: MarketSignalWhereInput
@@ -6946,6 +7407,10 @@ export namespace Prisma {
      * Omit specific fields from the MarketSignal
      */
     omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
     /**
      * Filter, which MarketSignals to fetch.
      */
@@ -6995,6 +7460,10 @@ export namespace Prisma {
      */
     omit?: MarketSignalOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
+    /**
      * The data needed to create a MarketSignal.
      */
     data: XOR<MarketSignalCreateInput, MarketSignalUncheckedCreateInput>
@@ -7028,6 +7497,10 @@ export namespace Prisma {
      */
     data: MarketSignalCreateManyInput | MarketSignalCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7042,6 +7515,10 @@ export namespace Prisma {
      * Omit specific fields from the MarketSignal
      */
     omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
     /**
      * The data needed to update a MarketSignal.
      */
@@ -7094,6 +7571,10 @@ export namespace Prisma {
      * Limit how many MarketSignals to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7108,6 +7589,10 @@ export namespace Prisma {
      * Omit specific fields from the MarketSignal
      */
     omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
     /**
      * The filter to search for the MarketSignal to update in case it exists.
      */
@@ -7135,6 +7620,10 @@ export namespace Prisma {
      */
     omit?: MarketSignalOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
+    /**
      * Filter which MarketSignal to delete.
      */
     where: MarketSignalWhereUniqueInput
@@ -7155,6 +7644,25 @@ export namespace Prisma {
   }
 
   /**
+   * MarketSignal.material
+   */
+  export type MarketSignal$materialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Material
+     */
+    select?: MaterialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Material
+     */
+    omit?: MaterialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaterialInclude<ExtArgs> | null
+    where?: MaterialWhereInput
+  }
+
+  /**
    * MarketSignal without action
    */
   export type MarketSignalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7166,6 +7674,10 @@ export namespace Prisma {
      * Omit specific fields from the MarketSignal
      */
     omit?: MarketSignalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MarketSignalInclude<ExtArgs> | null
   }
 
 
@@ -7187,6 +7699,7 @@ export namespace Prisma {
     accepted: boolean | null
     rejected: boolean | null
     expanded: boolean | null
+    orderId: string | null
   }
 
   export type PricingRecommendationMaxAggregateOutputType = {
@@ -7197,6 +7710,7 @@ export namespace Prisma {
     accepted: boolean | null
     rejected: boolean | null
     expanded: boolean | null
+    orderId: string | null
   }
 
   export type PricingRecommendationCountAggregateOutputType = {
@@ -7208,6 +7722,7 @@ export namespace Prisma {
     accepted: number
     rejected: number
     expanded: number
+    orderId: number
     _all: number
   }
 
@@ -7220,6 +7735,7 @@ export namespace Prisma {
     accepted?: true
     rejected?: true
     expanded?: true
+    orderId?: true
   }
 
   export type PricingRecommendationMaxAggregateInputType = {
@@ -7230,6 +7746,7 @@ export namespace Prisma {
     accepted?: true
     rejected?: true
     expanded?: true
+    orderId?: true
   }
 
   export type PricingRecommendationCountAggregateInputType = {
@@ -7241,6 +7758,7 @@ export namespace Prisma {
     accepted?: true
     rejected?: true
     expanded?: true
+    orderId?: true
     _all?: true
   }
 
@@ -7325,6 +7843,7 @@ export namespace Prisma {
     accepted: boolean
     rejected: boolean
     expanded: boolean
+    orderId: string | null
     _count: PricingRecommendationCountAggregateOutputType | null
     _min: PricingRecommendationMinAggregateOutputType | null
     _max: PricingRecommendationMaxAggregateOutputType | null
@@ -7353,6 +7872,8 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    orderId?: boolean
+    order?: boolean | PricingRecommendation$orderArgs<ExtArgs>
   }, ExtArgs["result"]["pricingRecommendation"]>
 
   export type PricingRecommendationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7364,6 +7885,8 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    orderId?: boolean
+    order?: boolean | PricingRecommendation$orderArgs<ExtArgs>
   }, ExtArgs["result"]["pricingRecommendation"]>
 
   export type PricingRecommendationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7375,6 +7898,8 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    orderId?: boolean
+    order?: boolean | PricingRecommendation$orderArgs<ExtArgs>
   }, ExtArgs["result"]["pricingRecommendation"]>
 
   export type PricingRecommendationSelectScalar = {
@@ -7386,13 +7911,25 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    orderId?: boolean
   }
 
-  export type PricingRecommendationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "trigger" | "action" | "confidence" | "reasoning" | "accepted" | "rejected" | "expanded", ExtArgs["result"]["pricingRecommendation"]>
+  export type PricingRecommendationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "trigger" | "action" | "confidence" | "reasoning" | "accepted" | "rejected" | "expanded" | "orderId", ExtArgs["result"]["pricingRecommendation"]>
+  export type PricingRecommendationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    order?: boolean | PricingRecommendation$orderArgs<ExtArgs>
+  }
+  export type PricingRecommendationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    order?: boolean | PricingRecommendation$orderArgs<ExtArgs>
+  }
+  export type PricingRecommendationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    order?: boolean | PricingRecommendation$orderArgs<ExtArgs>
+  }
 
   export type $PricingRecommendationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PricingRecommendation"
-    objects: {}
+    objects: {
+      order: Prisma.$OrderPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       trigger: string
@@ -7402,6 +7939,7 @@ export namespace Prisma {
       accepted: boolean
       rejected: boolean
       expanded: boolean
+      orderId: string | null
     }, ExtArgs["result"]["pricingRecommendation"]>
     composites: {}
   }
@@ -7796,6 +8334,7 @@ export namespace Prisma {
    */
   export interface Prisma__PricingRecommendationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    order<T extends PricingRecommendation$orderArgs<ExtArgs> = {}>(args?: Subset<T, PricingRecommendation$orderArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7833,6 +8372,7 @@ export namespace Prisma {
     readonly accepted: FieldRef<"PricingRecommendation", 'Boolean'>
     readonly rejected: FieldRef<"PricingRecommendation", 'Boolean'>
     readonly expanded: FieldRef<"PricingRecommendation", 'Boolean'>
+    readonly orderId: FieldRef<"PricingRecommendation", 'String'>
   }
     
 
@@ -7849,6 +8389,10 @@ export namespace Prisma {
      * Omit specific fields from the PricingRecommendation
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
     /**
      * Filter, which PricingRecommendation to fetch.
      */
@@ -7868,6 +8412,10 @@ export namespace Prisma {
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
+    /**
      * Filter, which PricingRecommendation to fetch.
      */
     where: PricingRecommendationWhereUniqueInput
@@ -7885,6 +8433,10 @@ export namespace Prisma {
      * Omit specific fields from the PricingRecommendation
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
     /**
      * Filter, which PricingRecommendation to fetch.
      */
@@ -7934,6 +8486,10 @@ export namespace Prisma {
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
+    /**
      * Filter, which PricingRecommendation to fetch.
      */
     where?: PricingRecommendationWhereInput
@@ -7981,6 +8537,10 @@ export namespace Prisma {
      * Omit specific fields from the PricingRecommendation
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
     /**
      * Filter, which PricingRecommendations to fetch.
      */
@@ -8030,6 +8590,10 @@ export namespace Prisma {
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
+    /**
      * The data needed to create a PricingRecommendation.
      */
     data: XOR<PricingRecommendationCreateInput, PricingRecommendationUncheckedCreateInput>
@@ -8063,6 +8627,10 @@ export namespace Prisma {
      */
     data: PricingRecommendationCreateManyInput | PricingRecommendationCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -8077,6 +8645,10 @@ export namespace Prisma {
      * Omit specific fields from the PricingRecommendation
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
     /**
      * The data needed to update a PricingRecommendation.
      */
@@ -8129,6 +8701,10 @@ export namespace Prisma {
      * Limit how many PricingRecommendations to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -8143,6 +8719,10 @@ export namespace Prisma {
      * Omit specific fields from the PricingRecommendation
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
     /**
      * The filter to search for the PricingRecommendation to update in case it exists.
      */
@@ -8170,6 +8750,10 @@ export namespace Prisma {
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
+    /**
      * Filter which PricingRecommendation to delete.
      */
     where: PricingRecommendationWhereUniqueInput
@@ -8190,6 +8774,25 @@ export namespace Prisma {
   }
 
   /**
+   * PricingRecommendation.order
+   */
+  export type PricingRecommendation$orderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Order
+     */
+    select?: OrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Order
+     */
+    omit?: OrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrderInclude<ExtArgs> | null
+    where?: OrderWhereInput
+  }
+
+  /**
    * PricingRecommendation without action
    */
   export type PricingRecommendationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8201,6 +8804,10 @@ export namespace Prisma {
      * Omit specific fields from the PricingRecommendation
      */
     omit?: PricingRecommendationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PricingRecommendationInclude<ExtArgs> | null
   }
 
 
@@ -8218,10 +8825,12 @@ export namespace Prisma {
 
   export type StructuralRiskAvgAggregateOutputType = {
     id: number | null
+    materialId: number | null
   }
 
   export type StructuralRiskSumAggregateOutputType = {
     id: number | null
+    materialId: number | null
   }
 
   export type StructuralRiskMinAggregateOutputType = {
@@ -8231,6 +8840,7 @@ export namespace Prisma {
     title: string | null
     description: string | null
     gemmaAdvisory: string | null
+    materialId: number | null
   }
 
   export type StructuralRiskMaxAggregateOutputType = {
@@ -8240,6 +8850,7 @@ export namespace Prisma {
     title: string | null
     description: string | null
     gemmaAdvisory: string | null
+    materialId: number | null
   }
 
   export type StructuralRiskCountAggregateOutputType = {
@@ -8249,16 +8860,19 @@ export namespace Prisma {
     title: number
     description: number
     gemmaAdvisory: number
+    materialId: number
     _all: number
   }
 
 
   export type StructuralRiskAvgAggregateInputType = {
     id?: true
+    materialId?: true
   }
 
   export type StructuralRiskSumAggregateInputType = {
     id?: true
+    materialId?: true
   }
 
   export type StructuralRiskMinAggregateInputType = {
@@ -8268,6 +8882,7 @@ export namespace Prisma {
     title?: true
     description?: true
     gemmaAdvisory?: true
+    materialId?: true
   }
 
   export type StructuralRiskMaxAggregateInputType = {
@@ -8277,6 +8892,7 @@ export namespace Prisma {
     title?: true
     description?: true
     gemmaAdvisory?: true
+    materialId?: true
   }
 
   export type StructuralRiskCountAggregateInputType = {
@@ -8286,6 +8902,7 @@ export namespace Prisma {
     title?: true
     description?: true
     gemmaAdvisory?: true
+    materialId?: true
     _all?: true
   }
 
@@ -8382,6 +8999,7 @@ export namespace Prisma {
     title: string
     description: string
     gemmaAdvisory: string
+    materialId: number | null
     _count: StructuralRiskCountAggregateOutputType | null
     _avg: StructuralRiskAvgAggregateOutputType | null
     _sum: StructuralRiskSumAggregateOutputType | null
@@ -8410,6 +9028,8 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     gemmaAdvisory?: boolean
+    materialId?: boolean
+    material?: boolean | StructuralRisk$materialArgs<ExtArgs>
   }, ExtArgs["result"]["structuralRisk"]>
 
   export type StructuralRiskSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8419,6 +9039,8 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     gemmaAdvisory?: boolean
+    materialId?: boolean
+    material?: boolean | StructuralRisk$materialArgs<ExtArgs>
   }, ExtArgs["result"]["structuralRisk"]>
 
   export type StructuralRiskSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8428,6 +9050,8 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     gemmaAdvisory?: boolean
+    materialId?: boolean
+    material?: boolean | StructuralRisk$materialArgs<ExtArgs>
   }, ExtArgs["result"]["structuralRisk"]>
 
   export type StructuralRiskSelectScalar = {
@@ -8437,13 +9061,25 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     gemmaAdvisory?: boolean
+    materialId?: boolean
   }
 
-  export type StructuralRiskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "trend" | "status" | "title" | "description" | "gemmaAdvisory", ExtArgs["result"]["structuralRisk"]>
+  export type StructuralRiskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "trend" | "status" | "title" | "description" | "gemmaAdvisory" | "materialId", ExtArgs["result"]["structuralRisk"]>
+  export type StructuralRiskInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | StructuralRisk$materialArgs<ExtArgs>
+  }
+  export type StructuralRiskIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | StructuralRisk$materialArgs<ExtArgs>
+  }
+  export type StructuralRiskIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | StructuralRisk$materialArgs<ExtArgs>
+  }
 
   export type $StructuralRiskPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "StructuralRisk"
-    objects: {}
+    objects: {
+      material: Prisma.$MaterialPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       trend: string
@@ -8451,6 +9087,7 @@ export namespace Prisma {
       title: string
       description: string
       gemmaAdvisory: string
+      materialId: number | null
     }, ExtArgs["result"]["structuralRisk"]>
     composites: {}
   }
@@ -8845,6 +9482,7 @@ export namespace Prisma {
    */
   export interface Prisma__StructuralRiskClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    material<T extends StructuralRisk$materialArgs<ExtArgs> = {}>(args?: Subset<T, StructuralRisk$materialArgs<ExtArgs>>): Prisma__MaterialClient<$Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8880,6 +9518,7 @@ export namespace Prisma {
     readonly title: FieldRef<"StructuralRisk", 'String'>
     readonly description: FieldRef<"StructuralRisk", 'String'>
     readonly gemmaAdvisory: FieldRef<"StructuralRisk", 'String'>
+    readonly materialId: FieldRef<"StructuralRisk", 'Int'>
   }
     
 
@@ -8896,6 +9535,10 @@ export namespace Prisma {
      * Omit specific fields from the StructuralRisk
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
     /**
      * Filter, which StructuralRisk to fetch.
      */
@@ -8915,6 +9558,10 @@ export namespace Prisma {
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
+    /**
      * Filter, which StructuralRisk to fetch.
      */
     where: StructuralRiskWhereUniqueInput
@@ -8932,6 +9579,10 @@ export namespace Prisma {
      * Omit specific fields from the StructuralRisk
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
     /**
      * Filter, which StructuralRisk to fetch.
      */
@@ -8981,6 +9632,10 @@ export namespace Prisma {
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
+    /**
      * Filter, which StructuralRisk to fetch.
      */
     where?: StructuralRiskWhereInput
@@ -9028,6 +9683,10 @@ export namespace Prisma {
      * Omit specific fields from the StructuralRisk
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
     /**
      * Filter, which StructuralRisks to fetch.
      */
@@ -9077,6 +9736,10 @@ export namespace Prisma {
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
+    /**
      * The data needed to create a StructuralRisk.
      */
     data: XOR<StructuralRiskCreateInput, StructuralRiskUncheckedCreateInput>
@@ -9110,6 +9773,10 @@ export namespace Prisma {
      */
     data: StructuralRiskCreateManyInput | StructuralRiskCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -9124,6 +9791,10 @@ export namespace Prisma {
      * Omit specific fields from the StructuralRisk
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
     /**
      * The data needed to update a StructuralRisk.
      */
@@ -9176,6 +9847,10 @@ export namespace Prisma {
      * Limit how many StructuralRisks to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -9190,6 +9865,10 @@ export namespace Prisma {
      * Omit specific fields from the StructuralRisk
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
     /**
      * The filter to search for the StructuralRisk to update in case it exists.
      */
@@ -9217,6 +9896,10 @@ export namespace Prisma {
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
+    /**
      * Filter which StructuralRisk to delete.
      */
     where: StructuralRiskWhereUniqueInput
@@ -9237,6 +9920,25 @@ export namespace Prisma {
   }
 
   /**
+   * StructuralRisk.material
+   */
+  export type StructuralRisk$materialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Material
+     */
+    select?: MaterialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Material
+     */
+    omit?: MaterialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaterialInclude<ExtArgs> | null
+    where?: MaterialWhereInput
+  }
+
+  /**
    * StructuralRisk without action
    */
   export type StructuralRiskDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9248,6 +9950,10 @@ export namespace Prisma {
      * Omit specific fields from the StructuralRisk
      */
     omit?: StructuralRiskOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StructuralRiskInclude<ExtArgs> | null
   }
 
 
@@ -10340,12 +11046,14 @@ export namespace Prisma {
     id: number | null
     quantity: number | null
     minThreshold: number | null
+    materialId: number | null
   }
 
   export type InventoryItemSumAggregateOutputType = {
     id: number | null
     quantity: number | null
     minThreshold: number | null
+    materialId: number | null
   }
 
   export type InventoryItemMinAggregateOutputType = {
@@ -10360,6 +11068,7 @@ export namespace Prisma {
     status: string | null
     image: string | null
     lastUpdated: Date | null
+    materialId: number | null
   }
 
   export type InventoryItemMaxAggregateOutputType = {
@@ -10374,6 +11083,7 @@ export namespace Prisma {
     status: string | null
     image: string | null
     lastUpdated: Date | null
+    materialId: number | null
   }
 
   export type InventoryItemCountAggregateOutputType = {
@@ -10388,6 +11098,7 @@ export namespace Prisma {
     status: number
     image: number
     lastUpdated: number
+    materialId: number
     _all: number
   }
 
@@ -10396,12 +11107,14 @@ export namespace Prisma {
     id?: true
     quantity?: true
     minThreshold?: true
+    materialId?: true
   }
 
   export type InventoryItemSumAggregateInputType = {
     id?: true
     quantity?: true
     minThreshold?: true
+    materialId?: true
   }
 
   export type InventoryItemMinAggregateInputType = {
@@ -10416,6 +11129,7 @@ export namespace Prisma {
     status?: true
     image?: true
     lastUpdated?: true
+    materialId?: true
   }
 
   export type InventoryItemMaxAggregateInputType = {
@@ -10430,6 +11144,7 @@ export namespace Prisma {
     status?: true
     image?: true
     lastUpdated?: true
+    materialId?: true
   }
 
   export type InventoryItemCountAggregateInputType = {
@@ -10444,6 +11159,7 @@ export namespace Prisma {
     status?: true
     image?: true
     lastUpdated?: true
+    materialId?: true
     _all?: true
   }
 
@@ -10545,6 +11261,7 @@ export namespace Prisma {
     status: string
     image: string
     lastUpdated: Date
+    materialId: number | null
     _count: InventoryItemCountAggregateOutputType | null
     _avg: InventoryItemAvgAggregateOutputType | null
     _sum: InventoryItemSumAggregateOutputType | null
@@ -10578,6 +11295,8 @@ export namespace Prisma {
     status?: boolean
     image?: boolean
     lastUpdated?: boolean
+    materialId?: boolean
+    material?: boolean | InventoryItem$materialArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
   export type InventoryItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10592,6 +11311,8 @@ export namespace Prisma {
     status?: boolean
     image?: boolean
     lastUpdated?: boolean
+    materialId?: boolean
+    material?: boolean | InventoryItem$materialArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
   export type InventoryItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10606,6 +11327,8 @@ export namespace Prisma {
     status?: boolean
     image?: boolean
     lastUpdated?: boolean
+    materialId?: boolean
+    material?: boolean | InventoryItem$materialArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
   export type InventoryItemSelectScalar = {
@@ -10620,13 +11343,25 @@ export namespace Prisma {
     status?: boolean
     image?: boolean
     lastUpdated?: boolean
+    materialId?: boolean
   }
 
-  export type InventoryItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "sku" | "quantity" | "unit" | "location" | "minThreshold" | "status" | "image" | "lastUpdated", ExtArgs["result"]["inventoryItem"]>
+  export type InventoryItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "sku" | "quantity" | "unit" | "location" | "minThreshold" | "status" | "image" | "lastUpdated" | "materialId", ExtArgs["result"]["inventoryItem"]>
+  export type InventoryItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | InventoryItem$materialArgs<ExtArgs>
+  }
+  export type InventoryItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | InventoryItem$materialArgs<ExtArgs>
+  }
+  export type InventoryItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | InventoryItem$materialArgs<ExtArgs>
+  }
 
   export type $InventoryItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InventoryItem"
-    objects: {}
+    objects: {
+      material: Prisma.$MaterialPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -10639,6 +11374,7 @@ export namespace Prisma {
       status: string
       image: string
       lastUpdated: Date
+      materialId: number | null
     }, ExtArgs["result"]["inventoryItem"]>
     composites: {}
   }
@@ -11033,6 +11769,7 @@ export namespace Prisma {
    */
   export interface Prisma__InventoryItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    material<T extends InventoryItem$materialArgs<ExtArgs> = {}>(args?: Subset<T, InventoryItem$materialArgs<ExtArgs>>): Prisma__MaterialClient<$Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11073,6 +11810,7 @@ export namespace Prisma {
     readonly status: FieldRef<"InventoryItem", 'String'>
     readonly image: FieldRef<"InventoryItem", 'String'>
     readonly lastUpdated: FieldRef<"InventoryItem", 'DateTime'>
+    readonly materialId: FieldRef<"InventoryItem", 'Int'>
   }
     
 
@@ -11089,6 +11827,10 @@ export namespace Prisma {
      * Omit specific fields from the InventoryItem
      */
     omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
     /**
      * Filter, which InventoryItem to fetch.
      */
@@ -11108,6 +11850,10 @@ export namespace Prisma {
      */
     omit?: InventoryItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
+    /**
      * Filter, which InventoryItem to fetch.
      */
     where: InventoryItemWhereUniqueInput
@@ -11125,6 +11871,10 @@ export namespace Prisma {
      * Omit specific fields from the InventoryItem
      */
     omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
     /**
      * Filter, which InventoryItem to fetch.
      */
@@ -11174,6 +11924,10 @@ export namespace Prisma {
      */
     omit?: InventoryItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
+    /**
      * Filter, which InventoryItem to fetch.
      */
     where?: InventoryItemWhereInput
@@ -11221,6 +11975,10 @@ export namespace Prisma {
      * Omit specific fields from the InventoryItem
      */
     omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
     /**
      * Filter, which InventoryItems to fetch.
      */
@@ -11270,6 +12028,10 @@ export namespace Prisma {
      */
     omit?: InventoryItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
+    /**
      * The data needed to create a InventoryItem.
      */
     data: XOR<InventoryItemCreateInput, InventoryItemUncheckedCreateInput>
@@ -11303,6 +12065,10 @@ export namespace Prisma {
      */
     data: InventoryItemCreateManyInput | InventoryItemCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -11317,6 +12083,10 @@ export namespace Prisma {
      * Omit specific fields from the InventoryItem
      */
     omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
     /**
      * The data needed to update a InventoryItem.
      */
@@ -11369,6 +12139,10 @@ export namespace Prisma {
      * Limit how many InventoryItems to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -11383,6 +12157,10 @@ export namespace Prisma {
      * Omit specific fields from the InventoryItem
      */
     omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
     /**
      * The filter to search for the InventoryItem to update in case it exists.
      */
@@ -11410,6 +12188,10 @@ export namespace Prisma {
      */
     omit?: InventoryItemOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
+    /**
      * Filter which InventoryItem to delete.
      */
     where: InventoryItemWhereUniqueInput
@@ -11430,6 +12212,25 @@ export namespace Prisma {
   }
 
   /**
+   * InventoryItem.material
+   */
+  export type InventoryItem$materialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Material
+     */
+    select?: MaterialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Material
+     */
+    omit?: MaterialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaterialInclude<ExtArgs> | null
+    where?: MaterialWhereInput
+  }
+
+  /**
    * InventoryItem without action
    */
   export type InventoryItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11441,6 +12242,2262 @@ export namespace Prisma {
      * Omit specific fields from the InventoryItem
      */
     omit?: InventoryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CncMachineTelemetry
+   */
+
+  export type AggregateCncMachineTelemetry = {
+    _count: CncMachineTelemetryCountAggregateOutputType | null
+    _avg: CncMachineTelemetryAvgAggregateOutputType | null
+    _sum: CncMachineTelemetrySumAggregateOutputType | null
+    _min: CncMachineTelemetryMinAggregateOutputType | null
+    _max: CncMachineTelemetryMaxAggregateOutputType | null
+  }
+
+  export type CncMachineTelemetryAvgAggregateOutputType = {
+    id: number | null
+    airTemp: number | null
+    processTemp: number | null
+    rotationalSpeed: number | null
+    torque: number | null
+    toolWear: number | null
+  }
+
+  export type CncMachineTelemetrySumAggregateOutputType = {
+    id: number | null
+    airTemp: number | null
+    processTemp: number | null
+    rotationalSpeed: number | null
+    torque: number | null
+    toolWear: number | null
+  }
+
+  export type CncMachineTelemetryMinAggregateOutputType = {
+    id: number | null
+    machineId: string | null
+    airTemp: number | null
+    processTemp: number | null
+    rotationalSpeed: number | null
+    torque: number | null
+    toolWear: number | null
+    machineFailure: boolean | null
+    twf: boolean | null
+    hdf: boolean | null
+    pwf: boolean | null
+    osf: boolean | null
+    rnf: boolean | null
+    timestamp: Date | null
+  }
+
+  export type CncMachineTelemetryMaxAggregateOutputType = {
+    id: number | null
+    machineId: string | null
+    airTemp: number | null
+    processTemp: number | null
+    rotationalSpeed: number | null
+    torque: number | null
+    toolWear: number | null
+    machineFailure: boolean | null
+    twf: boolean | null
+    hdf: boolean | null
+    pwf: boolean | null
+    osf: boolean | null
+    rnf: boolean | null
+    timestamp: Date | null
+  }
+
+  export type CncMachineTelemetryCountAggregateOutputType = {
+    id: number
+    machineId: number
+    airTemp: number
+    processTemp: number
+    rotationalSpeed: number
+    torque: number
+    toolWear: number
+    machineFailure: number
+    twf: number
+    hdf: number
+    pwf: number
+    osf: number
+    rnf: number
+    timestamp: number
+    _all: number
+  }
+
+
+  export type CncMachineTelemetryAvgAggregateInputType = {
+    id?: true
+    airTemp?: true
+    processTemp?: true
+    rotationalSpeed?: true
+    torque?: true
+    toolWear?: true
+  }
+
+  export type CncMachineTelemetrySumAggregateInputType = {
+    id?: true
+    airTemp?: true
+    processTemp?: true
+    rotationalSpeed?: true
+    torque?: true
+    toolWear?: true
+  }
+
+  export type CncMachineTelemetryMinAggregateInputType = {
+    id?: true
+    machineId?: true
+    airTemp?: true
+    processTemp?: true
+    rotationalSpeed?: true
+    torque?: true
+    toolWear?: true
+    machineFailure?: true
+    twf?: true
+    hdf?: true
+    pwf?: true
+    osf?: true
+    rnf?: true
+    timestamp?: true
+  }
+
+  export type CncMachineTelemetryMaxAggregateInputType = {
+    id?: true
+    machineId?: true
+    airTemp?: true
+    processTemp?: true
+    rotationalSpeed?: true
+    torque?: true
+    toolWear?: true
+    machineFailure?: true
+    twf?: true
+    hdf?: true
+    pwf?: true
+    osf?: true
+    rnf?: true
+    timestamp?: true
+  }
+
+  export type CncMachineTelemetryCountAggregateInputType = {
+    id?: true
+    machineId?: true
+    airTemp?: true
+    processTemp?: true
+    rotationalSpeed?: true
+    torque?: true
+    toolWear?: true
+    machineFailure?: true
+    twf?: true
+    hdf?: true
+    pwf?: true
+    osf?: true
+    rnf?: true
+    timestamp?: true
+    _all?: true
+  }
+
+  export type CncMachineTelemetryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CncMachineTelemetry to aggregate.
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CncMachineTelemetries to fetch.
+     */
+    orderBy?: CncMachineTelemetryOrderByWithRelationInput | CncMachineTelemetryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CncMachineTelemetryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CncMachineTelemetries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CncMachineTelemetries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CncMachineTelemetries
+    **/
+    _count?: true | CncMachineTelemetryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CncMachineTelemetryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CncMachineTelemetrySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CncMachineTelemetryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CncMachineTelemetryMaxAggregateInputType
+  }
+
+  export type GetCncMachineTelemetryAggregateType<T extends CncMachineTelemetryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCncMachineTelemetry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCncMachineTelemetry[P]>
+      : GetScalarType<T[P], AggregateCncMachineTelemetry[P]>
+  }
+
+
+
+
+  export type CncMachineTelemetryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CncMachineTelemetryWhereInput
+    orderBy?: CncMachineTelemetryOrderByWithAggregationInput | CncMachineTelemetryOrderByWithAggregationInput[]
+    by: CncMachineTelemetryScalarFieldEnum[] | CncMachineTelemetryScalarFieldEnum
+    having?: CncMachineTelemetryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CncMachineTelemetryCountAggregateInputType | true
+    _avg?: CncMachineTelemetryAvgAggregateInputType
+    _sum?: CncMachineTelemetrySumAggregateInputType
+    _min?: CncMachineTelemetryMinAggregateInputType
+    _max?: CncMachineTelemetryMaxAggregateInputType
+  }
+
+  export type CncMachineTelemetryGroupByOutputType = {
+    id: number
+    machineId: string
+    airTemp: number
+    processTemp: number
+    rotationalSpeed: number
+    torque: number
+    toolWear: number
+    machineFailure: boolean
+    twf: boolean
+    hdf: boolean
+    pwf: boolean
+    osf: boolean
+    rnf: boolean
+    timestamp: Date
+    _count: CncMachineTelemetryCountAggregateOutputType | null
+    _avg: CncMachineTelemetryAvgAggregateOutputType | null
+    _sum: CncMachineTelemetrySumAggregateOutputType | null
+    _min: CncMachineTelemetryMinAggregateOutputType | null
+    _max: CncMachineTelemetryMaxAggregateOutputType | null
+  }
+
+  type GetCncMachineTelemetryGroupByPayload<T extends CncMachineTelemetryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CncMachineTelemetryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CncMachineTelemetryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CncMachineTelemetryGroupByOutputType[P]>
+            : GetScalarType<T[P], CncMachineTelemetryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CncMachineTelemetrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    machineId?: boolean
+    airTemp?: boolean
+    processTemp?: boolean
+    rotationalSpeed?: boolean
+    torque?: boolean
+    toolWear?: boolean
+    machineFailure?: boolean
+    twf?: boolean
+    hdf?: boolean
+    pwf?: boolean
+    osf?: boolean
+    rnf?: boolean
+    timestamp?: boolean
+  }, ExtArgs["result"]["cncMachineTelemetry"]>
+
+  export type CncMachineTelemetrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    machineId?: boolean
+    airTemp?: boolean
+    processTemp?: boolean
+    rotationalSpeed?: boolean
+    torque?: boolean
+    toolWear?: boolean
+    machineFailure?: boolean
+    twf?: boolean
+    hdf?: boolean
+    pwf?: boolean
+    osf?: boolean
+    rnf?: boolean
+    timestamp?: boolean
+  }, ExtArgs["result"]["cncMachineTelemetry"]>
+
+  export type CncMachineTelemetrySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    machineId?: boolean
+    airTemp?: boolean
+    processTemp?: boolean
+    rotationalSpeed?: boolean
+    torque?: boolean
+    toolWear?: boolean
+    machineFailure?: boolean
+    twf?: boolean
+    hdf?: boolean
+    pwf?: boolean
+    osf?: boolean
+    rnf?: boolean
+    timestamp?: boolean
+  }, ExtArgs["result"]["cncMachineTelemetry"]>
+
+  export type CncMachineTelemetrySelectScalar = {
+    id?: boolean
+    machineId?: boolean
+    airTemp?: boolean
+    processTemp?: boolean
+    rotationalSpeed?: boolean
+    torque?: boolean
+    toolWear?: boolean
+    machineFailure?: boolean
+    twf?: boolean
+    hdf?: boolean
+    pwf?: boolean
+    osf?: boolean
+    rnf?: boolean
+    timestamp?: boolean
+  }
+
+  export type CncMachineTelemetryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "machineId" | "airTemp" | "processTemp" | "rotationalSpeed" | "torque" | "toolWear" | "machineFailure" | "twf" | "hdf" | "pwf" | "osf" | "rnf" | "timestamp", ExtArgs["result"]["cncMachineTelemetry"]>
+
+  export type $CncMachineTelemetryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CncMachineTelemetry"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      machineId: string
+      airTemp: number
+      processTemp: number
+      rotationalSpeed: number
+      torque: number
+      toolWear: number
+      machineFailure: boolean
+      twf: boolean
+      hdf: boolean
+      pwf: boolean
+      osf: boolean
+      rnf: boolean
+      timestamp: Date
+    }, ExtArgs["result"]["cncMachineTelemetry"]>
+    composites: {}
+  }
+
+  type CncMachineTelemetryGetPayload<S extends boolean | null | undefined | CncMachineTelemetryDefaultArgs> = $Result.GetResult<Prisma.$CncMachineTelemetryPayload, S>
+
+  type CncMachineTelemetryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CncMachineTelemetryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CncMachineTelemetryCountAggregateInputType | true
+    }
+
+  export interface CncMachineTelemetryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CncMachineTelemetry'], meta: { name: 'CncMachineTelemetry' } }
+    /**
+     * Find zero or one CncMachineTelemetry that matches the filter.
+     * @param {CncMachineTelemetryFindUniqueArgs} args - Arguments to find a CncMachineTelemetry
+     * @example
+     * // Get one CncMachineTelemetry
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CncMachineTelemetryFindUniqueArgs>(args: SelectSubset<T, CncMachineTelemetryFindUniqueArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CncMachineTelemetry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CncMachineTelemetryFindUniqueOrThrowArgs} args - Arguments to find a CncMachineTelemetry
+     * @example
+     * // Get one CncMachineTelemetry
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CncMachineTelemetryFindUniqueOrThrowArgs>(args: SelectSubset<T, CncMachineTelemetryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CncMachineTelemetry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryFindFirstArgs} args - Arguments to find a CncMachineTelemetry
+     * @example
+     * // Get one CncMachineTelemetry
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CncMachineTelemetryFindFirstArgs>(args?: SelectSubset<T, CncMachineTelemetryFindFirstArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CncMachineTelemetry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryFindFirstOrThrowArgs} args - Arguments to find a CncMachineTelemetry
+     * @example
+     * // Get one CncMachineTelemetry
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CncMachineTelemetryFindFirstOrThrowArgs>(args?: SelectSubset<T, CncMachineTelemetryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CncMachineTelemetries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CncMachineTelemetries
+     * const cncMachineTelemetries = await prisma.cncMachineTelemetry.findMany()
+     * 
+     * // Get first 10 CncMachineTelemetries
+     * const cncMachineTelemetries = await prisma.cncMachineTelemetry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cncMachineTelemetryWithIdOnly = await prisma.cncMachineTelemetry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CncMachineTelemetryFindManyArgs>(args?: SelectSubset<T, CncMachineTelemetryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CncMachineTelemetry.
+     * @param {CncMachineTelemetryCreateArgs} args - Arguments to create a CncMachineTelemetry.
+     * @example
+     * // Create one CncMachineTelemetry
+     * const CncMachineTelemetry = await prisma.cncMachineTelemetry.create({
+     *   data: {
+     *     // ... data to create a CncMachineTelemetry
+     *   }
+     * })
+     * 
+     */
+    create<T extends CncMachineTelemetryCreateArgs>(args: SelectSubset<T, CncMachineTelemetryCreateArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CncMachineTelemetries.
+     * @param {CncMachineTelemetryCreateManyArgs} args - Arguments to create many CncMachineTelemetries.
+     * @example
+     * // Create many CncMachineTelemetries
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CncMachineTelemetryCreateManyArgs>(args?: SelectSubset<T, CncMachineTelemetryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CncMachineTelemetries and returns the data saved in the database.
+     * @param {CncMachineTelemetryCreateManyAndReturnArgs} args - Arguments to create many CncMachineTelemetries.
+     * @example
+     * // Create many CncMachineTelemetries
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CncMachineTelemetries and only return the `id`
+     * const cncMachineTelemetryWithIdOnly = await prisma.cncMachineTelemetry.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CncMachineTelemetryCreateManyAndReturnArgs>(args?: SelectSubset<T, CncMachineTelemetryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CncMachineTelemetry.
+     * @param {CncMachineTelemetryDeleteArgs} args - Arguments to delete one CncMachineTelemetry.
+     * @example
+     * // Delete one CncMachineTelemetry
+     * const CncMachineTelemetry = await prisma.cncMachineTelemetry.delete({
+     *   where: {
+     *     // ... filter to delete one CncMachineTelemetry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CncMachineTelemetryDeleteArgs>(args: SelectSubset<T, CncMachineTelemetryDeleteArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CncMachineTelemetry.
+     * @param {CncMachineTelemetryUpdateArgs} args - Arguments to update one CncMachineTelemetry.
+     * @example
+     * // Update one CncMachineTelemetry
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CncMachineTelemetryUpdateArgs>(args: SelectSubset<T, CncMachineTelemetryUpdateArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CncMachineTelemetries.
+     * @param {CncMachineTelemetryDeleteManyArgs} args - Arguments to filter CncMachineTelemetries to delete.
+     * @example
+     * // Delete a few CncMachineTelemetries
+     * const { count } = await prisma.cncMachineTelemetry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CncMachineTelemetryDeleteManyArgs>(args?: SelectSubset<T, CncMachineTelemetryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CncMachineTelemetries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CncMachineTelemetries
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CncMachineTelemetryUpdateManyArgs>(args: SelectSubset<T, CncMachineTelemetryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CncMachineTelemetries and returns the data updated in the database.
+     * @param {CncMachineTelemetryUpdateManyAndReturnArgs} args - Arguments to update many CncMachineTelemetries.
+     * @example
+     * // Update many CncMachineTelemetries
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CncMachineTelemetries and only return the `id`
+     * const cncMachineTelemetryWithIdOnly = await prisma.cncMachineTelemetry.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CncMachineTelemetryUpdateManyAndReturnArgs>(args: SelectSubset<T, CncMachineTelemetryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CncMachineTelemetry.
+     * @param {CncMachineTelemetryUpsertArgs} args - Arguments to update or create a CncMachineTelemetry.
+     * @example
+     * // Update or create a CncMachineTelemetry
+     * const cncMachineTelemetry = await prisma.cncMachineTelemetry.upsert({
+     *   create: {
+     *     // ... data to create a CncMachineTelemetry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CncMachineTelemetry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CncMachineTelemetryUpsertArgs>(args: SelectSubset<T, CncMachineTelemetryUpsertArgs<ExtArgs>>): Prisma__CncMachineTelemetryClient<$Result.GetResult<Prisma.$CncMachineTelemetryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CncMachineTelemetries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryCountArgs} args - Arguments to filter CncMachineTelemetries to count.
+     * @example
+     * // Count the number of CncMachineTelemetries
+     * const count = await prisma.cncMachineTelemetry.count({
+     *   where: {
+     *     // ... the filter for the CncMachineTelemetries we want to count
+     *   }
+     * })
+    **/
+    count<T extends CncMachineTelemetryCountArgs>(
+      args?: Subset<T, CncMachineTelemetryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CncMachineTelemetryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CncMachineTelemetry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CncMachineTelemetryAggregateArgs>(args: Subset<T, CncMachineTelemetryAggregateArgs>): Prisma.PrismaPromise<GetCncMachineTelemetryAggregateType<T>>
+
+    /**
+     * Group by CncMachineTelemetry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CncMachineTelemetryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CncMachineTelemetryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CncMachineTelemetryGroupByArgs['orderBy'] }
+        : { orderBy?: CncMachineTelemetryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CncMachineTelemetryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCncMachineTelemetryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CncMachineTelemetry model
+   */
+  readonly fields: CncMachineTelemetryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CncMachineTelemetry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CncMachineTelemetryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CncMachineTelemetry model
+   */
+  interface CncMachineTelemetryFieldRefs {
+    readonly id: FieldRef<"CncMachineTelemetry", 'Int'>
+    readonly machineId: FieldRef<"CncMachineTelemetry", 'String'>
+    readonly airTemp: FieldRef<"CncMachineTelemetry", 'Float'>
+    readonly processTemp: FieldRef<"CncMachineTelemetry", 'Float'>
+    readonly rotationalSpeed: FieldRef<"CncMachineTelemetry", 'Float'>
+    readonly torque: FieldRef<"CncMachineTelemetry", 'Float'>
+    readonly toolWear: FieldRef<"CncMachineTelemetry", 'Float'>
+    readonly machineFailure: FieldRef<"CncMachineTelemetry", 'Boolean'>
+    readonly twf: FieldRef<"CncMachineTelemetry", 'Boolean'>
+    readonly hdf: FieldRef<"CncMachineTelemetry", 'Boolean'>
+    readonly pwf: FieldRef<"CncMachineTelemetry", 'Boolean'>
+    readonly osf: FieldRef<"CncMachineTelemetry", 'Boolean'>
+    readonly rnf: FieldRef<"CncMachineTelemetry", 'Boolean'>
+    readonly timestamp: FieldRef<"CncMachineTelemetry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CncMachineTelemetry findUnique
+   */
+  export type CncMachineTelemetryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * Filter, which CncMachineTelemetry to fetch.
+     */
+    where: CncMachineTelemetryWhereUniqueInput
+  }
+
+  /**
+   * CncMachineTelemetry findUniqueOrThrow
+   */
+  export type CncMachineTelemetryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * Filter, which CncMachineTelemetry to fetch.
+     */
+    where: CncMachineTelemetryWhereUniqueInput
+  }
+
+  /**
+   * CncMachineTelemetry findFirst
+   */
+  export type CncMachineTelemetryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * Filter, which CncMachineTelemetry to fetch.
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CncMachineTelemetries to fetch.
+     */
+    orderBy?: CncMachineTelemetryOrderByWithRelationInput | CncMachineTelemetryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CncMachineTelemetries.
+     */
+    cursor?: CncMachineTelemetryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CncMachineTelemetries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CncMachineTelemetries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CncMachineTelemetries.
+     */
+    distinct?: CncMachineTelemetryScalarFieldEnum | CncMachineTelemetryScalarFieldEnum[]
+  }
+
+  /**
+   * CncMachineTelemetry findFirstOrThrow
+   */
+  export type CncMachineTelemetryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * Filter, which CncMachineTelemetry to fetch.
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CncMachineTelemetries to fetch.
+     */
+    orderBy?: CncMachineTelemetryOrderByWithRelationInput | CncMachineTelemetryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CncMachineTelemetries.
+     */
+    cursor?: CncMachineTelemetryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CncMachineTelemetries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CncMachineTelemetries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CncMachineTelemetries.
+     */
+    distinct?: CncMachineTelemetryScalarFieldEnum | CncMachineTelemetryScalarFieldEnum[]
+  }
+
+  /**
+   * CncMachineTelemetry findMany
+   */
+  export type CncMachineTelemetryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * Filter, which CncMachineTelemetries to fetch.
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CncMachineTelemetries to fetch.
+     */
+    orderBy?: CncMachineTelemetryOrderByWithRelationInput | CncMachineTelemetryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CncMachineTelemetries.
+     */
+    cursor?: CncMachineTelemetryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CncMachineTelemetries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CncMachineTelemetries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CncMachineTelemetries.
+     */
+    distinct?: CncMachineTelemetryScalarFieldEnum | CncMachineTelemetryScalarFieldEnum[]
+  }
+
+  /**
+   * CncMachineTelemetry create
+   */
+  export type CncMachineTelemetryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CncMachineTelemetry.
+     */
+    data: XOR<CncMachineTelemetryCreateInput, CncMachineTelemetryUncheckedCreateInput>
+  }
+
+  /**
+   * CncMachineTelemetry createMany
+   */
+  export type CncMachineTelemetryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CncMachineTelemetries.
+     */
+    data: CncMachineTelemetryCreateManyInput | CncMachineTelemetryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CncMachineTelemetry createManyAndReturn
+   */
+  export type CncMachineTelemetryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * The data used to create many CncMachineTelemetries.
+     */
+    data: CncMachineTelemetryCreateManyInput | CncMachineTelemetryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CncMachineTelemetry update
+   */
+  export type CncMachineTelemetryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CncMachineTelemetry.
+     */
+    data: XOR<CncMachineTelemetryUpdateInput, CncMachineTelemetryUncheckedUpdateInput>
+    /**
+     * Choose, which CncMachineTelemetry to update.
+     */
+    where: CncMachineTelemetryWhereUniqueInput
+  }
+
+  /**
+   * CncMachineTelemetry updateMany
+   */
+  export type CncMachineTelemetryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CncMachineTelemetries.
+     */
+    data: XOR<CncMachineTelemetryUpdateManyMutationInput, CncMachineTelemetryUncheckedUpdateManyInput>
+    /**
+     * Filter which CncMachineTelemetries to update
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * Limit how many CncMachineTelemetries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CncMachineTelemetry updateManyAndReturn
+   */
+  export type CncMachineTelemetryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * The data used to update CncMachineTelemetries.
+     */
+    data: XOR<CncMachineTelemetryUpdateManyMutationInput, CncMachineTelemetryUncheckedUpdateManyInput>
+    /**
+     * Filter which CncMachineTelemetries to update
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * Limit how many CncMachineTelemetries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CncMachineTelemetry upsert
+   */
+  export type CncMachineTelemetryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CncMachineTelemetry to update in case it exists.
+     */
+    where: CncMachineTelemetryWhereUniqueInput
+    /**
+     * In case the CncMachineTelemetry found by the `where` argument doesn't exist, create a new CncMachineTelemetry with this data.
+     */
+    create: XOR<CncMachineTelemetryCreateInput, CncMachineTelemetryUncheckedCreateInput>
+    /**
+     * In case the CncMachineTelemetry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CncMachineTelemetryUpdateInput, CncMachineTelemetryUncheckedUpdateInput>
+  }
+
+  /**
+   * CncMachineTelemetry delete
+   */
+  export type CncMachineTelemetryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+    /**
+     * Filter which CncMachineTelemetry to delete.
+     */
+    where: CncMachineTelemetryWhereUniqueInput
+  }
+
+  /**
+   * CncMachineTelemetry deleteMany
+   */
+  export type CncMachineTelemetryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CncMachineTelemetries to delete
+     */
+    where?: CncMachineTelemetryWhereInput
+    /**
+     * Limit how many CncMachineTelemetries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CncMachineTelemetry without action
+   */
+  export type CncMachineTelemetryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CncMachineTelemetry
+     */
+    select?: CncMachineTelemetrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CncMachineTelemetry
+     */
+    omit?: CncMachineTelemetryOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model IndianMetalIndex
+   */
+
+  export type AggregateIndianMetalIndex = {
+    _count: IndianMetalIndexCountAggregateOutputType | null
+    _avg: IndianMetalIndexAvgAggregateOutputType | null
+    _sum: IndianMetalIndexSumAggregateOutputType | null
+    _min: IndianMetalIndexMinAggregateOutputType | null
+    _max: IndianMetalIndexMaxAggregateOutputType | null
+  }
+
+  export type IndianMetalIndexAvgAggregateOutputType = {
+    id: number | null
+    price: number | null
+    change: number | null
+  }
+
+  export type IndianMetalIndexSumAggregateOutputType = {
+    id: number | null
+    price: number | null
+    change: number | null
+  }
+
+  export type IndianMetalIndexMinAggregateOutputType = {
+    id: number | null
+    source: string | null
+    material: string | null
+    region: string | null
+    price: number | null
+    unit: string | null
+    change: number | null
+    lastUpdated: Date | null
+  }
+
+  export type IndianMetalIndexMaxAggregateOutputType = {
+    id: number | null
+    source: string | null
+    material: string | null
+    region: string | null
+    price: number | null
+    unit: string | null
+    change: number | null
+    lastUpdated: Date | null
+  }
+
+  export type IndianMetalIndexCountAggregateOutputType = {
+    id: number
+    source: number
+    material: number
+    region: number
+    price: number
+    unit: number
+    change: number
+    lastUpdated: number
+    _all: number
+  }
+
+
+  export type IndianMetalIndexAvgAggregateInputType = {
+    id?: true
+    price?: true
+    change?: true
+  }
+
+  export type IndianMetalIndexSumAggregateInputType = {
+    id?: true
+    price?: true
+    change?: true
+  }
+
+  export type IndianMetalIndexMinAggregateInputType = {
+    id?: true
+    source?: true
+    material?: true
+    region?: true
+    price?: true
+    unit?: true
+    change?: true
+    lastUpdated?: true
+  }
+
+  export type IndianMetalIndexMaxAggregateInputType = {
+    id?: true
+    source?: true
+    material?: true
+    region?: true
+    price?: true
+    unit?: true
+    change?: true
+    lastUpdated?: true
+  }
+
+  export type IndianMetalIndexCountAggregateInputType = {
+    id?: true
+    source?: true
+    material?: true
+    region?: true
+    price?: true
+    unit?: true
+    change?: true
+    lastUpdated?: true
+    _all?: true
+  }
+
+  export type IndianMetalIndexAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which IndianMetalIndex to aggregate.
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IndianMetalIndices to fetch.
+     */
+    orderBy?: IndianMetalIndexOrderByWithRelationInput | IndianMetalIndexOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: IndianMetalIndexWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IndianMetalIndices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IndianMetalIndices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned IndianMetalIndices
+    **/
+    _count?: true | IndianMetalIndexCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: IndianMetalIndexAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: IndianMetalIndexSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IndianMetalIndexMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IndianMetalIndexMaxAggregateInputType
+  }
+
+  export type GetIndianMetalIndexAggregateType<T extends IndianMetalIndexAggregateArgs> = {
+        [P in keyof T & keyof AggregateIndianMetalIndex]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIndianMetalIndex[P]>
+      : GetScalarType<T[P], AggregateIndianMetalIndex[P]>
+  }
+
+
+
+
+  export type IndianMetalIndexGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IndianMetalIndexWhereInput
+    orderBy?: IndianMetalIndexOrderByWithAggregationInput | IndianMetalIndexOrderByWithAggregationInput[]
+    by: IndianMetalIndexScalarFieldEnum[] | IndianMetalIndexScalarFieldEnum
+    having?: IndianMetalIndexScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IndianMetalIndexCountAggregateInputType | true
+    _avg?: IndianMetalIndexAvgAggregateInputType
+    _sum?: IndianMetalIndexSumAggregateInputType
+    _min?: IndianMetalIndexMinAggregateInputType
+    _max?: IndianMetalIndexMaxAggregateInputType
+  }
+
+  export type IndianMetalIndexGroupByOutputType = {
+    id: number
+    source: string
+    material: string
+    region: string
+    price: number
+    unit: string
+    change: number
+    lastUpdated: Date
+    _count: IndianMetalIndexCountAggregateOutputType | null
+    _avg: IndianMetalIndexAvgAggregateOutputType | null
+    _sum: IndianMetalIndexSumAggregateOutputType | null
+    _min: IndianMetalIndexMinAggregateOutputType | null
+    _max: IndianMetalIndexMaxAggregateOutputType | null
+  }
+
+  type GetIndianMetalIndexGroupByPayload<T extends IndianMetalIndexGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<IndianMetalIndexGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IndianMetalIndexGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IndianMetalIndexGroupByOutputType[P]>
+            : GetScalarType<T[P], IndianMetalIndexGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type IndianMetalIndexSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    source?: boolean
+    material?: boolean
+    region?: boolean
+    price?: boolean
+    unit?: boolean
+    change?: boolean
+    lastUpdated?: boolean
+  }, ExtArgs["result"]["indianMetalIndex"]>
+
+  export type IndianMetalIndexSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    source?: boolean
+    material?: boolean
+    region?: boolean
+    price?: boolean
+    unit?: boolean
+    change?: boolean
+    lastUpdated?: boolean
+  }, ExtArgs["result"]["indianMetalIndex"]>
+
+  export type IndianMetalIndexSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    source?: boolean
+    material?: boolean
+    region?: boolean
+    price?: boolean
+    unit?: boolean
+    change?: boolean
+    lastUpdated?: boolean
+  }, ExtArgs["result"]["indianMetalIndex"]>
+
+  export type IndianMetalIndexSelectScalar = {
+    id?: boolean
+    source?: boolean
+    material?: boolean
+    region?: boolean
+    price?: boolean
+    unit?: boolean
+    change?: boolean
+    lastUpdated?: boolean
+  }
+
+  export type IndianMetalIndexOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "source" | "material" | "region" | "price" | "unit" | "change" | "lastUpdated", ExtArgs["result"]["indianMetalIndex"]>
+
+  export type $IndianMetalIndexPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "IndianMetalIndex"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      source: string
+      material: string
+      region: string
+      price: number
+      unit: string
+      change: number
+      lastUpdated: Date
+    }, ExtArgs["result"]["indianMetalIndex"]>
+    composites: {}
+  }
+
+  type IndianMetalIndexGetPayload<S extends boolean | null | undefined | IndianMetalIndexDefaultArgs> = $Result.GetResult<Prisma.$IndianMetalIndexPayload, S>
+
+  type IndianMetalIndexCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<IndianMetalIndexFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: IndianMetalIndexCountAggregateInputType | true
+    }
+
+  export interface IndianMetalIndexDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['IndianMetalIndex'], meta: { name: 'IndianMetalIndex' } }
+    /**
+     * Find zero or one IndianMetalIndex that matches the filter.
+     * @param {IndianMetalIndexFindUniqueArgs} args - Arguments to find a IndianMetalIndex
+     * @example
+     * // Get one IndianMetalIndex
+     * const indianMetalIndex = await prisma.indianMetalIndex.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends IndianMetalIndexFindUniqueArgs>(args: SelectSubset<T, IndianMetalIndexFindUniqueArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one IndianMetalIndex that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {IndianMetalIndexFindUniqueOrThrowArgs} args - Arguments to find a IndianMetalIndex
+     * @example
+     * // Get one IndianMetalIndex
+     * const indianMetalIndex = await prisma.indianMetalIndex.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends IndianMetalIndexFindUniqueOrThrowArgs>(args: SelectSubset<T, IndianMetalIndexFindUniqueOrThrowArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IndianMetalIndex that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexFindFirstArgs} args - Arguments to find a IndianMetalIndex
+     * @example
+     * // Get one IndianMetalIndex
+     * const indianMetalIndex = await prisma.indianMetalIndex.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends IndianMetalIndexFindFirstArgs>(args?: SelectSubset<T, IndianMetalIndexFindFirstArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IndianMetalIndex that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexFindFirstOrThrowArgs} args - Arguments to find a IndianMetalIndex
+     * @example
+     * // Get one IndianMetalIndex
+     * const indianMetalIndex = await prisma.indianMetalIndex.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends IndianMetalIndexFindFirstOrThrowArgs>(args?: SelectSubset<T, IndianMetalIndexFindFirstOrThrowArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more IndianMetalIndices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all IndianMetalIndices
+     * const indianMetalIndices = await prisma.indianMetalIndex.findMany()
+     * 
+     * // Get first 10 IndianMetalIndices
+     * const indianMetalIndices = await prisma.indianMetalIndex.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const indianMetalIndexWithIdOnly = await prisma.indianMetalIndex.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends IndianMetalIndexFindManyArgs>(args?: SelectSubset<T, IndianMetalIndexFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a IndianMetalIndex.
+     * @param {IndianMetalIndexCreateArgs} args - Arguments to create a IndianMetalIndex.
+     * @example
+     * // Create one IndianMetalIndex
+     * const IndianMetalIndex = await prisma.indianMetalIndex.create({
+     *   data: {
+     *     // ... data to create a IndianMetalIndex
+     *   }
+     * })
+     * 
+     */
+    create<T extends IndianMetalIndexCreateArgs>(args: SelectSubset<T, IndianMetalIndexCreateArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many IndianMetalIndices.
+     * @param {IndianMetalIndexCreateManyArgs} args - Arguments to create many IndianMetalIndices.
+     * @example
+     * // Create many IndianMetalIndices
+     * const indianMetalIndex = await prisma.indianMetalIndex.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends IndianMetalIndexCreateManyArgs>(args?: SelectSubset<T, IndianMetalIndexCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many IndianMetalIndices and returns the data saved in the database.
+     * @param {IndianMetalIndexCreateManyAndReturnArgs} args - Arguments to create many IndianMetalIndices.
+     * @example
+     * // Create many IndianMetalIndices
+     * const indianMetalIndex = await prisma.indianMetalIndex.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many IndianMetalIndices and only return the `id`
+     * const indianMetalIndexWithIdOnly = await prisma.indianMetalIndex.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends IndianMetalIndexCreateManyAndReturnArgs>(args?: SelectSubset<T, IndianMetalIndexCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a IndianMetalIndex.
+     * @param {IndianMetalIndexDeleteArgs} args - Arguments to delete one IndianMetalIndex.
+     * @example
+     * // Delete one IndianMetalIndex
+     * const IndianMetalIndex = await prisma.indianMetalIndex.delete({
+     *   where: {
+     *     // ... filter to delete one IndianMetalIndex
+     *   }
+     * })
+     * 
+     */
+    delete<T extends IndianMetalIndexDeleteArgs>(args: SelectSubset<T, IndianMetalIndexDeleteArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one IndianMetalIndex.
+     * @param {IndianMetalIndexUpdateArgs} args - Arguments to update one IndianMetalIndex.
+     * @example
+     * // Update one IndianMetalIndex
+     * const indianMetalIndex = await prisma.indianMetalIndex.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends IndianMetalIndexUpdateArgs>(args: SelectSubset<T, IndianMetalIndexUpdateArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more IndianMetalIndices.
+     * @param {IndianMetalIndexDeleteManyArgs} args - Arguments to filter IndianMetalIndices to delete.
+     * @example
+     * // Delete a few IndianMetalIndices
+     * const { count } = await prisma.indianMetalIndex.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends IndianMetalIndexDeleteManyArgs>(args?: SelectSubset<T, IndianMetalIndexDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IndianMetalIndices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many IndianMetalIndices
+     * const indianMetalIndex = await prisma.indianMetalIndex.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends IndianMetalIndexUpdateManyArgs>(args: SelectSubset<T, IndianMetalIndexUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IndianMetalIndices and returns the data updated in the database.
+     * @param {IndianMetalIndexUpdateManyAndReturnArgs} args - Arguments to update many IndianMetalIndices.
+     * @example
+     * // Update many IndianMetalIndices
+     * const indianMetalIndex = await prisma.indianMetalIndex.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more IndianMetalIndices and only return the `id`
+     * const indianMetalIndexWithIdOnly = await prisma.indianMetalIndex.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends IndianMetalIndexUpdateManyAndReturnArgs>(args: SelectSubset<T, IndianMetalIndexUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one IndianMetalIndex.
+     * @param {IndianMetalIndexUpsertArgs} args - Arguments to update or create a IndianMetalIndex.
+     * @example
+     * // Update or create a IndianMetalIndex
+     * const indianMetalIndex = await prisma.indianMetalIndex.upsert({
+     *   create: {
+     *     // ... data to create a IndianMetalIndex
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the IndianMetalIndex we want to update
+     *   }
+     * })
+     */
+    upsert<T extends IndianMetalIndexUpsertArgs>(args: SelectSubset<T, IndianMetalIndexUpsertArgs<ExtArgs>>): Prisma__IndianMetalIndexClient<$Result.GetResult<Prisma.$IndianMetalIndexPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of IndianMetalIndices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexCountArgs} args - Arguments to filter IndianMetalIndices to count.
+     * @example
+     * // Count the number of IndianMetalIndices
+     * const count = await prisma.indianMetalIndex.count({
+     *   where: {
+     *     // ... the filter for the IndianMetalIndices we want to count
+     *   }
+     * })
+    **/
+    count<T extends IndianMetalIndexCountArgs>(
+      args?: Subset<T, IndianMetalIndexCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IndianMetalIndexCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a IndianMetalIndex.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IndianMetalIndexAggregateArgs>(args: Subset<T, IndianMetalIndexAggregateArgs>): Prisma.PrismaPromise<GetIndianMetalIndexAggregateType<T>>
+
+    /**
+     * Group by IndianMetalIndex.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IndianMetalIndexGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends IndianMetalIndexGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: IndianMetalIndexGroupByArgs['orderBy'] }
+        : { orderBy?: IndianMetalIndexGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, IndianMetalIndexGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIndianMetalIndexGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the IndianMetalIndex model
+   */
+  readonly fields: IndianMetalIndexFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for IndianMetalIndex.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__IndianMetalIndexClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the IndianMetalIndex model
+   */
+  interface IndianMetalIndexFieldRefs {
+    readonly id: FieldRef<"IndianMetalIndex", 'Int'>
+    readonly source: FieldRef<"IndianMetalIndex", 'String'>
+    readonly material: FieldRef<"IndianMetalIndex", 'String'>
+    readonly region: FieldRef<"IndianMetalIndex", 'String'>
+    readonly price: FieldRef<"IndianMetalIndex", 'Float'>
+    readonly unit: FieldRef<"IndianMetalIndex", 'String'>
+    readonly change: FieldRef<"IndianMetalIndex", 'Float'>
+    readonly lastUpdated: FieldRef<"IndianMetalIndex", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * IndianMetalIndex findUnique
+   */
+  export type IndianMetalIndexFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * Filter, which IndianMetalIndex to fetch.
+     */
+    where: IndianMetalIndexWhereUniqueInput
+  }
+
+  /**
+   * IndianMetalIndex findUniqueOrThrow
+   */
+  export type IndianMetalIndexFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * Filter, which IndianMetalIndex to fetch.
+     */
+    where: IndianMetalIndexWhereUniqueInput
+  }
+
+  /**
+   * IndianMetalIndex findFirst
+   */
+  export type IndianMetalIndexFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * Filter, which IndianMetalIndex to fetch.
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IndianMetalIndices to fetch.
+     */
+    orderBy?: IndianMetalIndexOrderByWithRelationInput | IndianMetalIndexOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IndianMetalIndices.
+     */
+    cursor?: IndianMetalIndexWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IndianMetalIndices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IndianMetalIndices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IndianMetalIndices.
+     */
+    distinct?: IndianMetalIndexScalarFieldEnum | IndianMetalIndexScalarFieldEnum[]
+  }
+
+  /**
+   * IndianMetalIndex findFirstOrThrow
+   */
+  export type IndianMetalIndexFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * Filter, which IndianMetalIndex to fetch.
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IndianMetalIndices to fetch.
+     */
+    orderBy?: IndianMetalIndexOrderByWithRelationInput | IndianMetalIndexOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for IndianMetalIndices.
+     */
+    cursor?: IndianMetalIndexWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IndianMetalIndices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IndianMetalIndices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IndianMetalIndices.
+     */
+    distinct?: IndianMetalIndexScalarFieldEnum | IndianMetalIndexScalarFieldEnum[]
+  }
+
+  /**
+   * IndianMetalIndex findMany
+   */
+  export type IndianMetalIndexFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * Filter, which IndianMetalIndices to fetch.
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of IndianMetalIndices to fetch.
+     */
+    orderBy?: IndianMetalIndexOrderByWithRelationInput | IndianMetalIndexOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing IndianMetalIndices.
+     */
+    cursor?: IndianMetalIndexWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` IndianMetalIndices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` IndianMetalIndices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of IndianMetalIndices.
+     */
+    distinct?: IndianMetalIndexScalarFieldEnum | IndianMetalIndexScalarFieldEnum[]
+  }
+
+  /**
+   * IndianMetalIndex create
+   */
+  export type IndianMetalIndexCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * The data needed to create a IndianMetalIndex.
+     */
+    data: XOR<IndianMetalIndexCreateInput, IndianMetalIndexUncheckedCreateInput>
+  }
+
+  /**
+   * IndianMetalIndex createMany
+   */
+  export type IndianMetalIndexCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many IndianMetalIndices.
+     */
+    data: IndianMetalIndexCreateManyInput | IndianMetalIndexCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * IndianMetalIndex createManyAndReturn
+   */
+  export type IndianMetalIndexCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * The data used to create many IndianMetalIndices.
+     */
+    data: IndianMetalIndexCreateManyInput | IndianMetalIndexCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * IndianMetalIndex update
+   */
+  export type IndianMetalIndexUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * The data needed to update a IndianMetalIndex.
+     */
+    data: XOR<IndianMetalIndexUpdateInput, IndianMetalIndexUncheckedUpdateInput>
+    /**
+     * Choose, which IndianMetalIndex to update.
+     */
+    where: IndianMetalIndexWhereUniqueInput
+  }
+
+  /**
+   * IndianMetalIndex updateMany
+   */
+  export type IndianMetalIndexUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update IndianMetalIndices.
+     */
+    data: XOR<IndianMetalIndexUpdateManyMutationInput, IndianMetalIndexUncheckedUpdateManyInput>
+    /**
+     * Filter which IndianMetalIndices to update
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * Limit how many IndianMetalIndices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * IndianMetalIndex updateManyAndReturn
+   */
+  export type IndianMetalIndexUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * The data used to update IndianMetalIndices.
+     */
+    data: XOR<IndianMetalIndexUpdateManyMutationInput, IndianMetalIndexUncheckedUpdateManyInput>
+    /**
+     * Filter which IndianMetalIndices to update
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * Limit how many IndianMetalIndices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * IndianMetalIndex upsert
+   */
+  export type IndianMetalIndexUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * The filter to search for the IndianMetalIndex to update in case it exists.
+     */
+    where: IndianMetalIndexWhereUniqueInput
+    /**
+     * In case the IndianMetalIndex found by the `where` argument doesn't exist, create a new IndianMetalIndex with this data.
+     */
+    create: XOR<IndianMetalIndexCreateInput, IndianMetalIndexUncheckedCreateInput>
+    /**
+     * In case the IndianMetalIndex was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<IndianMetalIndexUpdateInput, IndianMetalIndexUncheckedUpdateInput>
+  }
+
+  /**
+   * IndianMetalIndex delete
+   */
+  export type IndianMetalIndexDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
+    /**
+     * Filter which IndianMetalIndex to delete.
+     */
+    where: IndianMetalIndexWhereUniqueInput
+  }
+
+  /**
+   * IndianMetalIndex deleteMany
+   */
+  export type IndianMetalIndexDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which IndianMetalIndices to delete
+     */
+    where?: IndianMetalIndexWhereInput
+    /**
+     * Limit how many IndianMetalIndices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * IndianMetalIndex without action
+   */
+  export type IndianMetalIndexDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IndianMetalIndex
+     */
+    select?: IndianMetalIndexSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IndianMetalIndex
+     */
+    omit?: IndianMetalIndexOmit<ExtArgs> | null
   }
 
 
@@ -11481,7 +14538,7 @@ export namespace Prisma {
 
   export const ShipmentScalarFieldEnum: {
     id: 'id',
-    material: 'material',
+    materialId: 'materialId',
     qty: 'qty',
     supplier: 'supplier',
     currentNode: 'currentNode',
@@ -11511,7 +14568,8 @@ export namespace Prisma {
     date: 'date',
     relevance: 'relevance',
     tag: 'tag',
-    desc: 'desc'
+    desc: 'desc',
+    materialId: 'materialId'
   };
 
   export type MarketSignalScalarFieldEnum = (typeof MarketSignalScalarFieldEnum)[keyof typeof MarketSignalScalarFieldEnum]
@@ -11525,7 +14583,8 @@ export namespace Prisma {
     reasoning: 'reasoning',
     accepted: 'accepted',
     rejected: 'rejected',
-    expanded: 'expanded'
+    expanded: 'expanded',
+    orderId: 'orderId'
   };
 
   export type PricingRecommendationScalarFieldEnum = (typeof PricingRecommendationScalarFieldEnum)[keyof typeof PricingRecommendationScalarFieldEnum]
@@ -11537,7 +14596,8 @@ export namespace Prisma {
     status: 'status',
     title: 'title',
     description: 'description',
-    gemmaAdvisory: 'gemmaAdvisory'
+    gemmaAdvisory: 'gemmaAdvisory',
+    materialId: 'materialId'
   };
 
   export type StructuralRiskScalarFieldEnum = (typeof StructuralRiskScalarFieldEnum)[keyof typeof StructuralRiskScalarFieldEnum]
@@ -11568,10 +14628,45 @@ export namespace Prisma {
     minThreshold: 'minThreshold',
     status: 'status',
     image: 'image',
-    lastUpdated: 'lastUpdated'
+    lastUpdated: 'lastUpdated',
+    materialId: 'materialId'
   };
 
   export type InventoryItemScalarFieldEnum = (typeof InventoryItemScalarFieldEnum)[keyof typeof InventoryItemScalarFieldEnum]
+
+
+  export const CncMachineTelemetryScalarFieldEnum: {
+    id: 'id',
+    machineId: 'machineId',
+    airTemp: 'airTemp',
+    processTemp: 'processTemp',
+    rotationalSpeed: 'rotationalSpeed',
+    torque: 'torque',
+    toolWear: 'toolWear',
+    machineFailure: 'machineFailure',
+    twf: 'twf',
+    hdf: 'hdf',
+    pwf: 'pwf',
+    osf: 'osf',
+    rnf: 'rnf',
+    timestamp: 'timestamp'
+  };
+
+  export type CncMachineTelemetryScalarFieldEnum = (typeof CncMachineTelemetryScalarFieldEnum)[keyof typeof CncMachineTelemetryScalarFieldEnum]
+
+
+  export const IndianMetalIndexScalarFieldEnum: {
+    id: 'id',
+    source: 'source',
+    material: 'material',
+    region: 'region',
+    price: 'price',
+    unit: 'unit',
+    change: 'change',
+    lastUpdated: 'lastUpdated'
+  };
+
+  export type IndianMetalIndexScalarFieldEnum = (typeof IndianMetalIndexScalarFieldEnum)[keyof typeof IndianMetalIndexScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11595,6 +14690,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   export const JsonNullValueFilter: {
@@ -11701,6 +14804,10 @@ export namespace Prisma {
     marketCost?: FloatFilter<"Material"> | number
     supplier?: StringFilter<"Material"> | string
     orders?: OrderListRelationFilter
+    shipments?: ShipmentListRelationFilter
+    inventoryItems?: InventoryItemListRelationFilter
+    marketSignals?: MarketSignalListRelationFilter
+    structuralRisks?: StructuralRiskListRelationFilter
   }
 
   export type MaterialOrderByWithRelationInput = {
@@ -11710,6 +14817,10 @@ export namespace Prisma {
     marketCost?: SortOrder
     supplier?: SortOrder
     orders?: OrderOrderByRelationAggregateInput
+    shipments?: ShipmentOrderByRelationAggregateInput
+    inventoryItems?: InventoryItemOrderByRelationAggregateInput
+    marketSignals?: MarketSignalOrderByRelationAggregateInput
+    structuralRisks?: StructuralRiskOrderByRelationAggregateInput
   }
 
   export type MaterialWhereUniqueInput = Prisma.AtLeast<{
@@ -11722,6 +14833,10 @@ export namespace Prisma {
     marketCost?: FloatFilter<"Material"> | number
     supplier?: StringFilter<"Material"> | string
     orders?: OrderListRelationFilter
+    shipments?: ShipmentListRelationFilter
+    inventoryItems?: InventoryItemListRelationFilter
+    marketSignals?: MarketSignalListRelationFilter
+    structuralRisks?: StructuralRiskListRelationFilter
   }, "id" | "name">
 
   export type MaterialOrderByWithAggregationInput = {
@@ -11757,6 +14872,7 @@ export namespace Prisma {
     margin?: StringFilter<"Order"> | string
     materialId?: IntFilter<"Order"> | number
     material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
+    pricingRecommendations?: PricingRecommendationListRelationFilter
   }
 
   export type OrderOrderByWithRelationInput = {
@@ -11765,6 +14881,7 @@ export namespace Prisma {
     margin?: SortOrder
     materialId?: SortOrder
     material?: MaterialOrderByWithRelationInput
+    pricingRecommendations?: PricingRecommendationOrderByRelationAggregateInput
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
@@ -11776,6 +14893,7 @@ export namespace Prisma {
     margin?: StringFilter<"Order"> | string
     materialId?: IntFilter<"Order"> | number
     material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
+    pricingRecommendations?: PricingRecommendationListRelationFilter
   }, "id">
 
   export type OrderOrderByWithAggregationInput = {
@@ -11805,25 +14923,27 @@ export namespace Prisma {
     OR?: ShipmentWhereInput[]
     NOT?: ShipmentWhereInput | ShipmentWhereInput[]
     id?: IntFilter<"Shipment"> | number
-    material?: StringFilter<"Shipment"> | string
+    materialId?: IntFilter<"Shipment"> | number
     qty?: StringFilter<"Shipment"> | string
     supplier?: StringFilter<"Shipment"> | string
     currentNode?: StringFilter<"Shipment"> | string
     eta?: StringFilter<"Shipment"> | string
     status?: StringFilter<"Shipment"> | string
     gemmaAnnotation?: StringFilter<"Shipment"> | string
+    material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
     steps?: ShipmentStepListRelationFilter
   }
 
   export type ShipmentOrderByWithRelationInput = {
     id?: SortOrder
-    material?: SortOrder
+    materialId?: SortOrder
     qty?: SortOrder
     supplier?: SortOrder
     currentNode?: SortOrder
     eta?: SortOrder
     status?: SortOrder
     gemmaAnnotation?: SortOrder
+    material?: MaterialOrderByWithRelationInput
     steps?: ShipmentStepOrderByRelationAggregateInput
   }
 
@@ -11832,19 +14952,20 @@ export namespace Prisma {
     AND?: ShipmentWhereInput | ShipmentWhereInput[]
     OR?: ShipmentWhereInput[]
     NOT?: ShipmentWhereInput | ShipmentWhereInput[]
-    material?: StringFilter<"Shipment"> | string
+    materialId?: IntFilter<"Shipment"> | number
     qty?: StringFilter<"Shipment"> | string
     supplier?: StringFilter<"Shipment"> | string
     currentNode?: StringFilter<"Shipment"> | string
     eta?: StringFilter<"Shipment"> | string
     status?: StringFilter<"Shipment"> | string
     gemmaAnnotation?: StringFilter<"Shipment"> | string
+    material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
     steps?: ShipmentStepListRelationFilter
   }, "id">
 
   export type ShipmentOrderByWithAggregationInput = {
     id?: SortOrder
-    material?: SortOrder
+    materialId?: SortOrder
     qty?: SortOrder
     supplier?: SortOrder
     currentNode?: SortOrder
@@ -11863,7 +14984,7 @@ export namespace Prisma {
     OR?: ShipmentScalarWhereWithAggregatesInput[]
     NOT?: ShipmentScalarWhereWithAggregatesInput | ShipmentScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Shipment"> | number
-    material?: StringWithAggregatesFilter<"Shipment"> | string
+    materialId?: IntWithAggregatesFilter<"Shipment"> | number
     qty?: StringWithAggregatesFilter<"Shipment"> | string
     supplier?: StringWithAggregatesFilter<"Shipment"> | string
     currentNode?: StringWithAggregatesFilter<"Shipment"> | string
@@ -11940,6 +15061,8 @@ export namespace Prisma {
     relevance?: StringFilter<"MarketSignal"> | string
     tag?: StringFilter<"MarketSignal"> | string
     desc?: StringFilter<"MarketSignal"> | string
+    materialId?: IntNullableFilter<"MarketSignal"> | number | null
+    material?: XOR<MaterialNullableScalarRelationFilter, MaterialWhereInput> | null
   }
 
   export type MarketSignalOrderByWithRelationInput = {
@@ -11950,6 +15073,8 @@ export namespace Prisma {
     relevance?: SortOrder
     tag?: SortOrder
     desc?: SortOrder
+    materialId?: SortOrderInput | SortOrder
+    material?: MaterialOrderByWithRelationInput
   }
 
   export type MarketSignalWhereUniqueInput = Prisma.AtLeast<{
@@ -11963,6 +15088,8 @@ export namespace Prisma {
     relevance?: StringFilter<"MarketSignal"> | string
     tag?: StringFilter<"MarketSignal"> | string
     desc?: StringFilter<"MarketSignal"> | string
+    materialId?: IntNullableFilter<"MarketSignal"> | number | null
+    material?: XOR<MaterialNullableScalarRelationFilter, MaterialWhereInput> | null
   }, "id">
 
   export type MarketSignalOrderByWithAggregationInput = {
@@ -11973,6 +15100,7 @@ export namespace Prisma {
     relevance?: SortOrder
     tag?: SortOrder
     desc?: SortOrder
+    materialId?: SortOrderInput | SortOrder
     _count?: MarketSignalCountOrderByAggregateInput
     _avg?: MarketSignalAvgOrderByAggregateInput
     _max?: MarketSignalMaxOrderByAggregateInput
@@ -11991,6 +15119,7 @@ export namespace Prisma {
     relevance?: StringWithAggregatesFilter<"MarketSignal"> | string
     tag?: StringWithAggregatesFilter<"MarketSignal"> | string
     desc?: StringWithAggregatesFilter<"MarketSignal"> | string
+    materialId?: IntNullableWithAggregatesFilter<"MarketSignal"> | number | null
   }
 
   export type PricingRecommendationWhereInput = {
@@ -12005,6 +15134,8 @@ export namespace Prisma {
     accepted?: BoolFilter<"PricingRecommendation"> | boolean
     rejected?: BoolFilter<"PricingRecommendation"> | boolean
     expanded?: BoolFilter<"PricingRecommendation"> | boolean
+    orderId?: StringNullableFilter<"PricingRecommendation"> | string | null
+    order?: XOR<OrderNullableScalarRelationFilter, OrderWhereInput> | null
   }
 
   export type PricingRecommendationOrderByWithRelationInput = {
@@ -12016,6 +15147,8 @@ export namespace Prisma {
     accepted?: SortOrder
     rejected?: SortOrder
     expanded?: SortOrder
+    orderId?: SortOrderInput | SortOrder
+    order?: OrderOrderByWithRelationInput
   }
 
   export type PricingRecommendationWhereUniqueInput = Prisma.AtLeast<{
@@ -12030,6 +15163,8 @@ export namespace Prisma {
     accepted?: BoolFilter<"PricingRecommendation"> | boolean
     rejected?: BoolFilter<"PricingRecommendation"> | boolean
     expanded?: BoolFilter<"PricingRecommendation"> | boolean
+    orderId?: StringNullableFilter<"PricingRecommendation"> | string | null
+    order?: XOR<OrderNullableScalarRelationFilter, OrderWhereInput> | null
   }, "id">
 
   export type PricingRecommendationOrderByWithAggregationInput = {
@@ -12041,6 +15176,7 @@ export namespace Prisma {
     accepted?: SortOrder
     rejected?: SortOrder
     expanded?: SortOrder
+    orderId?: SortOrderInput | SortOrder
     _count?: PricingRecommendationCountOrderByAggregateInput
     _max?: PricingRecommendationMaxOrderByAggregateInput
     _min?: PricingRecommendationMinOrderByAggregateInput
@@ -12058,6 +15194,7 @@ export namespace Prisma {
     accepted?: BoolWithAggregatesFilter<"PricingRecommendation"> | boolean
     rejected?: BoolWithAggregatesFilter<"PricingRecommendation"> | boolean
     expanded?: BoolWithAggregatesFilter<"PricingRecommendation"> | boolean
+    orderId?: StringNullableWithAggregatesFilter<"PricingRecommendation"> | string | null
   }
 
   export type StructuralRiskWhereInput = {
@@ -12070,6 +15207,8 @@ export namespace Prisma {
     title?: StringFilter<"StructuralRisk"> | string
     description?: StringFilter<"StructuralRisk"> | string
     gemmaAdvisory?: StringFilter<"StructuralRisk"> | string
+    materialId?: IntNullableFilter<"StructuralRisk"> | number | null
+    material?: XOR<MaterialNullableScalarRelationFilter, MaterialWhereInput> | null
   }
 
   export type StructuralRiskOrderByWithRelationInput = {
@@ -12079,6 +15218,8 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     gemmaAdvisory?: SortOrder
+    materialId?: SortOrderInput | SortOrder
+    material?: MaterialOrderByWithRelationInput
   }
 
   export type StructuralRiskWhereUniqueInput = Prisma.AtLeast<{
@@ -12091,6 +15232,8 @@ export namespace Prisma {
     title?: StringFilter<"StructuralRisk"> | string
     description?: StringFilter<"StructuralRisk"> | string
     gemmaAdvisory?: StringFilter<"StructuralRisk"> | string
+    materialId?: IntNullableFilter<"StructuralRisk"> | number | null
+    material?: XOR<MaterialNullableScalarRelationFilter, MaterialWhereInput> | null
   }, "id">
 
   export type StructuralRiskOrderByWithAggregationInput = {
@@ -12100,6 +15243,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     gemmaAdvisory?: SortOrder
+    materialId?: SortOrderInput | SortOrder
     _count?: StructuralRiskCountOrderByAggregateInput
     _avg?: StructuralRiskAvgOrderByAggregateInput
     _max?: StructuralRiskMaxOrderByAggregateInput
@@ -12117,6 +15261,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"StructuralRisk"> | string
     description?: StringWithAggregatesFilter<"StructuralRisk"> | string
     gemmaAdvisory?: StringWithAggregatesFilter<"StructuralRisk"> | string
+    materialId?: IntNullableWithAggregatesFilter<"StructuralRisk"> | number | null
   }
 
   export type IndustryNewsWhereInput = {
@@ -12203,6 +15348,8 @@ export namespace Prisma {
     status?: StringFilter<"InventoryItem"> | string
     image?: StringFilter<"InventoryItem"> | string
     lastUpdated?: DateTimeFilter<"InventoryItem"> | Date | string
+    materialId?: IntNullableFilter<"InventoryItem"> | number | null
+    material?: XOR<MaterialNullableScalarRelationFilter, MaterialWhereInput> | null
   }
 
   export type InventoryItemOrderByWithRelationInput = {
@@ -12217,6 +15364,8 @@ export namespace Prisma {
     status?: SortOrder
     image?: SortOrder
     lastUpdated?: SortOrder
+    materialId?: SortOrderInput | SortOrder
+    material?: MaterialOrderByWithRelationInput
   }
 
   export type InventoryItemWhereUniqueInput = Prisma.AtLeast<{
@@ -12234,6 +15383,8 @@ export namespace Prisma {
     status?: StringFilter<"InventoryItem"> | string
     image?: StringFilter<"InventoryItem"> | string
     lastUpdated?: DateTimeFilter<"InventoryItem"> | Date | string
+    materialId?: IntNullableFilter<"InventoryItem"> | number | null
+    material?: XOR<MaterialNullableScalarRelationFilter, MaterialWhereInput> | null
   }, "id" | "sku">
 
   export type InventoryItemOrderByWithAggregationInput = {
@@ -12248,6 +15399,7 @@ export namespace Prisma {
     status?: SortOrder
     image?: SortOrder
     lastUpdated?: SortOrder
+    materialId?: SortOrderInput | SortOrder
     _count?: InventoryItemCountOrderByAggregateInput
     _avg?: InventoryItemAvgOrderByAggregateInput
     _max?: InventoryItemMaxOrderByAggregateInput
@@ -12270,6 +15422,175 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"InventoryItem"> | string
     image?: StringWithAggregatesFilter<"InventoryItem"> | string
     lastUpdated?: DateTimeWithAggregatesFilter<"InventoryItem"> | Date | string
+    materialId?: IntNullableWithAggregatesFilter<"InventoryItem"> | number | null
+  }
+
+  export type CncMachineTelemetryWhereInput = {
+    AND?: CncMachineTelemetryWhereInput | CncMachineTelemetryWhereInput[]
+    OR?: CncMachineTelemetryWhereInput[]
+    NOT?: CncMachineTelemetryWhereInput | CncMachineTelemetryWhereInput[]
+    id?: IntFilter<"CncMachineTelemetry"> | number
+    machineId?: StringFilter<"CncMachineTelemetry"> | string
+    airTemp?: FloatFilter<"CncMachineTelemetry"> | number
+    processTemp?: FloatFilter<"CncMachineTelemetry"> | number
+    rotationalSpeed?: FloatFilter<"CncMachineTelemetry"> | number
+    torque?: FloatFilter<"CncMachineTelemetry"> | number
+    toolWear?: FloatFilter<"CncMachineTelemetry"> | number
+    machineFailure?: BoolFilter<"CncMachineTelemetry"> | boolean
+    twf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    hdf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    pwf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    osf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    rnf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    timestamp?: DateTimeFilter<"CncMachineTelemetry"> | Date | string
+  }
+
+  export type CncMachineTelemetryOrderByWithRelationInput = {
+    id?: SortOrder
+    machineId?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+    machineFailure?: SortOrder
+    twf?: SortOrder
+    hdf?: SortOrder
+    pwf?: SortOrder
+    osf?: SortOrder
+    rnf?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type CncMachineTelemetryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CncMachineTelemetryWhereInput | CncMachineTelemetryWhereInput[]
+    OR?: CncMachineTelemetryWhereInput[]
+    NOT?: CncMachineTelemetryWhereInput | CncMachineTelemetryWhereInput[]
+    machineId?: StringFilter<"CncMachineTelemetry"> | string
+    airTemp?: FloatFilter<"CncMachineTelemetry"> | number
+    processTemp?: FloatFilter<"CncMachineTelemetry"> | number
+    rotationalSpeed?: FloatFilter<"CncMachineTelemetry"> | number
+    torque?: FloatFilter<"CncMachineTelemetry"> | number
+    toolWear?: FloatFilter<"CncMachineTelemetry"> | number
+    machineFailure?: BoolFilter<"CncMachineTelemetry"> | boolean
+    twf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    hdf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    pwf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    osf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    rnf?: BoolFilter<"CncMachineTelemetry"> | boolean
+    timestamp?: DateTimeFilter<"CncMachineTelemetry"> | Date | string
+  }, "id">
+
+  export type CncMachineTelemetryOrderByWithAggregationInput = {
+    id?: SortOrder
+    machineId?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+    machineFailure?: SortOrder
+    twf?: SortOrder
+    hdf?: SortOrder
+    pwf?: SortOrder
+    osf?: SortOrder
+    rnf?: SortOrder
+    timestamp?: SortOrder
+    _count?: CncMachineTelemetryCountOrderByAggregateInput
+    _avg?: CncMachineTelemetryAvgOrderByAggregateInput
+    _max?: CncMachineTelemetryMaxOrderByAggregateInput
+    _min?: CncMachineTelemetryMinOrderByAggregateInput
+    _sum?: CncMachineTelemetrySumOrderByAggregateInput
+  }
+
+  export type CncMachineTelemetryScalarWhereWithAggregatesInput = {
+    AND?: CncMachineTelemetryScalarWhereWithAggregatesInput | CncMachineTelemetryScalarWhereWithAggregatesInput[]
+    OR?: CncMachineTelemetryScalarWhereWithAggregatesInput[]
+    NOT?: CncMachineTelemetryScalarWhereWithAggregatesInput | CncMachineTelemetryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CncMachineTelemetry"> | number
+    machineId?: StringWithAggregatesFilter<"CncMachineTelemetry"> | string
+    airTemp?: FloatWithAggregatesFilter<"CncMachineTelemetry"> | number
+    processTemp?: FloatWithAggregatesFilter<"CncMachineTelemetry"> | number
+    rotationalSpeed?: FloatWithAggregatesFilter<"CncMachineTelemetry"> | number
+    torque?: FloatWithAggregatesFilter<"CncMachineTelemetry"> | number
+    toolWear?: FloatWithAggregatesFilter<"CncMachineTelemetry"> | number
+    machineFailure?: BoolWithAggregatesFilter<"CncMachineTelemetry"> | boolean
+    twf?: BoolWithAggregatesFilter<"CncMachineTelemetry"> | boolean
+    hdf?: BoolWithAggregatesFilter<"CncMachineTelemetry"> | boolean
+    pwf?: BoolWithAggregatesFilter<"CncMachineTelemetry"> | boolean
+    osf?: BoolWithAggregatesFilter<"CncMachineTelemetry"> | boolean
+    rnf?: BoolWithAggregatesFilter<"CncMachineTelemetry"> | boolean
+    timestamp?: DateTimeWithAggregatesFilter<"CncMachineTelemetry"> | Date | string
+  }
+
+  export type IndianMetalIndexWhereInput = {
+    AND?: IndianMetalIndexWhereInput | IndianMetalIndexWhereInput[]
+    OR?: IndianMetalIndexWhereInput[]
+    NOT?: IndianMetalIndexWhereInput | IndianMetalIndexWhereInput[]
+    id?: IntFilter<"IndianMetalIndex"> | number
+    source?: StringFilter<"IndianMetalIndex"> | string
+    material?: StringFilter<"IndianMetalIndex"> | string
+    region?: StringFilter<"IndianMetalIndex"> | string
+    price?: FloatFilter<"IndianMetalIndex"> | number
+    unit?: StringFilter<"IndianMetalIndex"> | string
+    change?: FloatFilter<"IndianMetalIndex"> | number
+    lastUpdated?: DateTimeFilter<"IndianMetalIndex"> | Date | string
+  }
+
+  export type IndianMetalIndexOrderByWithRelationInput = {
+    id?: SortOrder
+    source?: SortOrder
+    material?: SortOrder
+    region?: SortOrder
+    price?: SortOrder
+    unit?: SortOrder
+    change?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type IndianMetalIndexWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: IndianMetalIndexWhereInput | IndianMetalIndexWhereInput[]
+    OR?: IndianMetalIndexWhereInput[]
+    NOT?: IndianMetalIndexWhereInput | IndianMetalIndexWhereInput[]
+    source?: StringFilter<"IndianMetalIndex"> | string
+    material?: StringFilter<"IndianMetalIndex"> | string
+    region?: StringFilter<"IndianMetalIndex"> | string
+    price?: FloatFilter<"IndianMetalIndex"> | number
+    unit?: StringFilter<"IndianMetalIndex"> | string
+    change?: FloatFilter<"IndianMetalIndex"> | number
+    lastUpdated?: DateTimeFilter<"IndianMetalIndex"> | Date | string
+  }, "id">
+
+  export type IndianMetalIndexOrderByWithAggregationInput = {
+    id?: SortOrder
+    source?: SortOrder
+    material?: SortOrder
+    region?: SortOrder
+    price?: SortOrder
+    unit?: SortOrder
+    change?: SortOrder
+    lastUpdated?: SortOrder
+    _count?: IndianMetalIndexCountOrderByAggregateInput
+    _avg?: IndianMetalIndexAvgOrderByAggregateInput
+    _max?: IndianMetalIndexMaxOrderByAggregateInput
+    _min?: IndianMetalIndexMinOrderByAggregateInput
+    _sum?: IndianMetalIndexSumOrderByAggregateInput
+  }
+
+  export type IndianMetalIndexScalarWhereWithAggregatesInput = {
+    AND?: IndianMetalIndexScalarWhereWithAggregatesInput | IndianMetalIndexScalarWhereWithAggregatesInput[]
+    OR?: IndianMetalIndexScalarWhereWithAggregatesInput[]
+    NOT?: IndianMetalIndexScalarWhereWithAggregatesInput | IndianMetalIndexScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"IndianMetalIndex"> | number
+    source?: StringWithAggregatesFilter<"IndianMetalIndex"> | string
+    material?: StringWithAggregatesFilter<"IndianMetalIndex"> | string
+    region?: StringWithAggregatesFilter<"IndianMetalIndex"> | string
+    price?: FloatWithAggregatesFilter<"IndianMetalIndex"> | number
+    unit?: StringWithAggregatesFilter<"IndianMetalIndex"> | string
+    change?: FloatWithAggregatesFilter<"IndianMetalIndex"> | number
+    lastUpdated?: DateTimeWithAggregatesFilter<"IndianMetalIndex"> | Date | string
   }
 
   export type MaterialCreateInput = {
@@ -12278,6 +15599,10 @@ export namespace Prisma {
     marketCost: number
     supplier: string
     orders?: OrderCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialUncheckedCreateInput = {
@@ -12287,6 +15612,10 @@ export namespace Prisma {
     marketCost: number
     supplier: string
     orders?: OrderUncheckedCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentUncheckedCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalUncheckedCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskUncheckedCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialUpdateInput = {
@@ -12295,6 +15624,10 @@ export namespace Prisma {
     marketCost?: FloatFieldUpdateOperationsInput | number
     supplier?: StringFieldUpdateOperationsInput | string
     orders?: OrderUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUpdateManyWithoutMaterialNestedInput
   }
 
   export type MaterialUncheckedUpdateInput = {
@@ -12304,6 +15637,10 @@ export namespace Prisma {
     marketCost?: FloatFieldUpdateOperationsInput | number
     supplier?: StringFieldUpdateOperationsInput | string
     orders?: OrderUncheckedUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUncheckedUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUncheckedUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUncheckedUpdateManyWithoutMaterialNestedInput
   }
 
   export type MaterialCreateManyInput = {
@@ -12334,6 +15671,7 @@ export namespace Prisma {
     client: string
     margin: string
     material: MaterialCreateNestedOneWithoutOrdersInput
+    pricingRecommendations?: PricingRecommendationCreateNestedManyWithoutOrderInput
   }
 
   export type OrderUncheckedCreateInput = {
@@ -12341,6 +15679,7 @@ export namespace Prisma {
     client: string
     margin: string
     materialId: number
+    pricingRecommendations?: PricingRecommendationUncheckedCreateNestedManyWithoutOrderInput
   }
 
   export type OrderUpdateInput = {
@@ -12348,6 +15687,7 @@ export namespace Prisma {
     client?: StringFieldUpdateOperationsInput | string
     margin?: StringFieldUpdateOperationsInput | string
     material?: MaterialUpdateOneRequiredWithoutOrdersNestedInput
+    pricingRecommendations?: PricingRecommendationUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderUncheckedUpdateInput = {
@@ -12355,6 +15695,7 @@ export namespace Prisma {
     client?: StringFieldUpdateOperationsInput | string
     margin?: StringFieldUpdateOperationsInput | string
     materialId?: IntFieldUpdateOperationsInput | number
+    pricingRecommendations?: PricingRecommendationUncheckedUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderCreateManyInput = {
@@ -12378,19 +15719,19 @@ export namespace Prisma {
   }
 
   export type ShipmentCreateInput = {
-    material: string
     qty: string
     supplier: string
     currentNode: string
     eta: string
     status: string
     gemmaAnnotation: string
+    material: MaterialCreateNestedOneWithoutShipmentsInput
     steps?: ShipmentStepCreateNestedManyWithoutShipmentInput
   }
 
   export type ShipmentUncheckedCreateInput = {
     id?: number
-    material: string
+    materialId: number
     qty: string
     supplier: string
     currentNode: string
@@ -12401,19 +15742,19 @@ export namespace Prisma {
   }
 
   export type ShipmentUpdateInput = {
-    material?: StringFieldUpdateOperationsInput | string
     qty?: StringFieldUpdateOperationsInput | string
     supplier?: StringFieldUpdateOperationsInput | string
     currentNode?: StringFieldUpdateOperationsInput | string
     eta?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     gemmaAnnotation?: StringFieldUpdateOperationsInput | string
+    material?: MaterialUpdateOneRequiredWithoutShipmentsNestedInput
     steps?: ShipmentStepUpdateManyWithoutShipmentNestedInput
   }
 
   export type ShipmentUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    material?: StringFieldUpdateOperationsInput | string
+    materialId?: IntFieldUpdateOperationsInput | number
     qty?: StringFieldUpdateOperationsInput | string
     supplier?: StringFieldUpdateOperationsInput | string
     currentNode?: StringFieldUpdateOperationsInput | string
@@ -12425,7 +15766,7 @@ export namespace Prisma {
 
   export type ShipmentCreateManyInput = {
     id?: number
-    material: string
+    materialId: number
     qty: string
     supplier: string
     currentNode: string
@@ -12435,7 +15776,6 @@ export namespace Prisma {
   }
 
   export type ShipmentUpdateManyMutationInput = {
-    material?: StringFieldUpdateOperationsInput | string
     qty?: StringFieldUpdateOperationsInput | string
     supplier?: StringFieldUpdateOperationsInput | string
     currentNode?: StringFieldUpdateOperationsInput | string
@@ -12446,7 +15786,7 @@ export namespace Prisma {
 
   export type ShipmentUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    material?: StringFieldUpdateOperationsInput | string
+    materialId?: IntFieldUpdateOperationsInput | number
     qty?: StringFieldUpdateOperationsInput | string
     supplier?: StringFieldUpdateOperationsInput | string
     currentNode?: StringFieldUpdateOperationsInput | string
@@ -12514,6 +15854,7 @@ export namespace Prisma {
     relevance: string
     tag: string
     desc: string
+    material?: MaterialCreateNestedOneWithoutMarketSignalsInput
   }
 
   export type MarketSignalUncheckedCreateInput = {
@@ -12524,6 +15865,7 @@ export namespace Prisma {
     relevance: string
     tag: string
     desc: string
+    materialId?: number | null
   }
 
   export type MarketSignalUpdateInput = {
@@ -12533,6 +15875,7 @@ export namespace Prisma {
     relevance?: StringFieldUpdateOperationsInput | string
     tag?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
+    material?: MaterialUpdateOneWithoutMarketSignalsNestedInput
   }
 
   export type MarketSignalUncheckedUpdateInput = {
@@ -12543,6 +15886,7 @@ export namespace Prisma {
     relevance?: StringFieldUpdateOperationsInput | string
     tag?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
+    materialId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MarketSignalCreateManyInput = {
@@ -12553,6 +15897,7 @@ export namespace Prisma {
     relevance: string
     tag: string
     desc: string
+    materialId?: number | null
   }
 
   export type MarketSignalUpdateManyMutationInput = {
@@ -12572,6 +15917,7 @@ export namespace Prisma {
     relevance?: StringFieldUpdateOperationsInput | string
     tag?: StringFieldUpdateOperationsInput | string
     desc?: StringFieldUpdateOperationsInput | string
+    materialId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PricingRecommendationCreateInput = {
@@ -12583,6 +15929,7 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    order?: OrderCreateNestedOneWithoutPricingRecommendationsInput
   }
 
   export type PricingRecommendationUncheckedCreateInput = {
@@ -12594,6 +15941,7 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    orderId?: string | null
   }
 
   export type PricingRecommendationUpdateInput = {
@@ -12605,6 +15953,7 @@ export namespace Prisma {
     accepted?: BoolFieldUpdateOperationsInput | boolean
     rejected?: BoolFieldUpdateOperationsInput | boolean
     expanded?: BoolFieldUpdateOperationsInput | boolean
+    order?: OrderUpdateOneWithoutPricingRecommendationsNestedInput
   }
 
   export type PricingRecommendationUncheckedUpdateInput = {
@@ -12616,6 +15965,7 @@ export namespace Prisma {
     accepted?: BoolFieldUpdateOperationsInput | boolean
     rejected?: BoolFieldUpdateOperationsInput | boolean
     expanded?: BoolFieldUpdateOperationsInput | boolean
+    orderId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PricingRecommendationCreateManyInput = {
@@ -12627,6 +15977,7 @@ export namespace Prisma {
     accepted?: boolean
     rejected?: boolean
     expanded?: boolean
+    orderId?: string | null
   }
 
   export type PricingRecommendationUpdateManyMutationInput = {
@@ -12649,6 +16000,7 @@ export namespace Prisma {
     accepted?: BoolFieldUpdateOperationsInput | boolean
     rejected?: BoolFieldUpdateOperationsInput | boolean
     expanded?: BoolFieldUpdateOperationsInput | boolean
+    orderId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StructuralRiskCreateInput = {
@@ -12657,6 +16009,7 @@ export namespace Prisma {
     title: string
     description: string
     gemmaAdvisory: string
+    material?: MaterialCreateNestedOneWithoutStructuralRisksInput
   }
 
   export type StructuralRiskUncheckedCreateInput = {
@@ -12666,6 +16019,7 @@ export namespace Prisma {
     title: string
     description: string
     gemmaAdvisory: string
+    materialId?: number | null
   }
 
   export type StructuralRiskUpdateInput = {
@@ -12674,6 +16028,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     gemmaAdvisory?: StringFieldUpdateOperationsInput | string
+    material?: MaterialUpdateOneWithoutStructuralRisksNestedInput
   }
 
   export type StructuralRiskUncheckedUpdateInput = {
@@ -12683,6 +16038,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     gemmaAdvisory?: StringFieldUpdateOperationsInput | string
+    materialId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type StructuralRiskCreateManyInput = {
@@ -12692,6 +16048,7 @@ export namespace Prisma {
     title: string
     description: string
     gemmaAdvisory: string
+    materialId?: number | null
   }
 
   export type StructuralRiskUpdateManyMutationInput = {
@@ -12709,6 +16066,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     gemmaAdvisory?: StringFieldUpdateOperationsInput | string
+    materialId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type IndustryNewsCreateInput = {
@@ -12796,6 +16154,7 @@ export namespace Prisma {
     status: string
     image: string
     lastUpdated?: Date | string
+    material?: MaterialCreateNestedOneWithoutInventoryItemsInput
   }
 
   export type InventoryItemUncheckedCreateInput = {
@@ -12810,6 +16169,7 @@ export namespace Prisma {
     status: string
     image: string
     lastUpdated?: Date | string
+    materialId?: number | null
   }
 
   export type InventoryItemUpdateInput = {
@@ -12823,6 +16183,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+    material?: MaterialUpdateOneWithoutInventoryItemsNestedInput
   }
 
   export type InventoryItemUncheckedUpdateInput = {
@@ -12837,6 +16198,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+    materialId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type InventoryItemCreateManyInput = {
@@ -12851,6 +16213,7 @@ export namespace Prisma {
     status: string
     image: string
     lastUpdated?: Date | string
+    materialId?: number | null
   }
 
   export type InventoryItemUpdateManyMutationInput = {
@@ -12877,6 +16240,197 @@ export namespace Prisma {
     minThreshold?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+    materialId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type CncMachineTelemetryCreateInput = {
+    machineId: string
+    airTemp: number
+    processTemp: number
+    rotationalSpeed: number
+    torque: number
+    toolWear: number
+    machineFailure: boolean
+    twf: boolean
+    hdf: boolean
+    pwf: boolean
+    osf: boolean
+    rnf: boolean
+    timestamp?: Date | string
+  }
+
+  export type CncMachineTelemetryUncheckedCreateInput = {
+    id?: number
+    machineId: string
+    airTemp: number
+    processTemp: number
+    rotationalSpeed: number
+    torque: number
+    toolWear: number
+    machineFailure: boolean
+    twf: boolean
+    hdf: boolean
+    pwf: boolean
+    osf: boolean
+    rnf: boolean
+    timestamp?: Date | string
+  }
+
+  export type CncMachineTelemetryUpdateInput = {
+    machineId?: StringFieldUpdateOperationsInput | string
+    airTemp?: FloatFieldUpdateOperationsInput | number
+    processTemp?: FloatFieldUpdateOperationsInput | number
+    rotationalSpeed?: FloatFieldUpdateOperationsInput | number
+    torque?: FloatFieldUpdateOperationsInput | number
+    toolWear?: FloatFieldUpdateOperationsInput | number
+    machineFailure?: BoolFieldUpdateOperationsInput | boolean
+    twf?: BoolFieldUpdateOperationsInput | boolean
+    hdf?: BoolFieldUpdateOperationsInput | boolean
+    pwf?: BoolFieldUpdateOperationsInput | boolean
+    osf?: BoolFieldUpdateOperationsInput | boolean
+    rnf?: BoolFieldUpdateOperationsInput | boolean
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CncMachineTelemetryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    machineId?: StringFieldUpdateOperationsInput | string
+    airTemp?: FloatFieldUpdateOperationsInput | number
+    processTemp?: FloatFieldUpdateOperationsInput | number
+    rotationalSpeed?: FloatFieldUpdateOperationsInput | number
+    torque?: FloatFieldUpdateOperationsInput | number
+    toolWear?: FloatFieldUpdateOperationsInput | number
+    machineFailure?: BoolFieldUpdateOperationsInput | boolean
+    twf?: BoolFieldUpdateOperationsInput | boolean
+    hdf?: BoolFieldUpdateOperationsInput | boolean
+    pwf?: BoolFieldUpdateOperationsInput | boolean
+    osf?: BoolFieldUpdateOperationsInput | boolean
+    rnf?: BoolFieldUpdateOperationsInput | boolean
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CncMachineTelemetryCreateManyInput = {
+    id?: number
+    machineId: string
+    airTemp: number
+    processTemp: number
+    rotationalSpeed: number
+    torque: number
+    toolWear: number
+    machineFailure: boolean
+    twf: boolean
+    hdf: boolean
+    pwf: boolean
+    osf: boolean
+    rnf: boolean
+    timestamp?: Date | string
+  }
+
+  export type CncMachineTelemetryUpdateManyMutationInput = {
+    machineId?: StringFieldUpdateOperationsInput | string
+    airTemp?: FloatFieldUpdateOperationsInput | number
+    processTemp?: FloatFieldUpdateOperationsInput | number
+    rotationalSpeed?: FloatFieldUpdateOperationsInput | number
+    torque?: FloatFieldUpdateOperationsInput | number
+    toolWear?: FloatFieldUpdateOperationsInput | number
+    machineFailure?: BoolFieldUpdateOperationsInput | boolean
+    twf?: BoolFieldUpdateOperationsInput | boolean
+    hdf?: BoolFieldUpdateOperationsInput | boolean
+    pwf?: BoolFieldUpdateOperationsInput | boolean
+    osf?: BoolFieldUpdateOperationsInput | boolean
+    rnf?: BoolFieldUpdateOperationsInput | boolean
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CncMachineTelemetryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    machineId?: StringFieldUpdateOperationsInput | string
+    airTemp?: FloatFieldUpdateOperationsInput | number
+    processTemp?: FloatFieldUpdateOperationsInput | number
+    rotationalSpeed?: FloatFieldUpdateOperationsInput | number
+    torque?: FloatFieldUpdateOperationsInput | number
+    toolWear?: FloatFieldUpdateOperationsInput | number
+    machineFailure?: BoolFieldUpdateOperationsInput | boolean
+    twf?: BoolFieldUpdateOperationsInput | boolean
+    hdf?: BoolFieldUpdateOperationsInput | boolean
+    pwf?: BoolFieldUpdateOperationsInput | boolean
+    osf?: BoolFieldUpdateOperationsInput | boolean
+    rnf?: BoolFieldUpdateOperationsInput | boolean
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IndianMetalIndexCreateInput = {
+    source: string
+    material: string
+    region: string
+    price: number
+    unit: string
+    change: number
+    lastUpdated?: Date | string
+  }
+
+  export type IndianMetalIndexUncheckedCreateInput = {
+    id?: number
+    source: string
+    material: string
+    region: string
+    price: number
+    unit: string
+    change: number
+    lastUpdated?: Date | string
+  }
+
+  export type IndianMetalIndexUpdateInput = {
+    source?: StringFieldUpdateOperationsInput | string
+    material?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    change?: FloatFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IndianMetalIndexUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    source?: StringFieldUpdateOperationsInput | string
+    material?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    change?: FloatFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IndianMetalIndexCreateManyInput = {
+    id?: number
+    source: string
+    material: string
+    region: string
+    price: number
+    unit: string
+    change: number
+    lastUpdated?: Date | string
+  }
+
+  export type IndianMetalIndexUpdateManyMutationInput = {
+    source?: StringFieldUpdateOperationsInput | string
+    material?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    change?: FloatFieldUpdateOperationsInput | number
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type IndianMetalIndexUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    source?: StringFieldUpdateOperationsInput | string
+    material?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    change?: FloatFieldUpdateOperationsInput | number
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12923,7 +16477,47 @@ export namespace Prisma {
     none?: OrderWhereInput
   }
 
+  export type ShipmentListRelationFilter = {
+    every?: ShipmentWhereInput
+    some?: ShipmentWhereInput
+    none?: ShipmentWhereInput
+  }
+
+  export type InventoryItemListRelationFilter = {
+    every?: InventoryItemWhereInput
+    some?: InventoryItemWhereInput
+    none?: InventoryItemWhereInput
+  }
+
+  export type MarketSignalListRelationFilter = {
+    every?: MarketSignalWhereInput
+    some?: MarketSignalWhereInput
+    none?: MarketSignalWhereInput
+  }
+
+  export type StructuralRiskListRelationFilter = {
+    every?: StructuralRiskWhereInput
+    some?: StructuralRiskWhereInput
+    none?: StructuralRiskWhereInput
+  }
+
   export type OrderOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ShipmentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InventoryItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MarketSignalOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type StructuralRiskOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13018,6 +16612,16 @@ export namespace Prisma {
     isNot?: MaterialWhereInput
   }
 
+  export type PricingRecommendationListRelationFilter = {
+    every?: PricingRecommendationWhereInput
+    some?: PricingRecommendationWhereInput
+    none?: PricingRecommendationWhereInput
+  }
+
+  export type PricingRecommendationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type OrderCountOrderByAggregateInput = {
     id?: SortOrder
     client?: SortOrder
@@ -13059,7 +16663,7 @@ export namespace Prisma {
 
   export type ShipmentCountOrderByAggregateInput = {
     id?: SortOrder
-    material?: SortOrder
+    materialId?: SortOrder
     qty?: SortOrder
     supplier?: SortOrder
     currentNode?: SortOrder
@@ -13070,11 +16674,12 @@ export namespace Prisma {
 
   export type ShipmentAvgOrderByAggregateInput = {
     id?: SortOrder
+    materialId?: SortOrder
   }
 
   export type ShipmentMaxOrderByAggregateInput = {
     id?: SortOrder
-    material?: SortOrder
+    materialId?: SortOrder
     qty?: SortOrder
     supplier?: SortOrder
     currentNode?: SortOrder
@@ -13085,7 +16690,7 @@ export namespace Prisma {
 
   export type ShipmentMinOrderByAggregateInput = {
     id?: SortOrder
-    material?: SortOrder
+    materialId?: SortOrder
     qty?: SortOrder
     supplier?: SortOrder
     currentNode?: SortOrder
@@ -13096,6 +16701,7 @@ export namespace Prisma {
 
   export type ShipmentSumOrderByAggregateInput = {
     id?: SortOrder
+    materialId?: SortOrder
   }
 
   export type ShipmentScalarRelationFilter = {
@@ -13139,6 +16745,27 @@ export namespace Prisma {
     sequence?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type MaterialNullableScalarRelationFilter = {
+    is?: MaterialWhereInput | null
+    isNot?: MaterialWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type MarketSignalCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -13147,10 +16774,12 @@ export namespace Prisma {
     relevance?: SortOrder
     tag?: SortOrder
     desc?: SortOrder
+    materialId?: SortOrder
   }
 
   export type MarketSignalAvgOrderByAggregateInput = {
     id?: SortOrder
+    materialId?: SortOrder
   }
 
   export type MarketSignalMaxOrderByAggregateInput = {
@@ -13161,6 +16790,7 @@ export namespace Prisma {
     relevance?: SortOrder
     tag?: SortOrder
     desc?: SortOrder
+    materialId?: SortOrder
   }
 
   export type MarketSignalMinOrderByAggregateInput = {
@@ -13171,10 +16801,28 @@ export namespace Prisma {
     relevance?: SortOrder
     tag?: SortOrder
     desc?: SortOrder
+    materialId?: SortOrder
   }
 
   export type MarketSignalSumOrderByAggregateInput = {
     id?: SortOrder
+    materialId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13205,6 +16853,26 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type OrderNullableScalarRelationFilter = {
+    is?: OrderWhereInput | null
+    isNot?: OrderWhereInput | null
+  }
+
   export type PricingRecommendationCountOrderByAggregateInput = {
     id?: SortOrder
     trigger?: SortOrder
@@ -13214,6 +16882,7 @@ export namespace Prisma {
     accepted?: SortOrder
     rejected?: SortOrder
     expanded?: SortOrder
+    orderId?: SortOrder
   }
 
   export type PricingRecommendationMaxOrderByAggregateInput = {
@@ -13224,6 +16893,7 @@ export namespace Prisma {
     accepted?: SortOrder
     rejected?: SortOrder
     expanded?: SortOrder
+    orderId?: SortOrder
   }
 
   export type PricingRecommendationMinOrderByAggregateInput = {
@@ -13234,6 +16904,7 @@ export namespace Prisma {
     accepted?: SortOrder
     rejected?: SortOrder
     expanded?: SortOrder
+    orderId?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13270,6 +16941,24 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type StructuralRiskCountOrderByAggregateInput = {
     id?: SortOrder
     trend?: SortOrder
@@ -13277,10 +16966,12 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     gemmaAdvisory?: SortOrder
+    materialId?: SortOrder
   }
 
   export type StructuralRiskAvgOrderByAggregateInput = {
     id?: SortOrder
+    materialId?: SortOrder
   }
 
   export type StructuralRiskMaxOrderByAggregateInput = {
@@ -13290,6 +16981,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     gemmaAdvisory?: SortOrder
+    materialId?: SortOrder
   }
 
   export type StructuralRiskMinOrderByAggregateInput = {
@@ -13299,10 +16991,12 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     gemmaAdvisory?: SortOrder
+    materialId?: SortOrder
   }
 
   export type StructuralRiskSumOrderByAggregateInput = {
     id?: SortOrder
+    materialId?: SortOrder
   }
 
   export type IndustryNewsCountOrderByAggregateInput = {
@@ -13369,12 +17063,14 @@ export namespace Prisma {
     status?: SortOrder
     image?: SortOrder
     lastUpdated?: SortOrder
+    materialId?: SortOrder
   }
 
   export type InventoryItemAvgOrderByAggregateInput = {
     id?: SortOrder
     quantity?: SortOrder
     minThreshold?: SortOrder
+    materialId?: SortOrder
   }
 
   export type InventoryItemMaxOrderByAggregateInput = {
@@ -13389,6 +17085,7 @@ export namespace Prisma {
     status?: SortOrder
     image?: SortOrder
     lastUpdated?: SortOrder
+    materialId?: SortOrder
   }
 
   export type InventoryItemMinOrderByAggregateInput = {
@@ -13403,12 +17100,14 @@ export namespace Prisma {
     status?: SortOrder
     image?: SortOrder
     lastUpdated?: SortOrder
+    materialId?: SortOrder
   }
 
   export type InventoryItemSumOrderByAggregateInput = {
     id?: SortOrder
     quantity?: SortOrder
     minThreshold?: SortOrder
+    materialId?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13425,6 +17124,120 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type CncMachineTelemetryCountOrderByAggregateInput = {
+    id?: SortOrder
+    machineId?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+    machineFailure?: SortOrder
+    twf?: SortOrder
+    hdf?: SortOrder
+    pwf?: SortOrder
+    osf?: SortOrder
+    rnf?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type CncMachineTelemetryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+  }
+
+  export type CncMachineTelemetryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    machineId?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+    machineFailure?: SortOrder
+    twf?: SortOrder
+    hdf?: SortOrder
+    pwf?: SortOrder
+    osf?: SortOrder
+    rnf?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type CncMachineTelemetryMinOrderByAggregateInput = {
+    id?: SortOrder
+    machineId?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+    machineFailure?: SortOrder
+    twf?: SortOrder
+    hdf?: SortOrder
+    pwf?: SortOrder
+    osf?: SortOrder
+    rnf?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type CncMachineTelemetrySumOrderByAggregateInput = {
+    id?: SortOrder
+    airTemp?: SortOrder
+    processTemp?: SortOrder
+    rotationalSpeed?: SortOrder
+    torque?: SortOrder
+    toolWear?: SortOrder
+  }
+
+  export type IndianMetalIndexCountOrderByAggregateInput = {
+    id?: SortOrder
+    source?: SortOrder
+    material?: SortOrder
+    region?: SortOrder
+    price?: SortOrder
+    unit?: SortOrder
+    change?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type IndianMetalIndexAvgOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    change?: SortOrder
+  }
+
+  export type IndianMetalIndexMaxOrderByAggregateInput = {
+    id?: SortOrder
+    source?: SortOrder
+    material?: SortOrder
+    region?: SortOrder
+    price?: SortOrder
+    unit?: SortOrder
+    change?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type IndianMetalIndexMinOrderByAggregateInput = {
+    id?: SortOrder
+    source?: SortOrder
+    material?: SortOrder
+    region?: SortOrder
+    price?: SortOrder
+    unit?: SortOrder
+    change?: SortOrder
+    lastUpdated?: SortOrder
+  }
+
+  export type IndianMetalIndexSumOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    change?: SortOrder
+  }
+
   export type OrderCreateNestedManyWithoutMaterialInput = {
     create?: XOR<OrderCreateWithoutMaterialInput, OrderUncheckedCreateWithoutMaterialInput> | OrderCreateWithoutMaterialInput[] | OrderUncheckedCreateWithoutMaterialInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutMaterialInput | OrderCreateOrConnectWithoutMaterialInput[]
@@ -13432,11 +17245,67 @@ export namespace Prisma {
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
   }
 
+  export type ShipmentCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<ShipmentCreateWithoutMaterialInput, ShipmentUncheckedCreateWithoutMaterialInput> | ShipmentCreateWithoutMaterialInput[] | ShipmentUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: ShipmentCreateOrConnectWithoutMaterialInput | ShipmentCreateOrConnectWithoutMaterialInput[]
+    createMany?: ShipmentCreateManyMaterialInputEnvelope
+    connect?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+  }
+
+  export type InventoryItemCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<InventoryItemCreateWithoutMaterialInput, InventoryItemUncheckedCreateWithoutMaterialInput> | InventoryItemCreateWithoutMaterialInput[] | InventoryItemUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutMaterialInput | InventoryItemCreateOrConnectWithoutMaterialInput[]
+    createMany?: InventoryItemCreateManyMaterialInputEnvelope
+    connect?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+  }
+
+  export type MarketSignalCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<MarketSignalCreateWithoutMaterialInput, MarketSignalUncheckedCreateWithoutMaterialInput> | MarketSignalCreateWithoutMaterialInput[] | MarketSignalUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: MarketSignalCreateOrConnectWithoutMaterialInput | MarketSignalCreateOrConnectWithoutMaterialInput[]
+    createMany?: MarketSignalCreateManyMaterialInputEnvelope
+    connect?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+  }
+
+  export type StructuralRiskCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<StructuralRiskCreateWithoutMaterialInput, StructuralRiskUncheckedCreateWithoutMaterialInput> | StructuralRiskCreateWithoutMaterialInput[] | StructuralRiskUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: StructuralRiskCreateOrConnectWithoutMaterialInput | StructuralRiskCreateOrConnectWithoutMaterialInput[]
+    createMany?: StructuralRiskCreateManyMaterialInputEnvelope
+    connect?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+  }
+
   export type OrderUncheckedCreateNestedManyWithoutMaterialInput = {
     create?: XOR<OrderCreateWithoutMaterialInput, OrderUncheckedCreateWithoutMaterialInput> | OrderCreateWithoutMaterialInput[] | OrderUncheckedCreateWithoutMaterialInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutMaterialInput | OrderCreateOrConnectWithoutMaterialInput[]
     createMany?: OrderCreateManyMaterialInputEnvelope
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
+  }
+
+  export type ShipmentUncheckedCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<ShipmentCreateWithoutMaterialInput, ShipmentUncheckedCreateWithoutMaterialInput> | ShipmentCreateWithoutMaterialInput[] | ShipmentUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: ShipmentCreateOrConnectWithoutMaterialInput | ShipmentCreateOrConnectWithoutMaterialInput[]
+    createMany?: ShipmentCreateManyMaterialInputEnvelope
+    connect?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+  }
+
+  export type InventoryItemUncheckedCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<InventoryItemCreateWithoutMaterialInput, InventoryItemUncheckedCreateWithoutMaterialInput> | InventoryItemCreateWithoutMaterialInput[] | InventoryItemUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutMaterialInput | InventoryItemCreateOrConnectWithoutMaterialInput[]
+    createMany?: InventoryItemCreateManyMaterialInputEnvelope
+    connect?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+  }
+
+  export type MarketSignalUncheckedCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<MarketSignalCreateWithoutMaterialInput, MarketSignalUncheckedCreateWithoutMaterialInput> | MarketSignalCreateWithoutMaterialInput[] | MarketSignalUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: MarketSignalCreateOrConnectWithoutMaterialInput | MarketSignalCreateOrConnectWithoutMaterialInput[]
+    createMany?: MarketSignalCreateManyMaterialInputEnvelope
+    connect?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+  }
+
+  export type StructuralRiskUncheckedCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<StructuralRiskCreateWithoutMaterialInput, StructuralRiskUncheckedCreateWithoutMaterialInput> | StructuralRiskCreateWithoutMaterialInput[] | StructuralRiskUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: StructuralRiskCreateOrConnectWithoutMaterialInput | StructuralRiskCreateOrConnectWithoutMaterialInput[]
+    createMany?: StructuralRiskCreateManyMaterialInputEnvelope
+    connect?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -13465,6 +17334,62 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type ShipmentUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<ShipmentCreateWithoutMaterialInput, ShipmentUncheckedCreateWithoutMaterialInput> | ShipmentCreateWithoutMaterialInput[] | ShipmentUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: ShipmentCreateOrConnectWithoutMaterialInput | ShipmentCreateOrConnectWithoutMaterialInput[]
+    upsert?: ShipmentUpsertWithWhereUniqueWithoutMaterialInput | ShipmentUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: ShipmentCreateManyMaterialInputEnvelope
+    set?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    disconnect?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    delete?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    connect?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    update?: ShipmentUpdateWithWhereUniqueWithoutMaterialInput | ShipmentUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: ShipmentUpdateManyWithWhereWithoutMaterialInput | ShipmentUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: ShipmentScalarWhereInput | ShipmentScalarWhereInput[]
+  }
+
+  export type InventoryItemUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<InventoryItemCreateWithoutMaterialInput, InventoryItemUncheckedCreateWithoutMaterialInput> | InventoryItemCreateWithoutMaterialInput[] | InventoryItemUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutMaterialInput | InventoryItemCreateOrConnectWithoutMaterialInput[]
+    upsert?: InventoryItemUpsertWithWhereUniqueWithoutMaterialInput | InventoryItemUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: InventoryItemCreateManyMaterialInputEnvelope
+    set?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    disconnect?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    delete?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    connect?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    update?: InventoryItemUpdateWithWhereUniqueWithoutMaterialInput | InventoryItemUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: InventoryItemUpdateManyWithWhereWithoutMaterialInput | InventoryItemUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
+  }
+
+  export type MarketSignalUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<MarketSignalCreateWithoutMaterialInput, MarketSignalUncheckedCreateWithoutMaterialInput> | MarketSignalCreateWithoutMaterialInput[] | MarketSignalUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: MarketSignalCreateOrConnectWithoutMaterialInput | MarketSignalCreateOrConnectWithoutMaterialInput[]
+    upsert?: MarketSignalUpsertWithWhereUniqueWithoutMaterialInput | MarketSignalUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: MarketSignalCreateManyMaterialInputEnvelope
+    set?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    disconnect?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    delete?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    connect?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    update?: MarketSignalUpdateWithWhereUniqueWithoutMaterialInput | MarketSignalUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: MarketSignalUpdateManyWithWhereWithoutMaterialInput | MarketSignalUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: MarketSignalScalarWhereInput | MarketSignalScalarWhereInput[]
+  }
+
+  export type StructuralRiskUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<StructuralRiskCreateWithoutMaterialInput, StructuralRiskUncheckedCreateWithoutMaterialInput> | StructuralRiskCreateWithoutMaterialInput[] | StructuralRiskUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: StructuralRiskCreateOrConnectWithoutMaterialInput | StructuralRiskCreateOrConnectWithoutMaterialInput[]
+    upsert?: StructuralRiskUpsertWithWhereUniqueWithoutMaterialInput | StructuralRiskUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: StructuralRiskCreateManyMaterialInputEnvelope
+    set?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    disconnect?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    delete?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    connect?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    update?: StructuralRiskUpdateWithWhereUniqueWithoutMaterialInput | StructuralRiskUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: StructuralRiskUpdateManyWithWhereWithoutMaterialInput | StructuralRiskUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: StructuralRiskScalarWhereInput | StructuralRiskScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -13487,10 +17412,80 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type ShipmentUncheckedUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<ShipmentCreateWithoutMaterialInput, ShipmentUncheckedCreateWithoutMaterialInput> | ShipmentCreateWithoutMaterialInput[] | ShipmentUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: ShipmentCreateOrConnectWithoutMaterialInput | ShipmentCreateOrConnectWithoutMaterialInput[]
+    upsert?: ShipmentUpsertWithWhereUniqueWithoutMaterialInput | ShipmentUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: ShipmentCreateManyMaterialInputEnvelope
+    set?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    disconnect?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    delete?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    connect?: ShipmentWhereUniqueInput | ShipmentWhereUniqueInput[]
+    update?: ShipmentUpdateWithWhereUniqueWithoutMaterialInput | ShipmentUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: ShipmentUpdateManyWithWhereWithoutMaterialInput | ShipmentUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: ShipmentScalarWhereInput | ShipmentScalarWhereInput[]
+  }
+
+  export type InventoryItemUncheckedUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<InventoryItemCreateWithoutMaterialInput, InventoryItemUncheckedCreateWithoutMaterialInput> | InventoryItemCreateWithoutMaterialInput[] | InventoryItemUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutMaterialInput | InventoryItemCreateOrConnectWithoutMaterialInput[]
+    upsert?: InventoryItemUpsertWithWhereUniqueWithoutMaterialInput | InventoryItemUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: InventoryItemCreateManyMaterialInputEnvelope
+    set?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    disconnect?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    delete?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    connect?: InventoryItemWhereUniqueInput | InventoryItemWhereUniqueInput[]
+    update?: InventoryItemUpdateWithWhereUniqueWithoutMaterialInput | InventoryItemUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: InventoryItemUpdateManyWithWhereWithoutMaterialInput | InventoryItemUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
+  }
+
+  export type MarketSignalUncheckedUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<MarketSignalCreateWithoutMaterialInput, MarketSignalUncheckedCreateWithoutMaterialInput> | MarketSignalCreateWithoutMaterialInput[] | MarketSignalUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: MarketSignalCreateOrConnectWithoutMaterialInput | MarketSignalCreateOrConnectWithoutMaterialInput[]
+    upsert?: MarketSignalUpsertWithWhereUniqueWithoutMaterialInput | MarketSignalUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: MarketSignalCreateManyMaterialInputEnvelope
+    set?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    disconnect?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    delete?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    connect?: MarketSignalWhereUniqueInput | MarketSignalWhereUniqueInput[]
+    update?: MarketSignalUpdateWithWhereUniqueWithoutMaterialInput | MarketSignalUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: MarketSignalUpdateManyWithWhereWithoutMaterialInput | MarketSignalUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: MarketSignalScalarWhereInput | MarketSignalScalarWhereInput[]
+  }
+
+  export type StructuralRiskUncheckedUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<StructuralRiskCreateWithoutMaterialInput, StructuralRiskUncheckedCreateWithoutMaterialInput> | StructuralRiskCreateWithoutMaterialInput[] | StructuralRiskUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: StructuralRiskCreateOrConnectWithoutMaterialInput | StructuralRiskCreateOrConnectWithoutMaterialInput[]
+    upsert?: StructuralRiskUpsertWithWhereUniqueWithoutMaterialInput | StructuralRiskUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: StructuralRiskCreateManyMaterialInputEnvelope
+    set?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    disconnect?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    delete?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    connect?: StructuralRiskWhereUniqueInput | StructuralRiskWhereUniqueInput[]
+    update?: StructuralRiskUpdateWithWhereUniqueWithoutMaterialInput | StructuralRiskUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: StructuralRiskUpdateManyWithWhereWithoutMaterialInput | StructuralRiskUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: StructuralRiskScalarWhereInput | StructuralRiskScalarWhereInput[]
+  }
+
   export type MaterialCreateNestedOneWithoutOrdersInput = {
     create?: XOR<MaterialCreateWithoutOrdersInput, MaterialUncheckedCreateWithoutOrdersInput>
     connectOrCreate?: MaterialCreateOrConnectWithoutOrdersInput
     connect?: MaterialWhereUniqueInput
+  }
+
+  export type PricingRecommendationCreateNestedManyWithoutOrderInput = {
+    create?: XOR<PricingRecommendationCreateWithoutOrderInput, PricingRecommendationUncheckedCreateWithoutOrderInput> | PricingRecommendationCreateWithoutOrderInput[] | PricingRecommendationUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PricingRecommendationCreateOrConnectWithoutOrderInput | PricingRecommendationCreateOrConnectWithoutOrderInput[]
+    createMany?: PricingRecommendationCreateManyOrderInputEnvelope
+    connect?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+  }
+
+  export type PricingRecommendationUncheckedCreateNestedManyWithoutOrderInput = {
+    create?: XOR<PricingRecommendationCreateWithoutOrderInput, PricingRecommendationUncheckedCreateWithoutOrderInput> | PricingRecommendationCreateWithoutOrderInput[] | PricingRecommendationUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PricingRecommendationCreateOrConnectWithoutOrderInput | PricingRecommendationCreateOrConnectWithoutOrderInput[]
+    createMany?: PricingRecommendationCreateManyOrderInputEnvelope
+    connect?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
   }
 
   export type MaterialUpdateOneRequiredWithoutOrdersNestedInput = {
@@ -13499,6 +17494,40 @@ export namespace Prisma {
     upsert?: MaterialUpsertWithoutOrdersInput
     connect?: MaterialWhereUniqueInput
     update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutOrdersInput, MaterialUpdateWithoutOrdersInput>, MaterialUncheckedUpdateWithoutOrdersInput>
+  }
+
+  export type PricingRecommendationUpdateManyWithoutOrderNestedInput = {
+    create?: XOR<PricingRecommendationCreateWithoutOrderInput, PricingRecommendationUncheckedCreateWithoutOrderInput> | PricingRecommendationCreateWithoutOrderInput[] | PricingRecommendationUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PricingRecommendationCreateOrConnectWithoutOrderInput | PricingRecommendationCreateOrConnectWithoutOrderInput[]
+    upsert?: PricingRecommendationUpsertWithWhereUniqueWithoutOrderInput | PricingRecommendationUpsertWithWhereUniqueWithoutOrderInput[]
+    createMany?: PricingRecommendationCreateManyOrderInputEnvelope
+    set?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    disconnect?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    delete?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    connect?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    update?: PricingRecommendationUpdateWithWhereUniqueWithoutOrderInput | PricingRecommendationUpdateWithWhereUniqueWithoutOrderInput[]
+    updateMany?: PricingRecommendationUpdateManyWithWhereWithoutOrderInput | PricingRecommendationUpdateManyWithWhereWithoutOrderInput[]
+    deleteMany?: PricingRecommendationScalarWhereInput | PricingRecommendationScalarWhereInput[]
+  }
+
+  export type PricingRecommendationUncheckedUpdateManyWithoutOrderNestedInput = {
+    create?: XOR<PricingRecommendationCreateWithoutOrderInput, PricingRecommendationUncheckedCreateWithoutOrderInput> | PricingRecommendationCreateWithoutOrderInput[] | PricingRecommendationUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PricingRecommendationCreateOrConnectWithoutOrderInput | PricingRecommendationCreateOrConnectWithoutOrderInput[]
+    upsert?: PricingRecommendationUpsertWithWhereUniqueWithoutOrderInput | PricingRecommendationUpsertWithWhereUniqueWithoutOrderInput[]
+    createMany?: PricingRecommendationCreateManyOrderInputEnvelope
+    set?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    disconnect?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    delete?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    connect?: PricingRecommendationWhereUniqueInput | PricingRecommendationWhereUniqueInput[]
+    update?: PricingRecommendationUpdateWithWhereUniqueWithoutOrderInput | PricingRecommendationUpdateWithWhereUniqueWithoutOrderInput[]
+    updateMany?: PricingRecommendationUpdateManyWithWhereWithoutOrderInput | PricingRecommendationUpdateManyWithWhereWithoutOrderInput[]
+    deleteMany?: PricingRecommendationScalarWhereInput | PricingRecommendationScalarWhereInput[]
+  }
+
+  export type MaterialCreateNestedOneWithoutShipmentsInput = {
+    create?: XOR<MaterialCreateWithoutShipmentsInput, MaterialUncheckedCreateWithoutShipmentsInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutShipmentsInput
+    connect?: MaterialWhereUniqueInput
   }
 
   export type ShipmentStepCreateNestedManyWithoutShipmentInput = {
@@ -13513,6 +17542,14 @@ export namespace Prisma {
     connectOrCreate?: ShipmentStepCreateOrConnectWithoutShipmentInput | ShipmentStepCreateOrConnectWithoutShipmentInput[]
     createMany?: ShipmentStepCreateManyShipmentInputEnvelope
     connect?: ShipmentStepWhereUniqueInput | ShipmentStepWhereUniqueInput[]
+  }
+
+  export type MaterialUpdateOneRequiredWithoutShipmentsNestedInput = {
+    create?: XOR<MaterialCreateWithoutShipmentsInput, MaterialUncheckedCreateWithoutShipmentsInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutShipmentsInput
+    upsert?: MaterialUpsertWithoutShipmentsInput
+    connect?: MaterialWhereUniqueInput
+    update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutShipmentsInput, MaterialUpdateWithoutShipmentsInput>, MaterialUncheckedUpdateWithoutShipmentsInput>
   }
 
   export type ShipmentStepUpdateManyWithoutShipmentNestedInput = {
@@ -13557,12 +17594,88 @@ export namespace Prisma {
     update?: XOR<XOR<ShipmentUpdateToOneWithWhereWithoutStepsInput, ShipmentUpdateWithoutStepsInput>, ShipmentUncheckedUpdateWithoutStepsInput>
   }
 
+  export type MaterialCreateNestedOneWithoutMarketSignalsInput = {
+    create?: XOR<MaterialCreateWithoutMarketSignalsInput, MaterialUncheckedCreateWithoutMarketSignalsInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutMarketSignalsInput
+    connect?: MaterialWhereUniqueInput
+  }
+
+  export type MaterialUpdateOneWithoutMarketSignalsNestedInput = {
+    create?: XOR<MaterialCreateWithoutMarketSignalsInput, MaterialUncheckedCreateWithoutMarketSignalsInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutMarketSignalsInput
+    upsert?: MaterialUpsertWithoutMarketSignalsInput
+    disconnect?: MaterialWhereInput | boolean
+    delete?: MaterialWhereInput | boolean
+    connect?: MaterialWhereUniqueInput
+    update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutMarketSignalsInput, MaterialUpdateWithoutMarketSignalsInput>, MaterialUncheckedUpdateWithoutMarketSignalsInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type OrderCreateNestedOneWithoutPricingRecommendationsInput = {
+    create?: XOR<OrderCreateWithoutPricingRecommendationsInput, OrderUncheckedCreateWithoutPricingRecommendationsInput>
+    connectOrCreate?: OrderCreateOrConnectWithoutPricingRecommendationsInput
+    connect?: OrderWhereUniqueInput
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
+  export type OrderUpdateOneWithoutPricingRecommendationsNestedInput = {
+    create?: XOR<OrderCreateWithoutPricingRecommendationsInput, OrderUncheckedCreateWithoutPricingRecommendationsInput>
+    connectOrCreate?: OrderCreateOrConnectWithoutPricingRecommendationsInput
+    upsert?: OrderUpsertWithoutPricingRecommendationsInput
+    disconnect?: OrderWhereInput | boolean
+    delete?: OrderWhereInput | boolean
+    connect?: OrderWhereUniqueInput
+    update?: XOR<XOR<OrderUpdateToOneWithWhereWithoutPricingRecommendationsInput, OrderUpdateWithoutPricingRecommendationsInput>, OrderUncheckedUpdateWithoutPricingRecommendationsInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type MaterialCreateNestedOneWithoutStructuralRisksInput = {
+    create?: XOR<MaterialCreateWithoutStructuralRisksInput, MaterialUncheckedCreateWithoutStructuralRisksInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutStructuralRisksInput
+    connect?: MaterialWhereUniqueInput
+  }
+
+  export type MaterialUpdateOneWithoutStructuralRisksNestedInput = {
+    create?: XOR<MaterialCreateWithoutStructuralRisksInput, MaterialUncheckedCreateWithoutStructuralRisksInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutStructuralRisksInput
+    upsert?: MaterialUpsertWithoutStructuralRisksInput
+    disconnect?: MaterialWhereInput | boolean
+    delete?: MaterialWhereInput | boolean
+    connect?: MaterialWhereUniqueInput
+    update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutStructuralRisksInput, MaterialUpdateWithoutStructuralRisksInput>, MaterialUncheckedUpdateWithoutStructuralRisksInput>
+  }
+
+  export type MaterialCreateNestedOneWithoutInventoryItemsInput = {
+    create?: XOR<MaterialCreateWithoutInventoryItemsInput, MaterialUncheckedCreateWithoutInventoryItemsInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutInventoryItemsInput
+    connect?: MaterialWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type MaterialUpdateOneWithoutInventoryItemsNestedInput = {
+    create?: XOR<MaterialCreateWithoutInventoryItemsInput, MaterialUncheckedCreateWithoutInventoryItemsInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutInventoryItemsInput
+    upsert?: MaterialUpsertWithoutInventoryItemsInput
+    disconnect?: MaterialWhereInput | boolean
+    delete?: MaterialWhereInput | boolean
+    connect?: MaterialWhereUniqueInput
+    update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutInventoryItemsInput, MaterialUpdateWithoutInventoryItemsInput>, MaterialUncheckedUpdateWithoutInventoryItemsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -13650,9 +17763,61 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13686,6 +17851,23 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -13715,12 +17897,14 @@ export namespace Prisma {
     id: string
     client: string
     margin: string
+    pricingRecommendations?: PricingRecommendationCreateNestedManyWithoutOrderInput
   }
 
   export type OrderUncheckedCreateWithoutMaterialInput = {
     id: string
     client: string
     margin: string
+    pricingRecommendations?: PricingRecommendationUncheckedCreateNestedManyWithoutOrderInput
   }
 
   export type OrderCreateOrConnectWithoutMaterialInput = {
@@ -13730,6 +17914,130 @@ export namespace Prisma {
 
   export type OrderCreateManyMaterialInputEnvelope = {
     data: OrderCreateManyMaterialInput | OrderCreateManyMaterialInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ShipmentCreateWithoutMaterialInput = {
+    qty: string
+    supplier: string
+    currentNode: string
+    eta: string
+    status: string
+    gemmaAnnotation: string
+    steps?: ShipmentStepCreateNestedManyWithoutShipmentInput
+  }
+
+  export type ShipmentUncheckedCreateWithoutMaterialInput = {
+    id?: number
+    qty: string
+    supplier: string
+    currentNode: string
+    eta: string
+    status: string
+    gemmaAnnotation: string
+    steps?: ShipmentStepUncheckedCreateNestedManyWithoutShipmentInput
+  }
+
+  export type ShipmentCreateOrConnectWithoutMaterialInput = {
+    where: ShipmentWhereUniqueInput
+    create: XOR<ShipmentCreateWithoutMaterialInput, ShipmentUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type ShipmentCreateManyMaterialInputEnvelope = {
+    data: ShipmentCreateManyMaterialInput | ShipmentCreateManyMaterialInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InventoryItemCreateWithoutMaterialInput = {
+    name: string
+    category: string
+    sku: string
+    quantity: number
+    unit: string
+    location: string
+    minThreshold: number
+    status: string
+    image: string
+    lastUpdated?: Date | string
+  }
+
+  export type InventoryItemUncheckedCreateWithoutMaterialInput = {
+    id?: number
+    name: string
+    category: string
+    sku: string
+    quantity: number
+    unit: string
+    location: string
+    minThreshold: number
+    status: string
+    image: string
+    lastUpdated?: Date | string
+  }
+
+  export type InventoryItemCreateOrConnectWithoutMaterialInput = {
+    where: InventoryItemWhereUniqueInput
+    create: XOR<InventoryItemCreateWithoutMaterialInput, InventoryItemUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type InventoryItemCreateManyMaterialInputEnvelope = {
+    data: InventoryItemCreateManyMaterialInput | InventoryItemCreateManyMaterialInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MarketSignalCreateWithoutMaterialInput = {
+    title: string
+    source: string
+    date: string
+    relevance: string
+    tag: string
+    desc: string
+  }
+
+  export type MarketSignalUncheckedCreateWithoutMaterialInput = {
+    id?: number
+    title: string
+    source: string
+    date: string
+    relevance: string
+    tag: string
+    desc: string
+  }
+
+  export type MarketSignalCreateOrConnectWithoutMaterialInput = {
+    where: MarketSignalWhereUniqueInput
+    create: XOR<MarketSignalCreateWithoutMaterialInput, MarketSignalUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type MarketSignalCreateManyMaterialInputEnvelope = {
+    data: MarketSignalCreateManyMaterialInput | MarketSignalCreateManyMaterialInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StructuralRiskCreateWithoutMaterialInput = {
+    trend: string
+    status: string
+    title: string
+    description: string
+    gemmaAdvisory: string
+  }
+
+  export type StructuralRiskUncheckedCreateWithoutMaterialInput = {
+    id?: number
+    trend: string
+    status: string
+    title: string
+    description: string
+    gemmaAdvisory: string
+  }
+
+  export type StructuralRiskCreateOrConnectWithoutMaterialInput = {
+    where: StructuralRiskWhereUniqueInput
+    create: XOR<StructuralRiskCreateWithoutMaterialInput, StructuralRiskUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type StructuralRiskCreateManyMaterialInputEnvelope = {
+    data: StructuralRiskCreateManyMaterialInput | StructuralRiskCreateManyMaterialInput[]
     skipDuplicates?: boolean
   }
 
@@ -13759,11 +18067,138 @@ export namespace Prisma {
     materialId?: IntFilter<"Order"> | number
   }
 
+  export type ShipmentUpsertWithWhereUniqueWithoutMaterialInput = {
+    where: ShipmentWhereUniqueInput
+    update: XOR<ShipmentUpdateWithoutMaterialInput, ShipmentUncheckedUpdateWithoutMaterialInput>
+    create: XOR<ShipmentCreateWithoutMaterialInput, ShipmentUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type ShipmentUpdateWithWhereUniqueWithoutMaterialInput = {
+    where: ShipmentWhereUniqueInput
+    data: XOR<ShipmentUpdateWithoutMaterialInput, ShipmentUncheckedUpdateWithoutMaterialInput>
+  }
+
+  export type ShipmentUpdateManyWithWhereWithoutMaterialInput = {
+    where: ShipmentScalarWhereInput
+    data: XOR<ShipmentUpdateManyMutationInput, ShipmentUncheckedUpdateManyWithoutMaterialInput>
+  }
+
+  export type ShipmentScalarWhereInput = {
+    AND?: ShipmentScalarWhereInput | ShipmentScalarWhereInput[]
+    OR?: ShipmentScalarWhereInput[]
+    NOT?: ShipmentScalarWhereInput | ShipmentScalarWhereInput[]
+    id?: IntFilter<"Shipment"> | number
+    materialId?: IntFilter<"Shipment"> | number
+    qty?: StringFilter<"Shipment"> | string
+    supplier?: StringFilter<"Shipment"> | string
+    currentNode?: StringFilter<"Shipment"> | string
+    eta?: StringFilter<"Shipment"> | string
+    status?: StringFilter<"Shipment"> | string
+    gemmaAnnotation?: StringFilter<"Shipment"> | string
+  }
+
+  export type InventoryItemUpsertWithWhereUniqueWithoutMaterialInput = {
+    where: InventoryItemWhereUniqueInput
+    update: XOR<InventoryItemUpdateWithoutMaterialInput, InventoryItemUncheckedUpdateWithoutMaterialInput>
+    create: XOR<InventoryItemCreateWithoutMaterialInput, InventoryItemUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type InventoryItemUpdateWithWhereUniqueWithoutMaterialInput = {
+    where: InventoryItemWhereUniqueInput
+    data: XOR<InventoryItemUpdateWithoutMaterialInput, InventoryItemUncheckedUpdateWithoutMaterialInput>
+  }
+
+  export type InventoryItemUpdateManyWithWhereWithoutMaterialInput = {
+    where: InventoryItemScalarWhereInput
+    data: XOR<InventoryItemUpdateManyMutationInput, InventoryItemUncheckedUpdateManyWithoutMaterialInput>
+  }
+
+  export type InventoryItemScalarWhereInput = {
+    AND?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
+    OR?: InventoryItemScalarWhereInput[]
+    NOT?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
+    id?: IntFilter<"InventoryItem"> | number
+    name?: StringFilter<"InventoryItem"> | string
+    category?: StringFilter<"InventoryItem"> | string
+    sku?: StringFilter<"InventoryItem"> | string
+    quantity?: IntFilter<"InventoryItem"> | number
+    unit?: StringFilter<"InventoryItem"> | string
+    location?: StringFilter<"InventoryItem"> | string
+    minThreshold?: IntFilter<"InventoryItem"> | number
+    status?: StringFilter<"InventoryItem"> | string
+    image?: StringFilter<"InventoryItem"> | string
+    lastUpdated?: DateTimeFilter<"InventoryItem"> | Date | string
+    materialId?: IntNullableFilter<"InventoryItem"> | number | null
+  }
+
+  export type MarketSignalUpsertWithWhereUniqueWithoutMaterialInput = {
+    where: MarketSignalWhereUniqueInput
+    update: XOR<MarketSignalUpdateWithoutMaterialInput, MarketSignalUncheckedUpdateWithoutMaterialInput>
+    create: XOR<MarketSignalCreateWithoutMaterialInput, MarketSignalUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type MarketSignalUpdateWithWhereUniqueWithoutMaterialInput = {
+    where: MarketSignalWhereUniqueInput
+    data: XOR<MarketSignalUpdateWithoutMaterialInput, MarketSignalUncheckedUpdateWithoutMaterialInput>
+  }
+
+  export type MarketSignalUpdateManyWithWhereWithoutMaterialInput = {
+    where: MarketSignalScalarWhereInput
+    data: XOR<MarketSignalUpdateManyMutationInput, MarketSignalUncheckedUpdateManyWithoutMaterialInput>
+  }
+
+  export type MarketSignalScalarWhereInput = {
+    AND?: MarketSignalScalarWhereInput | MarketSignalScalarWhereInput[]
+    OR?: MarketSignalScalarWhereInput[]
+    NOT?: MarketSignalScalarWhereInput | MarketSignalScalarWhereInput[]
+    id?: IntFilter<"MarketSignal"> | number
+    title?: StringFilter<"MarketSignal"> | string
+    source?: StringFilter<"MarketSignal"> | string
+    date?: StringFilter<"MarketSignal"> | string
+    relevance?: StringFilter<"MarketSignal"> | string
+    tag?: StringFilter<"MarketSignal"> | string
+    desc?: StringFilter<"MarketSignal"> | string
+    materialId?: IntNullableFilter<"MarketSignal"> | number | null
+  }
+
+  export type StructuralRiskUpsertWithWhereUniqueWithoutMaterialInput = {
+    where: StructuralRiskWhereUniqueInput
+    update: XOR<StructuralRiskUpdateWithoutMaterialInput, StructuralRiskUncheckedUpdateWithoutMaterialInput>
+    create: XOR<StructuralRiskCreateWithoutMaterialInput, StructuralRiskUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type StructuralRiskUpdateWithWhereUniqueWithoutMaterialInput = {
+    where: StructuralRiskWhereUniqueInput
+    data: XOR<StructuralRiskUpdateWithoutMaterialInput, StructuralRiskUncheckedUpdateWithoutMaterialInput>
+  }
+
+  export type StructuralRiskUpdateManyWithWhereWithoutMaterialInput = {
+    where: StructuralRiskScalarWhereInput
+    data: XOR<StructuralRiskUpdateManyMutationInput, StructuralRiskUncheckedUpdateManyWithoutMaterialInput>
+  }
+
+  export type StructuralRiskScalarWhereInput = {
+    AND?: StructuralRiskScalarWhereInput | StructuralRiskScalarWhereInput[]
+    OR?: StructuralRiskScalarWhereInput[]
+    NOT?: StructuralRiskScalarWhereInput | StructuralRiskScalarWhereInput[]
+    id?: IntFilter<"StructuralRisk"> | number
+    trend?: StringFilter<"StructuralRisk"> | string
+    status?: StringFilter<"StructuralRisk"> | string
+    title?: StringFilter<"StructuralRisk"> | string
+    description?: StringFilter<"StructuralRisk"> | string
+    gemmaAdvisory?: StringFilter<"StructuralRisk"> | string
+    materialId?: IntNullableFilter<"StructuralRisk"> | number | null
+  }
+
   export type MaterialCreateWithoutOrdersInput = {
     name: string
     currentCost: number
     marketCost: number
     supplier: string
+    shipments?: ShipmentCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialUncheckedCreateWithoutOrdersInput = {
@@ -13772,11 +18207,47 @@ export namespace Prisma {
     currentCost: number
     marketCost: number
     supplier: string
+    shipments?: ShipmentUncheckedCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalUncheckedCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskUncheckedCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialCreateOrConnectWithoutOrdersInput = {
     where: MaterialWhereUniqueInput
     create: XOR<MaterialCreateWithoutOrdersInput, MaterialUncheckedCreateWithoutOrdersInput>
+  }
+
+  export type PricingRecommendationCreateWithoutOrderInput = {
+    id: string
+    trigger: string
+    action: string
+    confidence: string
+    reasoning: JsonNullValueInput | InputJsonValue
+    accepted?: boolean
+    rejected?: boolean
+    expanded?: boolean
+  }
+
+  export type PricingRecommendationUncheckedCreateWithoutOrderInput = {
+    id: string
+    trigger: string
+    action: string
+    confidence: string
+    reasoning: JsonNullValueInput | InputJsonValue
+    accepted?: boolean
+    rejected?: boolean
+    expanded?: boolean
+  }
+
+  export type PricingRecommendationCreateOrConnectWithoutOrderInput = {
+    where: PricingRecommendationWhereUniqueInput
+    create: XOR<PricingRecommendationCreateWithoutOrderInput, PricingRecommendationUncheckedCreateWithoutOrderInput>
+  }
+
+  export type PricingRecommendationCreateManyOrderInputEnvelope = {
+    data: PricingRecommendationCreateManyOrderInput | PricingRecommendationCreateManyOrderInput[]
+    skipDuplicates?: boolean
   }
 
   export type MaterialUpsertWithoutOrdersInput = {
@@ -13795,6 +18266,10 @@ export namespace Prisma {
     currentCost?: FloatFieldUpdateOperationsInput | number
     marketCost?: FloatFieldUpdateOperationsInput | number
     supplier?: StringFieldUpdateOperationsInput | string
+    shipments?: ShipmentUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUpdateManyWithoutMaterialNestedInput
   }
 
   export type MaterialUncheckedUpdateWithoutOrdersInput = {
@@ -13803,6 +18278,69 @@ export namespace Prisma {
     currentCost?: FloatFieldUpdateOperationsInput | number
     marketCost?: FloatFieldUpdateOperationsInput | number
     supplier?: StringFieldUpdateOperationsInput | string
+    shipments?: ShipmentUncheckedUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUncheckedUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUncheckedUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type PricingRecommendationUpsertWithWhereUniqueWithoutOrderInput = {
+    where: PricingRecommendationWhereUniqueInput
+    update: XOR<PricingRecommendationUpdateWithoutOrderInput, PricingRecommendationUncheckedUpdateWithoutOrderInput>
+    create: XOR<PricingRecommendationCreateWithoutOrderInput, PricingRecommendationUncheckedCreateWithoutOrderInput>
+  }
+
+  export type PricingRecommendationUpdateWithWhereUniqueWithoutOrderInput = {
+    where: PricingRecommendationWhereUniqueInput
+    data: XOR<PricingRecommendationUpdateWithoutOrderInput, PricingRecommendationUncheckedUpdateWithoutOrderInput>
+  }
+
+  export type PricingRecommendationUpdateManyWithWhereWithoutOrderInput = {
+    where: PricingRecommendationScalarWhereInput
+    data: XOR<PricingRecommendationUpdateManyMutationInput, PricingRecommendationUncheckedUpdateManyWithoutOrderInput>
+  }
+
+  export type PricingRecommendationScalarWhereInput = {
+    AND?: PricingRecommendationScalarWhereInput | PricingRecommendationScalarWhereInput[]
+    OR?: PricingRecommendationScalarWhereInput[]
+    NOT?: PricingRecommendationScalarWhereInput | PricingRecommendationScalarWhereInput[]
+    id?: StringFilter<"PricingRecommendation"> | string
+    trigger?: StringFilter<"PricingRecommendation"> | string
+    action?: StringFilter<"PricingRecommendation"> | string
+    confidence?: StringFilter<"PricingRecommendation"> | string
+    reasoning?: JsonFilter<"PricingRecommendation">
+    accepted?: BoolFilter<"PricingRecommendation"> | boolean
+    rejected?: BoolFilter<"PricingRecommendation"> | boolean
+    expanded?: BoolFilter<"PricingRecommendation"> | boolean
+    orderId?: StringNullableFilter<"PricingRecommendation"> | string | null
+  }
+
+  export type MaterialCreateWithoutShipmentsInput = {
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialUncheckedCreateWithoutShipmentsInput = {
+    id?: number
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderUncheckedCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalUncheckedCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskUncheckedCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialCreateOrConnectWithoutShipmentsInput = {
+    where: MaterialWhereUniqueInput
+    create: XOR<MaterialCreateWithoutShipmentsInput, MaterialUncheckedCreateWithoutShipmentsInput>
   }
 
   export type ShipmentStepCreateWithoutShipmentInput = {
@@ -13826,6 +18364,40 @@ export namespace Prisma {
   export type ShipmentStepCreateManyShipmentInputEnvelope = {
     data: ShipmentStepCreateManyShipmentInput | ShipmentStepCreateManyShipmentInput[]
     skipDuplicates?: boolean
+  }
+
+  export type MaterialUpsertWithoutShipmentsInput = {
+    update: XOR<MaterialUpdateWithoutShipmentsInput, MaterialUncheckedUpdateWithoutShipmentsInput>
+    create: XOR<MaterialCreateWithoutShipmentsInput, MaterialUncheckedCreateWithoutShipmentsInput>
+    where?: MaterialWhereInput
+  }
+
+  export type MaterialUpdateToOneWithWhereWithoutShipmentsInput = {
+    where?: MaterialWhereInput
+    data: XOR<MaterialUpdateWithoutShipmentsInput, MaterialUncheckedUpdateWithoutShipmentsInput>
+  }
+
+  export type MaterialUpdateWithoutShipmentsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialUncheckedUpdateWithoutShipmentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUncheckedUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUncheckedUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUncheckedUpdateManyWithoutMaterialNestedInput
   }
 
   export type ShipmentStepUpsertWithWhereUniqueWithoutShipmentInput = {
@@ -13856,18 +18428,18 @@ export namespace Prisma {
   }
 
   export type ShipmentCreateWithoutStepsInput = {
-    material: string
     qty: string
     supplier: string
     currentNode: string
     eta: string
     status: string
     gemmaAnnotation: string
+    material: MaterialCreateNestedOneWithoutShipmentsInput
   }
 
   export type ShipmentUncheckedCreateWithoutStepsInput = {
     id?: number
-    material: string
+    materialId: number
     qty: string
     supplier: string
     currentNode: string
@@ -13893,7 +18465,18 @@ export namespace Prisma {
   }
 
   export type ShipmentUpdateWithoutStepsInput = {
-    material?: StringFieldUpdateOperationsInput | string
+    qty?: StringFieldUpdateOperationsInput | string
+    supplier?: StringFieldUpdateOperationsInput | string
+    currentNode?: StringFieldUpdateOperationsInput | string
+    eta?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    gemmaAnnotation?: StringFieldUpdateOperationsInput | string
+    material?: MaterialUpdateOneRequiredWithoutShipmentsNestedInput
+  }
+
+  export type ShipmentUncheckedUpdateWithoutStepsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    materialId?: IntFieldUpdateOperationsInput | number
     qty?: StringFieldUpdateOperationsInput | string
     supplier?: StringFieldUpdateOperationsInput | string
     currentNode?: StringFieldUpdateOperationsInput | string
@@ -13902,15 +18485,234 @@ export namespace Prisma {
     gemmaAnnotation?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ShipmentUncheckedUpdateWithoutStepsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    material?: StringFieldUpdateOperationsInput | string
-    qty?: StringFieldUpdateOperationsInput | string
+  export type MaterialCreateWithoutMarketSignalsInput = {
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialUncheckedCreateWithoutMarketSignalsInput = {
+    id?: number
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderUncheckedCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentUncheckedCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskUncheckedCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialCreateOrConnectWithoutMarketSignalsInput = {
+    where: MaterialWhereUniqueInput
+    create: XOR<MaterialCreateWithoutMarketSignalsInput, MaterialUncheckedCreateWithoutMarketSignalsInput>
+  }
+
+  export type MaterialUpsertWithoutMarketSignalsInput = {
+    update: XOR<MaterialUpdateWithoutMarketSignalsInput, MaterialUncheckedUpdateWithoutMarketSignalsInput>
+    create: XOR<MaterialCreateWithoutMarketSignalsInput, MaterialUncheckedCreateWithoutMarketSignalsInput>
+    where?: MaterialWhereInput
+  }
+
+  export type MaterialUpdateToOneWithWhereWithoutMarketSignalsInput = {
+    where?: MaterialWhereInput
+    data: XOR<MaterialUpdateWithoutMarketSignalsInput, MaterialUncheckedUpdateWithoutMarketSignalsInput>
+  }
+
+  export type MaterialUpdateWithoutMarketSignalsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
     supplier?: StringFieldUpdateOperationsInput | string
-    currentNode?: StringFieldUpdateOperationsInput | string
-    eta?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    gemmaAnnotation?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialUncheckedUpdateWithoutMarketSignalsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUncheckedUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUncheckedUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUncheckedUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type OrderCreateWithoutPricingRecommendationsInput = {
+    id: string
+    client: string
+    margin: string
+    material: MaterialCreateNestedOneWithoutOrdersInput
+  }
+
+  export type OrderUncheckedCreateWithoutPricingRecommendationsInput = {
+    id: string
+    client: string
+    margin: string
+    materialId: number
+  }
+
+  export type OrderCreateOrConnectWithoutPricingRecommendationsInput = {
+    where: OrderWhereUniqueInput
+    create: XOR<OrderCreateWithoutPricingRecommendationsInput, OrderUncheckedCreateWithoutPricingRecommendationsInput>
+  }
+
+  export type OrderUpsertWithoutPricingRecommendationsInput = {
+    update: XOR<OrderUpdateWithoutPricingRecommendationsInput, OrderUncheckedUpdateWithoutPricingRecommendationsInput>
+    create: XOR<OrderCreateWithoutPricingRecommendationsInput, OrderUncheckedCreateWithoutPricingRecommendationsInput>
+    where?: OrderWhereInput
+  }
+
+  export type OrderUpdateToOneWithWhereWithoutPricingRecommendationsInput = {
+    where?: OrderWhereInput
+    data: XOR<OrderUpdateWithoutPricingRecommendationsInput, OrderUncheckedUpdateWithoutPricingRecommendationsInput>
+  }
+
+  export type OrderUpdateWithoutPricingRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    client?: StringFieldUpdateOperationsInput | string
+    margin?: StringFieldUpdateOperationsInput | string
+    material?: MaterialUpdateOneRequiredWithoutOrdersNestedInput
+  }
+
+  export type OrderUncheckedUpdateWithoutPricingRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    client?: StringFieldUpdateOperationsInput | string
+    margin?: StringFieldUpdateOperationsInput | string
+    materialId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MaterialCreateWithoutStructuralRisksInput = {
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialUncheckedCreateWithoutStructuralRisksInput = {
+    id?: number
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderUncheckedCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentUncheckedCreateNestedManyWithoutMaterialInput
+    inventoryItems?: InventoryItemUncheckedCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalUncheckedCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialCreateOrConnectWithoutStructuralRisksInput = {
+    where: MaterialWhereUniqueInput
+    create: XOR<MaterialCreateWithoutStructuralRisksInput, MaterialUncheckedCreateWithoutStructuralRisksInput>
+  }
+
+  export type MaterialUpsertWithoutStructuralRisksInput = {
+    update: XOR<MaterialUpdateWithoutStructuralRisksInput, MaterialUncheckedUpdateWithoutStructuralRisksInput>
+    create: XOR<MaterialCreateWithoutStructuralRisksInput, MaterialUncheckedCreateWithoutStructuralRisksInput>
+    where?: MaterialWhereInput
+  }
+
+  export type MaterialUpdateToOneWithWhereWithoutStructuralRisksInput = {
+    where?: MaterialWhereInput
+    data: XOR<MaterialUpdateWithoutStructuralRisksInput, MaterialUncheckedUpdateWithoutStructuralRisksInput>
+  }
+
+  export type MaterialUpdateWithoutStructuralRisksInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialUncheckedUpdateWithoutStructuralRisksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUncheckedUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUncheckedUpdateManyWithoutMaterialNestedInput
+    inventoryItems?: InventoryItemUncheckedUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUncheckedUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialCreateWithoutInventoryItemsInput = {
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialUncheckedCreateWithoutInventoryItemsInput = {
+    id?: number
+    name: string
+    currentCost: number
+    marketCost: number
+    supplier: string
+    orders?: OrderUncheckedCreateNestedManyWithoutMaterialInput
+    shipments?: ShipmentUncheckedCreateNestedManyWithoutMaterialInput
+    marketSignals?: MarketSignalUncheckedCreateNestedManyWithoutMaterialInput
+    structuralRisks?: StructuralRiskUncheckedCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialCreateOrConnectWithoutInventoryItemsInput = {
+    where: MaterialWhereUniqueInput
+    create: XOR<MaterialCreateWithoutInventoryItemsInput, MaterialUncheckedCreateWithoutInventoryItemsInput>
+  }
+
+  export type MaterialUpsertWithoutInventoryItemsInput = {
+    update: XOR<MaterialUpdateWithoutInventoryItemsInput, MaterialUncheckedUpdateWithoutInventoryItemsInput>
+    create: XOR<MaterialCreateWithoutInventoryItemsInput, MaterialUncheckedCreateWithoutInventoryItemsInput>
+    where?: MaterialWhereInput
+  }
+
+  export type MaterialUpdateToOneWithWhereWithoutInventoryItemsInput = {
+    where?: MaterialWhereInput
+    data: XOR<MaterialUpdateWithoutInventoryItemsInput, MaterialUncheckedUpdateWithoutInventoryItemsInput>
+  }
+
+  export type MaterialUpdateWithoutInventoryItemsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialUncheckedUpdateWithoutInventoryItemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    currentCost?: FloatFieldUpdateOperationsInput | number
+    marketCost?: FloatFieldUpdateOperationsInput | number
+    supplier?: StringFieldUpdateOperationsInput | string
+    orders?: OrderUncheckedUpdateManyWithoutMaterialNestedInput
+    shipments?: ShipmentUncheckedUpdateManyWithoutMaterialNestedInput
+    marketSignals?: MarketSignalUncheckedUpdateManyWithoutMaterialNestedInput
+    structuralRisks?: StructuralRiskUncheckedUpdateManyWithoutMaterialNestedInput
   }
 
   export type OrderCreateManyMaterialInput = {
@@ -13919,22 +18721,238 @@ export namespace Prisma {
     margin: string
   }
 
+  export type ShipmentCreateManyMaterialInput = {
+    id?: number
+    qty: string
+    supplier: string
+    currentNode: string
+    eta: string
+    status: string
+    gemmaAnnotation: string
+  }
+
+  export type InventoryItemCreateManyMaterialInput = {
+    id?: number
+    name: string
+    category: string
+    sku: string
+    quantity: number
+    unit: string
+    location: string
+    minThreshold: number
+    status: string
+    image: string
+    lastUpdated?: Date | string
+  }
+
+  export type MarketSignalCreateManyMaterialInput = {
+    id?: number
+    title: string
+    source: string
+    date: string
+    relevance: string
+    tag: string
+    desc: string
+  }
+
+  export type StructuralRiskCreateManyMaterialInput = {
+    id?: number
+    trend: string
+    status: string
+    title: string
+    description: string
+    gemmaAdvisory: string
+  }
+
   export type OrderUpdateWithoutMaterialInput = {
     id?: StringFieldUpdateOperationsInput | string
     client?: StringFieldUpdateOperationsInput | string
     margin?: StringFieldUpdateOperationsInput | string
+    pricingRecommendations?: PricingRecommendationUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderUncheckedUpdateWithoutMaterialInput = {
     id?: StringFieldUpdateOperationsInput | string
     client?: StringFieldUpdateOperationsInput | string
     margin?: StringFieldUpdateOperationsInput | string
+    pricingRecommendations?: PricingRecommendationUncheckedUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderUncheckedUpdateManyWithoutMaterialInput = {
     id?: StringFieldUpdateOperationsInput | string
     client?: StringFieldUpdateOperationsInput | string
     margin?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ShipmentUpdateWithoutMaterialInput = {
+    qty?: StringFieldUpdateOperationsInput | string
+    supplier?: StringFieldUpdateOperationsInput | string
+    currentNode?: StringFieldUpdateOperationsInput | string
+    eta?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    gemmaAnnotation?: StringFieldUpdateOperationsInput | string
+    steps?: ShipmentStepUpdateManyWithoutShipmentNestedInput
+  }
+
+  export type ShipmentUncheckedUpdateWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: StringFieldUpdateOperationsInput | string
+    supplier?: StringFieldUpdateOperationsInput | string
+    currentNode?: StringFieldUpdateOperationsInput | string
+    eta?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    gemmaAnnotation?: StringFieldUpdateOperationsInput | string
+    steps?: ShipmentStepUncheckedUpdateManyWithoutShipmentNestedInput
+  }
+
+  export type ShipmentUncheckedUpdateManyWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: StringFieldUpdateOperationsInput | string
+    supplier?: StringFieldUpdateOperationsInput | string
+    currentNode?: StringFieldUpdateOperationsInput | string
+    eta?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    gemmaAnnotation?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type InventoryItemUpdateWithoutMaterialInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    minThreshold?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventoryItemUncheckedUpdateWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    minThreshold?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventoryItemUncheckedUpdateManyWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    minThreshold?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MarketSignalUpdateWithoutMaterialInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    relevance?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MarketSignalUncheckedUpdateWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    relevance?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MarketSignalUncheckedUpdateManyWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    relevance?: StringFieldUpdateOperationsInput | string
+    tag?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StructuralRiskUpdateWithoutMaterialInput = {
+    trend?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    gemmaAdvisory?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StructuralRiskUncheckedUpdateWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    trend?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    gemmaAdvisory?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StructuralRiskUncheckedUpdateManyWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    trend?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    gemmaAdvisory?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PricingRecommendationCreateManyOrderInput = {
+    id: string
+    trigger: string
+    action: string
+    confidence: string
+    reasoning: JsonNullValueInput | InputJsonValue
+    accepted?: boolean
+    rejected?: boolean
+    expanded?: boolean
+  }
+
+  export type PricingRecommendationUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    trigger?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    confidence?: StringFieldUpdateOperationsInput | string
+    reasoning?: JsonNullValueInput | InputJsonValue
+    accepted?: BoolFieldUpdateOperationsInput | boolean
+    rejected?: BoolFieldUpdateOperationsInput | boolean
+    expanded?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type PricingRecommendationUncheckedUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    trigger?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    confidence?: StringFieldUpdateOperationsInput | string
+    reasoning?: JsonNullValueInput | InputJsonValue
+    accepted?: BoolFieldUpdateOperationsInput | boolean
+    rejected?: BoolFieldUpdateOperationsInput | boolean
+    expanded?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type PricingRecommendationUncheckedUpdateManyWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    trigger?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    confidence?: StringFieldUpdateOperationsInput | string
+    reasoning?: JsonNullValueInput | InputJsonValue
+    accepted?: BoolFieldUpdateOperationsInput | boolean
+    rejected?: BoolFieldUpdateOperationsInput | boolean
+    expanded?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ShipmentStepCreateManyShipmentInput = {

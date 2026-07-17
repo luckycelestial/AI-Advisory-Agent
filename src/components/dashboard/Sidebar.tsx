@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { 
   LuLayoutDashboard, 
@@ -10,7 +10,9 @@ import {
   LuTrendingUp, 
   LuShieldAlert,
   LuBrainCircuit,
-  LuBoxes
+  LuBoxes,
+  LuClipboardList,
+  LuNetwork
 } from "react-icons/lu";
 
 export default function Sidebar() {
@@ -23,6 +25,8 @@ export default function Sidebar() {
 
 function SidebarContent() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab");
 
   const menuItems = [
     {
@@ -38,27 +42,33 @@ function SidebarContent() {
       isSub: false,
     },
     {
+      name: "Active Orders",
+      icon: <LuClipboardList size={14} />,
+      path: "/pricing-agent?tab=orders",
+      isSub: true,
+    },
+    {
       name: "CNC Inventory",
       icon: <LuBoxes size={14} />,
-      path: "/pricing-agent/inventory",
+      path: "/pricing-agent?tab=inventory",
       isSub: true,
     },
     {
       name: "Supply Chain",
       icon: <LuCombine size={14} />,
-      path: "/pricing-agent/supply-chain",
+      path: "/pricing-agent?tab=supply-chain",
       isSub: true,
     },
     {
       name: "Market Signals",
       icon: <LuTrendingUp size={14} />,
-      path: "/pricing-agent/market-signals",
+      path: "/pricing-agent?tab=intelligence",
       isSub: true,
     },
     {
-      name: "Long-Term Risks",
-      icon: <LuShieldAlert size={14} />,
-      path: "/pricing-agent/long-term-risks",
+      name: "Competitor Clusters",
+      icon: <LuNetwork size={14} />,
+      path: "/pricing-agent/competitor-clusters",
       isSub: true,
     },
   ];
@@ -81,10 +91,11 @@ function SidebarContent() {
           {menuItems.map((item, index) => {
             // Determine if item is active
             let isActive = false;
-            if (item.path === "/") {
-              isActive = pathname === "/";
+            if (item.path.startsWith("/pricing-agent?tab=")) {
+              const itemTab = item.path.split("=")[1];
+              isActive = pathname === "/pricing-agent" && tab === itemTab;
             } else if (item.path === "/pricing-agent") {
-              isActive = pathname === "/pricing-agent";
+              isActive = pathname === "/pricing-agent" && (!tab || tab === "control");
             } else {
               isActive = pathname === item.path;
             }

@@ -1,5 +1,27 @@
-// Active: 1784160133669@@127.0.0.1@5432@ai_advisory_agent
+import fs from "fs";
+import path from "path";
+
+// Simple manual .env parser
+const envPath = path.join(process.cwd(), ".env");
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, "utf-8");
+  for (const line of envContent.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const parts = trimmed.split("=");
+    if (parts.length >= 2) {
+      const key = parts[0].trim();
+      let val = parts.slice(1).join("=").trim();
+      if (val.startsWith('"') && val.endsWith('"')) {
+        val = val.substring(1, val.length - 1);
+      }
+      process.env[key] = val;
+    }
+  }
+}
+
 import { prisma } from "../src/lib/prisma-client";
+
 
 async function main() {
   console.log("Seeding database...");
@@ -14,6 +36,8 @@ async function main() {
   await prisma.order.deleteMany();
   await prisma.material.deleteMany();
   await prisma.inventoryItem.deleteMany();
+  await prisma.cncMachineTelemetry.deleteMany();
+  await prisma.indianMetalIndex.deleteMany();
 
   // 1. Seed Materials
   const materialAluminium = await prisma.material.create({
@@ -55,7 +79,7 @@ async function main() {
   // 3. Seed Shipments and ShipmentSteps
   const shipment1 = await prisma.shipment.create({
     data: {
-      material: "Steel Bars (Mild Grade)",
+      materialId: materialSteel.id,
       qty: "15 Tons",
       supplier: "Peenya Steel Distributor",
       currentNode: "Distributor Node (Bengaluru Outer Ring)",
@@ -78,7 +102,7 @@ async function main() {
 
   const shipment2 = await prisma.shipment.create({
     data: {
-      material: "Aluminium Alloy billets (6061)",
+      materialId: materialAluminium.id,
       qty: "5 Tons",
       supplier: "Bommasandra Metal Casting",
       currentNode: "Warehouse Node (Jigani Industrial)",
@@ -100,66 +124,76 @@ async function main() {
   });
 
   // 4. Seed MarketSignals
-  await prisma.marketSignal.createMany({
-    data: [
-      {
-        title: "Global Steel Index Surges 6% Post Import Tariff Adjustment",
-        source: "MetalBulletin News",
-        date: "2 hours ago",
-        relevance: "high",
-        tag: "Directly affects Mild Steel Rod order pricing (Order #221)",
-        desc: "Supplier costs for Mild Steel Rods are set to escalate by ₹3,400/ton by next week.",
-      },
-      {
-        title: "Bengaluru EV Parts Cluster Demand Increases by 30% YoY",
-        source: "EconomicTimes Industry",
-        date: "1 day ago",
-        relevance: "medium",
-        tag: "Long-term risk: 30% of your tooling output is ICE-specific",
-        desc: "Traditional engine components face shrinking order volume. Shift to EV casing casting recommended.",
-      },
-      {
-        title: "Bommasandra Power Grid Announces 4-Hour Scheduled Daily Maintenance",
-        source: "BESCOM Notification",
-        date: "2 days ago",
-        relevance: "high",
-        tag: "Affects CNC facility operational overhead costs",
-        desc: "Generator fuel backup costs will rise by ₹150/hour, reducing net margins on batch casting orders.",
-      },
-    ],
+  await prisma.marketSignal.create({
+    data: {
+      title: "Global Steel Index Surges 6% Post Import Tariff Adjustment",
+      source: "MetalBulletin News",
+      date: "2 hours ago",
+      relevance: "high",
+      tag: "Directly affects Mild Steel Rod order pricing (Order #221)",
+      desc: "Supplier costs for Mild Steel Rods are set to escalate by ₹3,400/ton by next week.",
+      materialId: materialSteel.id,
+    },
+  });
+
+  await prisma.marketSignal.create({
+    data: {
+      title: "Bengaluru EV Parts Cluster Demand Increases by 30% YoY",
+      source: "EconomicTimes Industry",
+      date: "1 day ago",
+      relevance: "medium",
+      tag: "Long-term risk: 30% of your tooling output is ICE-specific",
+      desc: "Traditional engine components face shrinking order volume. Shift to EV casing casting recommended.",
+      materialId: materialSteel.id,
+    },
+  });
+
+  await prisma.marketSignal.create({
+    data: {
+      title: "Bommasandra Power Grid Announces 4-Hour Scheduled Daily Maintenance",
+      source: "BESCOM Notification",
+      date: "2 days ago",
+      relevance: "high",
+      tag: "Affects CNC facility operational overhead costs",
+      desc: "Generator fuel backup costs will rise by ₹150/hour, reducing net margins on batch casting orders.",
+      materialId: materialAluminium.id,
+    },
   });
 
   // 5. Seed PricingRecommendations
-  await prisma.pricingRecommendation.createMany({
-    data: [
-      {
-        id: "REC-01",
-        trigger: "Mild Steel Cost index +6.3% in Peenya Cluster",
-        action: "Increase Price by +3.4% on Mild Steel products for new batches",
-        confidence: "high",
-        reasoning: [
-          "Supplier raw steel quotes rose by ₹3,600/ton yesterday.",
-          "Your current net margin on Mild Steel parts is 11.2%, which is close to your critical safety margin (10.0%).",
-          "Client sensitivity analysis indicates a price elasticity of -0.4, allowing a +3.4% pass-through markup without order volume deterioration.",
-        ],
-        accepted: false,
-        rejected: false,
-        expanded: false,
-      },
-      {
-        id: "REC-02",
-        trigger: "BESCOM 4-Hr power maintenance surcharge added",
-        action: "Apply ₹40/batch operational energy buffer surcharge",
-        confidence: "medium",
-        reasoning: [
-          "CNC operational backup diesel generator runs cost ₹150 extra per hour.",
-          "This surcharge directly prevents a 1.2% gross margin bleed on current scheduled batch runs.",
-        ],
-        accepted: false,
-        rejected: false,
-        expanded: false,
-      },
-    ],
+  await prisma.pricingRecommendation.create({
+    data: {
+      id: "REC-01",
+      trigger: "Mild Steel Cost index +6.3% in Peenya Cluster",
+      action: "Increase Price by +3.4% on Mild Steel products for new batches",
+      confidence: "high",
+      reasoning: [
+        "Supplier raw steel quotes rose by ₹3,600/ton yesterday.",
+        "Your current net margin on Mild Steel parts is 11.2%, which is close to your critical safety margin (10.0%).",
+        "Client sensitivity analysis indicates a price elasticity of -0.4, allowing a +3.4% pass-through markup without order volume deterioration.",
+      ],
+      accepted: false,
+      rejected: false,
+      expanded: false,
+      orderId: "ORD-221",
+    },
+  });
+
+  await prisma.pricingRecommendation.create({
+    data: {
+      id: "REC-02",
+      trigger: "BESCOM 4-Hr power maintenance surcharge added",
+      action: "Apply ₹40/batch operational energy buffer surcharge",
+      confidence: "medium",
+      reasoning: [
+        "CNC operational backup diesel generator runs cost ₹150 extra per hour.",
+        "This surcharge directly prevents a 1.2% gross margin bleed on current scheduled batch runs.",
+      ],
+      accepted: false,
+      rejected: false,
+      expanded: false,
+      orderId: "ORD-214",
+    },
   });
 
   // 6. Seed StructuralRisks
@@ -169,8 +203,9 @@ async function main() {
       status: "Softening Demand",
       title: "Transition Risk: Traditional Engine Cylinder casting",
       description: "Based on market forecast models, traditional ICE parts orders from Tier-1 auto-component distributors are projected to soften by 30% over the next 18 months due to accelerating EV adoption in Bengaluru's local clusters.",
-      gemmaAdvisory: "We recommend diversifying CNC production towards EV structural casings and heat sinks. 45% of your current milling tooling setup can be reprofiled without requiring major capital investments."
-    }
+      gemmaAdvisory: "We recommend diversifying CNC production towards EV structural casings and heat sinks. 45% of your current milling tooling setup can be reprofiled without requiring major capital investments.",
+      materialId: materialSteel.id,
+    },
   });
 
   // 7. Seed IndustryNews
@@ -238,7 +273,8 @@ async function main() {
         location: "Raw Stock Area, Rack A-2",
         minThreshold: 20,
         status: "Low Stock",
-        image: "/inventory/aluminum-blocks.png"
+        image: "/inventory/aluminum-blocks.png",
+        materialId: materialAluminium.id
       },
       {
         name: "Machined Aerospace Brackets (Grade A-5)",
@@ -260,8 +296,89 @@ async function main() {
         location: "Assembly Bay 2",
         minThreshold: 10,
         status: "Low Stock",
-        image: "/inventory/battery-housing.png"
+        image: "/inventory/battery-housing.png",
+        materialId: materialAluminium.id
       }
+    ]
+  });
+
+  // Write default sentiment to sentiment.json to ensure database seeds align with files
+  try {
+    const sentimentPath = path.join(process.cwd(), "src/lib/sentiment.json");
+    const dir = path.dirname(sentimentPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(
+      sentimentPath,
+      JSON.stringify(
+        {
+          pressureTrend: "📈 Strong Upward Trend",
+          threatDescription: "Combined calculations from raw metal hikes (+4% domestic steel quotes in Peenya), regional freight logistics delays (+1-2 days), and Karnataka energy maintenance scheduled outages suggest a margin threat of ~3.2% bleed if price pass-through markups are delayed.",
+          advisoryAction: "Initiate a +3.4% markup strategy immediately on all upcoming Mild Steel fabrication batches in Peenya clusters to shield baseline margins."
+        },
+        null,
+        2
+      ),
+      "utf-8"
+    );
+    console.log("Sentiment file seeded successfully!");
+  } catch (err) {
+    console.error("Failed to seed sentiment file:", err);
+  }
+
+  // 9. Seed IndianMetalIndex
+  await prisma.indianMetalIndex.createMany({
+    data: [
+      {
+        source: "Tata nexarc",
+        material: "TMT Rebars (Fe 500D)",
+        region: "Bengaluru (Peenya)",
+        price: 54500,
+        unit: "per Ton",
+        change: 1.2,
+      },
+      {
+        source: "SteelonCall",
+        material: "Mild Steel Billets",
+        region: "Chennai (Jigani)",
+        price: 48200,
+        unit: "per Ton",
+        change: 0.8,
+      },
+      {
+        source: "BigMint",
+        material: "Sponge Iron Index",
+        region: "Mumbai Hub",
+        price: 32100,
+        unit: "per Ton",
+        change: -0.4,
+      },
+      {
+        source: "Ministry WPI",
+        material: "Metal & Steel WPI Index",
+        region: "National Average",
+        price: 142.6,
+        unit: "index points",
+        change: 2.1,
+      },
+    ]
+  });
+
+  // 10. Seed CncMachineTelemetry (AI4I 2020 Predictive Maintenance samples)
+  await prisma.cncMachineTelemetry.createMany({
+    data: [
+      { machineId: "M14860", airTemp: 298.1, processTemp: 308.6, rotationalSpeed: 1551, torque: 42.8, toolWear: 0, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14861", airTemp: 298.2, processTemp: 308.7, rotationalSpeed: 1667, torque: 32.4, toolWear: 3, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14862", airTemp: 298.1, processTemp: 308.5, rotationalSpeed: 1498, torque: 49.4, toolWear: 5, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14863", airTemp: 298.2, processTemp: 308.6, rotationalSpeed: 1500, torque: 45.7, toolWear: 7, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14864", airTemp: 298.2, processTemp: 308.7, rotationalSpeed: 1434, torque: 55.2, toolWear: 12, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14890", airTemp: 298.9, processTemp: 309.1, rotationalSpeed: 1410, torque: 65.7, toolWear: 191, machineFailure: true, twf: true, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14891", airTemp: 298.9, processTemp: 309.0, rotationalSpeed: 1324, torque: 75.3, toolWear: 203, machineFailure: true, twf: false, hdf: false, pwf: false, osf: true, rnf: false },
+      { machineId: "M14900", airTemp: 299.1, processTemp: 309.2, rotationalSpeed: 1250, torque: 80.0, toolWear: 215, machineFailure: true, twf: true, hdf: false, pwf: false, osf: true, rnf: false },
+      { machineId: "M14865", airTemp: 298.1, processTemp: 308.6, rotationalSpeed: 1511, torque: 40.5, toolWear: 15, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14866", airTemp: 298.2, processTemp: 308.7, rotationalSpeed: 1620, torque: 34.0, toolWear: 18, machineFailure: false, twf: false, hdf: false, pwf: false, osf: false, rnf: false },
+      { machineId: "M14912", airTemp: 299.5, processTemp: 310.1, rotationalSpeed: 1350, torque: 70.2, toolWear: 220, machineFailure: true, twf: true, hdf: true, pwf: false, osf: false, rnf: false },
     ]
   });
 
