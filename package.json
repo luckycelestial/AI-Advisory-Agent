@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "install:revenue": "npm install --prefix backend && npm install --prefix frontend",
+    "dev:revenue": "npx concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
